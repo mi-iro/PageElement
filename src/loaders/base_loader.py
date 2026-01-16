@@ -29,6 +29,7 @@ class StandardSample:
     定义一个标准的输入样本。
     所有数据集 (MMLong, FinRAG, MVTool) 都必须转换为此格式。
     """
+    qid: str
     query: str
     dataset: str         # 'mmlong', 'finrag', 'mvtool'
     # --- 数据源 --- 可能是向量检索池，可能是单个PDF文档，也可能是单个图像
@@ -38,7 +39,12 @@ class StandardSample:
     gold_answer: Optional[str] = None
     
     # 答案对应的 BBox 真值 (可能有多个区域)
-    gold_bboxes: List[List[float]] = field(default_factory=list)
+    gold_elements: List[PageElement] = field(default_factory=list)
+    
+    # 答案对应的 页面ID 真值 (可能有多个页面)
+    gold_pages: List[str] = field(default_factory=list)
+    
+    extra_info: Optional[dict] = None
 
     def to_dict(self) -> Dict[str, Any]:
         """序列化为字典，方便写入日志"""

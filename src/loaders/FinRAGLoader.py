@@ -1,163 +1,177 @@
 import os
 import json
-import glob
+import sys
 import torch
 import numpy as np
 import faiss
 from tqdm import tqdm
 from typing import List, Dict, Any, Optional
 
-# 假设这些类定义在 src.loaders.base_loader 或当前文件中
-# 为了代码独立运行，这里保留引用，实际使用请 import
-from base_loader import BaseDataLoader, StandardSample, PageElement
+# Adjust path to ensure we can import from src and scripts
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../")))
+
+from src.loaders.base_loader import BaseDataLoader, StandardSample, PageElement
+from scripts.qwen3_vl_embedding import Qwen3VLEmbedder
+from scripts.qwen3_vl_reranker import Qwen3VLReranker
 
 class FinRAGLoader(BaseDataLoader):
-    """
-    FinRAGBench Loader: 支持中英文数据集加载、页面级向量检索与重排。
-    """
-    
     def __init__(self, data_root: str, lang: str = "ch", embedding_model=None, rerank_model=None):
-        """
-        :param data_root: FinRAGBench-V 的根目录
-        :param lang: 'ch' (中文) 或 'en' (英文)
-        :param embedding_model: 用于对 Query 和 Image 进行编码的模型实例
-        :param rerank_model: 用于重排的模型实例
-        """
         super().__init__(data_root)
         self.lang = lang.lower()
         self.embedding_model = embedding_model
         self.rerank_model = rerank_model
         
-        # --- 路径配置 (根据提供的目录结构) ---
-        # Query 路径: data/queries/queries_ch.json
+        # --- 路径配置 ---
         self.query_path = os.path.join(data_root, "data", "queries", f"queries_{self.lang}.json")
-        
-        # Corpus 路径: data/corpus/ch/ 或 data/corpus/en/
-        # 注意：目录下包含 part_0000 等子文件夹
         self.corpus_root = os.path.join(data_root, "data", "corpus", self.lang)
+        self.qrels_path = os.path.join(data_root, "data", "qrels", f"qrels_{self.lang}.tsv")
         
-        # 索引缓存路径
+        # 索引路径 (建议修改文件名以区分 HNSW 和 Flat 索引)
         cache_dir = os.path.join(data_root, "data", "indices")
         os.makedirs(cache_dir, exist_ok=True)
-        self.index_path = os.path.join(cache_dir, f"finrag_{self.lang}.index")
-        self.doc_map_path = os.path.join(cache_dir, f"finrag_{self.lang}_docmap.json")
+        # 修改索引后缀或名称，避免加载旧的 Flat 索引报错
+        self.index_path = os.path.join(cache_dir, f"finrag_{self.lang}_hnsw.index")
+        self.doc_map_path = os.path.join(cache_dir, f"finrag_{self.lang}_hnsw_docmap.json")
         
         self.index = None
-        self.doc_id_map = {} # int -> relative_path_from_corpus_root
+        self.doc_id_map = {} 
+
+    def _load_qrels(self) -> Dict[str, List[str]]:
+        """读取 qrels TSV 文件。"""
+        qrels_map = {}
+        if not os.path.exists(self.qrels_path):
+            print(f"Warning: Qrels file not found at {self.qrels_path}. GT IDs will be empty.")
+            return qrels_map
+            
+        print(f"Loading qrels from: {self.qrels_path}")
+        with open(self.qrels_path, 'r', encoding='utf-8') as f:
+            for line in f:
+                line = line.strip()
+                if not line or line.startswith("query-id"):
+                    continue
+                parts = line.split('\t')
+                if len(parts) >= 2:
+                    qid = parts[0]
+                    cid = parts[1]
+                    if qid not in qrels_map:
+                        qrels_map[qid] = []
+                    qrels_map[qid].append(cid)
+        return qrels_map
 
     def load_data(self) -> None:
-        """
-        加载 Query 数据集。
-        """
+        """加载 Query 数据集并关联 Qrels。"""
         if not os.path.exists(self.query_path):
             raise FileNotFoundError(f"Query file not found: {self.query_path}")
-            
+        
+        qrels_map = self._load_qrels()
         print(f"Loading queries from: {self.query_path}")
         with open(self.query_path, 'r', encoding='utf-8') as f:
             data = json.load(f)
             
-        # FinRAG 格式通常为 List[Dict]
+        count = 0
         for item in data:
-            # 兼容不同的 Key 命名习惯
             query_text = item.get("query", "") or item.get("question", "")
             if not query_text:
                 continue
-
+            qid = str(item.get("id") or item.get("query-id") or item.get("_id") or "")
             gold_answer = item.get("answer", "") or item.get("response", "")
-            
-            # 尝试提取 GT BBox (如果存在)
-            gold_bboxes = []
-            if "evidence" in item and isinstance(item["evidence"], list):
-                for ev in item["evidence"]:
-                    if "bbox" in ev:
-                        gold_bboxes.append(ev["bbox"])
+            extra_info = {'category': item.get('category', None), 'answer_type': item.get('answer_type', None), 'from_pages': item.get('from_pages', None)}
+            gold_pages = qrels_map.get(qid, [])
             
             sample = StandardSample(
-                query=query_text,
-                dataset=f"finrag-{self.lang}",
-                data_source=".png", # 这是一个视觉检索任务
-                gold_answer=gold_answer,
-                gold_bboxes=gold_bboxes
+                qid=qid, query=query_text, dataset=f"finrag-{self.lang}",
+                data_source=self.index_path, gold_answer=gold_answer,
+                gold_elements=None, gold_pages=gold_pages, extra_info=extra_info
             )
             self.samples.append(sample)
-            
-        print(f"✅ Successfully loaded {len(self.samples)} queries for lang='{self.lang}'.")
+            count += 1
+        print(f"✅ Successfully loaded {count} queries.")
 
     def _get_all_image_paths(self) -> List[str]:
-        """
-        递归扫描 corpus 目录下的所有图片文件。
-        能够处理 part_0000, part_0001 等子目录结构。
-        """
         print(f"Scanning images in {self.corpus_root}...")
-        image_extensions = ['*.png', '*.jpg', '*.jpeg']
         image_files = []
-        
-        # 使用 os.walk 遍历所有子目录
         for root, dirs, files in os.walk(self.corpus_root):
             for file in files:
                 if file.lower().endswith(('.png', '.jpg', '.jpeg')):
                     image_files.append(os.path.join(root, file))
-        
-        # 排序以保证索引ID一致性
         image_files.sort()
         print(f"Found {len(image_files)} images.")
         return image_files
 
-    def build_page_vector_pool(self, batch_size=32, force_rebuild=False):
+    def _embed_images(self, image_paths: List[str]) -> np.ndarray:
+        if self.embedding_model is None:
+            raise ValueError("Embedding model is not initialized.")
+        inputs = [{"image": p} for p in image_paths]
+        embeddings = self.embedding_model.process(inputs)
+        return embeddings.cpu().numpy().astype('float32')
+
+    def _embed_text(self, text: str) -> np.ndarray:
+        if self.embedding_model is None:
+            raise ValueError("Embedding model is not initialized.")
+        inputs = [{"text": text, "instruction": "Represent the user's input."}]
+        embeddings = self.embedding_model.process(inputs)
+        return embeddings.cpu().numpy().astype('float32')
+
+    def build_page_vector_pool(self, batch_size=4, force_rebuild=False):
         """
-        构建或加载页面级向量索引。
+        Build or load page-level vector index using HNSW.
         """
-        # 1. 尝试加载现有索引
         if not force_rebuild and os.path.exists(self.index_path) and os.path.exists(self.doc_map_path):
-            print(f"Loading existing index from {self.index_path}...")
+            print(f"Loading existing HNSW index from {self.index_path}...")
             self.index = faiss.read_index(self.index_path)
             with open(self.doc_map_path, 'r', encoding='utf-8') as f:
-                # JSON key 是 str，加载后转回 int
                 self.doc_id_map = {int(k): v for k, v in json.load(f).items()}
             print(f"Index loaded. Total vectors: {self.index.ntotal}")
             return
 
-        # 2. 新建索引
         if self.embedding_model is None:
             raise ValueError("Embedding model is required to build the index!")
 
-        print("Building new vector index...")
+        print("Building new HNSW vector index...")
         image_paths = self._get_all_image_paths()
         if not image_paths:
             raise FileNotFoundError(f"No images found in {self.corpus_root}")
 
-        # 假设 Embedding 维度，需与模型一致
-        # 例如 BGE-M3=1024, CLIP-L/14=768, OpenAI=1536
-        # 这里先获取一个样本来确定维度
-        sample_emb = self._mock_embed_images([image_paths[0]]) 
+        # Get dimension from a sample
+        sample_emb = self._embed_images([image_paths[0]]) 
         d = sample_emb.shape[1]
         
-        # 使用 Inner Product (IP) 索引，配合归一化后的向量等同于 Cosine Similarity
-        index = faiss.IndexFlatIP(d) 
+        # --- HNSW 配置 ---
+        # M: 每个节点的邻居连接数，通常在 16~64 之间，越大精度越高但构建越慢/内存占用越大
+        M = 32 
+        # 使用 Inner Product (内积) 度量，配合 L2 归一化等价于余弦相似度
+        index = faiss.IndexHNSWFlat(d, M, faiss.METRIC_INNER_PRODUCT)
+        
+        # efConstruction: 构建时的搜索深度，建议设为 M 的 2 倍以上，影响构建时间和索引质量
+        index.hnsw.efConstruction = 64 
+        
+        # 注意: verbose 设为 True 可以看到构建进度
+        index.verbose = True 
 
-        # 批量处理
         doc_id_counter = 0
         batch_paths = []
         
-        for path in tqdm(image_paths, desc="Indexing Pages"):
+        # Faiss HNSW 不支持像 IVF 那样的 train 过程，但它是增量构建的
+        # 只需要 add 即可
+        
+        for path in tqdm(image_paths, desc="Indexing Pages (HNSW)"):
             batch_paths.append(path)
             
             if len(batch_paths) >= batch_size:
-                embeddings = self._mock_embed_images(batch_paths)
-                faiss.normalize_L2(embeddings) # 归一化
+                embeddings = self._embed_images(batch_paths)
+                # 依然需要归一化，因为使用的是 Inner Product 模拟 Cosine Similarity
+                faiss.normalize_L2(embeddings) 
                 index.add(embeddings)
                 
                 for p in batch_paths:
-                    # 存储相对路径以节省空间，且方便迁移
                     rel_path = os.path.relpath(p, self.corpus_root)
                     self.doc_id_map[doc_id_counter] = rel_path
                     doc_id_counter += 1
                 
                 batch_paths = []
 
-        # 处理剩余
         if batch_paths:
-            embeddings = self._mock_embed_images(batch_paths)
+            embeddings = self._embed_images(batch_paths)
             faiss.normalize_L2(embeddings)
             index.add(embeddings)
             for p in batch_paths:
@@ -167,50 +181,32 @@ class FinRAGLoader(BaseDataLoader):
 
         self.index = index
         
-        # 保存
-        print(f"Saving index to {self.index_path}...")
+        print(f"Saving HNSW index to {self.index_path}...")
         faiss.write_index(self.index, self.index_path)
         with open(self.doc_map_path, 'w', encoding='utf-8') as f:
             json.dump(self.doc_id_map, f)
-        print("Index build complete.")
+        print("HNSW Index build complete.")
 
-    def _mock_embed_images(self, image_paths: List[str]) -> np.ndarray:
+    def retrieve(self, query: str, top_k: int = 5, ef_search: int = 64) -> List[PageElement]:
         """
-        [占位符] 实际代码中调用 self.embedding_model.encode_image(image_paths)
-        必须返回 shape=(batch_size, dim) 的 float32 numpy array
-        """
-        if self.embedding_model:
-             # 假设模型有 encode_images 方法
-             # return self.embedding_model.encode_images(image_paths)
-             pass
-        
-        # 演示用随机向量 (dim=768)
-        return np.random.rand(len(image_paths), 768).astype('float32')
-
-    def _mock_embed_text(self, text: str) -> np.ndarray:
-        """
-        [占位符] 实际代码中调用 self.embedding_model.encode_text(text)
-        """
-        # 演示用随机向量
-        return np.random.rand(1, 768).astype('float32')
-
-    def retrieve(self, query: str, top_k: int = 5) -> List[PageElement]:
-        """
-        Step 1: 粗排检索 (Vector Search)
-        返回整个页面作为 PageElement
+        Step 1: Vector Search with HNSW
         """
         if self.index is None:
             raise RuntimeError("Index not built. Call build_page_vector_pool() first.")
 
+        # 设置 HNSW 检索时的 efSearch 参数
+        # efSearch 越大，召回率越高，但速度越慢。通常 efSearch > top_k
+        if hasattr(self.index, 'hnsw'):
+             self.index.hnsw.efSearch = max(ef_search, top_k * 2)
+
         # 1. Encode Query
-        # query_vec = self.embedding_model.encode_text(query)
-        query_vec = self._mock_embed_text(query)
+        query_vec = self._embed_text(query)
         faiss.normalize_L2(query_vec)
         
         # 2. Faiss Search
         scores, indices = self.index.search(query_vec, top_k)
         
-        # 3. 封装为 PageElement
+        # 3. Encapsulate as PageElement
         retrieved_pages = []
         for score, idx in zip(scores[0], indices[0]):
             if idx == -1: continue
@@ -218,114 +214,83 @@ class FinRAGLoader(BaseDataLoader):
             rel_path = self.doc_id_map[idx]
             abs_path = os.path.join(self.corpus_root, rel_path)
             
-            # 创建 PageElement (此时代表整个页面)
             element = PageElement(
-                bbox=[0, 0, 1000, 1000], # 全图
+                bbox=[0, 0, 1000, 1000],
                 type="image_page",
-                content=f"[Page Retrieved] {rel_path} (Score: {score:.4f})",
+                content=f"[Page Retrieved] {rel_path}",
                 corpus_id=rel_path,
-                crop_path=abs_path # 供视觉模型读取
+                crop_path=abs_path 
             )
-            # 临时挂载 score 属性供 rerank 使用
             element.retrieval_score = float(score)
             retrieved_pages.append(element)
             
         return retrieved_pages
 
     def rerank(self, query: str, pages: List[PageElement]) -> List[PageElement]:
-        """
-        Step 2: 重排 (Reranking)
-        使用更精细的模型对 Query 和 Page 进行打分。
-        """
+        """Step 2: Reranking using Qwen3-VL-Reranker"""
         if not self.rerank_model or not pages:
             return pages
-
         print(f"Reranking {len(pages)} pages...")
-        # 伪代码：
-        # pairs = [(query, page.crop_path) for page in pages]
-        # scores = self.rerank_model.predict(pairs)
         
-        # 这里简单模拟，随机打乱顺序
-        # 实际操作中请更新 page.retrieval_score 或 page.rerank_score
+        documents_input = [{"image": page.crop_path} for page in pages]
+        rerank_input = {
+            "instruction": "Given a search query, retrieve relevant candidates that answer the query.",
+            "query": {"text": query},
+            "documents": documents_input,
+            "fps": 1.0 
+        }
+        
+        scores = self.rerank_model.process(rerank_input)
+        if len(scores) != len(pages):
+            print(f"Warning: Reranker returned {len(scores)} scores for {len(pages)} pages.")
+            return pages
+
+        for page, score in zip(pages, scores):
+            page.retrieval_score = score
+            
         sorted_pages = sorted(pages, key=lambda x: x.retrieval_score, reverse=True)
         return sorted_pages
 
     def extract_elements_from_pages(self, pages: List[PageElement], query: str) -> List[PageElement]:
-        """
-        Step 3: 神秘模块接口 (Page -> Elements)
-        
-        将检索到的 `Page`（整页图）交给下游模块（可能是VLM、Layout Analysis、OCR）。
-        该模块会将页面拆解为更细粒度的 `PageElement`（如表格行、文本段、图表区域）。
-        """
+        """Step 3: Downstream Element Extraction (Mocked)"""
         fine_grained_elements = []
-        
         for page in pages:
-            # TODO: 这里调用你的神秘模块
-            # elements = mysterious_module.process(page.crop_path, query)
-            
-            # --- 模拟神秘模块的行为 ---
-            # 假设它把一个页面拆成了 1 个文本段和 1 个表格
-            
-            # 模拟元素 1: 文本
             e1 = PageElement(
                 bbox=[100, 100, 900, 200],
                 type="text",
-                content=f"Extracted text from {page.corpus_id} related to {query}",
+                content=f"Extracted text from {page.corpus_id}",
                 corpus_id=page.corpus_id,
                 crop_path=page.crop_path 
             )
-            
-            # 模拟元素 2: 表格
-            e2 = PageElement(
-                bbox=[100, 300, 900, 800],
-                type="table",
-                content=f"Extracted table data from {page.corpus_id}",
-                corpus_id=page.corpus_id,
-                crop_path=page.crop_path
-            )
-            
-            fine_grained_elements.extend([e1, e2])
-            
+            fine_grained_elements.append(e1)
         return fine_grained_elements
 
     def pipeline(self, query: str, top_k=5) -> List[PageElement]:
-        """
-        完整的 RAG 检索流程
-        Query -> Retrieve Pages -> Rerank Pages -> Extract Fine-grained Elements
-        """
-        # 1. 页面级检索
+        """Full RAG Pipeline"""
         pages = self.retrieve(query, top_k=top_k)
-        
-        # 2. 页面重排
         ranked_pages = self.rerank(query, pages)
-        
-        # 3. 元素提取 (神秘模块)
         elements = self.extract_elements_from_pages(ranked_pages, query)
-        
         return elements
 
-# --- 使用示例 ---
 if __name__ == "__main__":
-    # 配置根目录
+    embedding_model_path = "/mnt/shared-storage-user/mineru3-share/wangzhengren/JIT-RAG/assets/Qwen/Qwen3-VL-Embedding-8B"
+    reranker_model_path = "/mnt/shared-storage-user/mineru3-share/wangzhengren/JIT-RAG/assets/Qwen/Qwen3-VL-Reranker-8B"
     root_dir = "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V"
-    
-    # 1. 初始化 Loader (选择中文 'ch')
-    # 注意：你需要传入真实的 Embedding Model 才能 build index
-    loader = FinRAGLoader(data_root=root_dir, lang="ch", embedding_model="MOCK_MODEL")
-    
-    # 2. 加载 Queries
+
+    print("Initializing Models...")
+    embedder = Qwen3VLEmbedder(model_name_or_path=embedding_model_path, torch_dtype=torch.float16)
+    reranker = Qwen3VLReranker(model_name_or_path=reranker_model_path, torch_dtype=torch.float16)
+
+    loader = FinRAGLoader(data_root=root_dir, lang="ch", embedding_model=embedder, rerank_model=reranker)
     loader.load_data()
     
-    # 3. 构建索引 (如果存在会自动加载)
-    loader.build_page_vector_pool(batch_size=16)
+    # 强制重建索引以应用 HNSW
+    loader.build_page_vector_pool(batch_size=128, force_rebuild=False)
     
-    # 4. 运行单条测试
     if len(loader.samples) > 0:
         test_query = loader.samples[0].query
         print(f"\nTesting Query: {test_query}")
-        
         results = loader.pipeline(test_query, top_k=3)
-        
         print(f"\nFinal Elements Retrieved ({len(results)}):")
         for res in results:
-            print(f"- [{res.type}] {res.content[:50]}... (Source: {res.corpus_id})")
+            print(f"- {res.content[:50]}... (Score: {getattr(res, 'retrieval_score', 0.0):.4f})")
