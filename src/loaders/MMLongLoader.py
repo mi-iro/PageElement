@@ -362,7 +362,7 @@ if __name__ == "__main__":
             extractor = ElementExtractor(
                 base_url="http://localhost:8001/v1", 
                 api_key="sk-123456", 
-                model_name="MinerU-Agent-CK300", 
+                model_name="MinerU-Agent-CK300",
                 tool=tool
             )
             loader.extractor = extractor
