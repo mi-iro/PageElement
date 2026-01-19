@@ -529,10 +529,10 @@ if __name__ == "__main__":
     loader.build_page_vector_pool(batch_size=16)
     
     if len(loader.samples) > 0:
-        test_query = loader.samples[0].query
+        test_query = loader.samples[1].query
         print(f"\nTesting Query: {test_query}")
         # 运行 pipeline
-        results = loader.pipeline(test_query, top_k=2) # 仅测试 Top 2 以节省时间
+        results = loader.pipeline(test_query, top_k=10) # 仅测试 Top 2 以节省时间
         print(f"\nFinal Elements Retrieved ({len(results)}):")
         for res in results:
-            print(f"- [Evidence] {res.content} (BBox: {res.bbox})")
+            print(f" - Content: {res.content[:50]}... \n - Crop: {res.crop_path}")
