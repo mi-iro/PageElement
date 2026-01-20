@@ -59,13 +59,13 @@ class AgenticRAGAgent(RAGAgent):
     def __init__(
         self, 
         loader: BaseDataLoader, 
-        base_url: str = "http://localhost:8000/v1", 
-        api_key: str = "sk-123456", 
-        model_name: str = "Qwen3-VL-Instruct",
-        max_rounds: int = 5
+        base_url: str, 
+        api_key: str, 
+        model_name: str,
+        max_rounds: int
     ):
         """
-        :param loader: 数据集加载器 (FinRAGLoader, MMLongLoader 等)，用于提供 pipeline 作为工具。
+        :param loader: 数据集加载器 (FinRAGLoader, MMLongLoader 等)，用于提供 pipeline 作为检索工具。
         :param base_url: LLM API 地址。
         :param api_key: LLM API Key。
         :param model_name: 模型名称。
@@ -142,7 +142,7 @@ class AgenticRAGAgent(RAGAgent):
                 response = self.client.chat.completions.create(
                     model=self.model_name,
                     messages=messages,
-                    temperature=1.0 # ReAct 任务建议低温度以保持逻辑
+                    temperature=1.0
                 )
                 content = response.choices[0].message.content
                 messages.append({"role": "assistant", "content": content})
@@ -172,7 +172,7 @@ class AgenticRAGAgent(RAGAgent):
                 final_answer = content
                 break
         
-        if not final_answer:
+        if not final_answer and messages[-1]["role"] == "assistant":
             final_answer = messages[-1]["content"]
 
         return final_answer
@@ -222,7 +222,6 @@ if __name__ == "__main__":
     
     # 3. 初始化 Loader
     loader = MMLongLoader(data_root=root_dir, extractor=extractor)
-    # 为了测试，这里只加载少量数据，或者 mock load_data
     loader.load_data()
 
     # 4. 初始化 Agentic RAG Agent
