@@ -8,6 +8,7 @@ import uuid
 import torch
 from PIL import Image
 from typing import List, Dict, Any, Optional
+import collections
 
 # Adjust path to ensure we can import from src and scripts
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../")))
@@ -78,6 +79,74 @@ class MMLongLoader(BaseDataLoader):
             print(f"Warning: Failed to decode JSON content: {content[:50]}...")
             return {"evidence": content, "bbox": []}
 
+    def evaluate(self, beta: float = 1.0) -> Dict[str, float]:
+        """
+        执行评估：计算 QA 指标、页面检索指标和元素提取指标。
+        整合了 eval.py 中的 Page Accuracy, IoU Min, IoU EM 等高级指标。
+        
+        评估结果将存储在每个 sample.extra_info['metrics'] 中。
+        依赖 sample.extra_info 包含 'final_answer' 和 'retrieved_elements'。
+        
+        Returns:
+            Dict[str, float]: 整个数据集的平均指标
+        """
+        total_metrics = collections.defaultdict(float)
+        counts = collections.defaultdict(int)
+
+        for sample in self.samples:
+            if sample.extra_info is None:
+                sample.extra_info = {}
+                continue
+            
+            metrics_result = {}
+            
+            # 1. 计算 QA 指标 (Text Generation)
+            pred_answer = sample.extra_info.get('final_answer', "") # 获取预测结果
+            if sample.gold_answer and pred_answer:
+                qa_score = self._compute_qa_metrics(pred_answer, sample.gold_answer)
+                metrics_result['qa'] = qa_score
+                total_metrics['qa_f1'] += qa_score['f1']
+                total_metrics['qa_em'] += qa_score['em']
+                counts['qa'] += 1
+            
+            # 尝试获取预测的 elements (兼容 dict 列表或 PageElement 对象列表)
+            raw_elements = sample.extra_info.get('retrieved_elements', [])
+            pred_elements = []
+            for el in raw_elements:
+                if isinstance(el, dict):
+                    # 过滤掉非 PageElement 字段以防止 TypeError
+                    valid_keys = PageElement.__annotations__.keys()
+                    filtered_el = {k: v for k, v in el.items() if k in valid_keys}
+                    pred_elements.append(PageElement(**filtered_el))
+                elif isinstance(el, PageElement):
+                    pred_elements.append(el)
+
+            # 2. 计算 页面检索 指标 (Page Retrieval)
+            if sample.gold_pages:
+                page_score = self._compute_page_metrics(pred_elements, sample.gold_pages)
+                metrics_result['page'] = page_score
+                total_metrics['page_recall'] += page_score['recall']
+                total_metrics['page_precision'] += page_score['precision']
+                counts['page'] += 1
+
+            # 存储回 sample
+            sample.extra_info['metrics'] = metrics_result
+
+        # --- 汇总平均值 ---
+        avg_results = {}
+        
+        # QA
+        if counts['qa'] > 0:
+            avg_results['avg_qa_f1'] = total_metrics['qa_f1'] / counts['qa']
+            avg_results['avg_qa_em'] = total_metrics['qa_em'] / counts['qa']
+        
+        # Page Retrieval
+        if counts['page'] > 0:
+            avg_results['avg_page_recall'] = total_metrics['page_recall'] / counts['page']
+            avg_results['avg_page_precision'] = total_metrics['page_precision'] / counts['page']
+            
+        return avg_results
+
     def load_data(self) -> None:
         """根据新的 samples.json 格式加载数据。"""
         if not os.path.exists(self.json_path):
@@ -101,7 +170,7 @@ class MMLongLoader(BaseDataLoader):
             try:
                 pages_list = ast.literal_eval(evidence_pages_str)
                 if isinstance(pages_list, list):
-                    gold_pages = [str(p) for p in pages_list]
+                    gold_pages = [f"page_{str(p)}.png" for p in pages_list]
             except Exception as e:
                 gold_pages = []
 
@@ -352,7 +421,7 @@ class MMLongLoader(BaseDataLoader):
                             bbox=bbox,
                             type="evidence",
                             content=evidence,
-                            corpus_id=img_path, 
+                            corpus_id=img_path.split('/')[-1], 
                             crop_path=current_crop_path 
                         )
                         if hasattr(page, 'retrieval_score'):
@@ -395,5 +464,7 @@ if __name__ == "__main__":
                 print(f"Extracted {len(results)} elements.")
                 for res in results:
                     print(f" - Content: {res.content} \n - Crop: {res.crop_path}")
+                s.extra_info['retrieved_elements'] = results
+                loader.evaluate()
     except Exception as e:
         print(f"Test failed: {e}")
