@@ -77,6 +77,7 @@ class FinRAGLoader(BaseDataLoader):
         
         self.index = None
         self.doc_id_map = {} 
+        self.llm_caller = None
 
     def _load_qrels(self) -> Dict[str, List[str]]:
         """读取 qrels TSV 文件。"""
@@ -481,7 +482,7 @@ class FinRAGLoader(BaseDataLoader):
     # Evaluation Methods (Integrated from finragbench_eval_generation.py & citation.py)
     # --------------------------------------------------------------------------------
 
-    def _evaluate_answer_correctness(self, sample: StandardSample, eval_client=None) -> Dict[str, Any]:
+    def _evaluate_answer_correctness(self, sample: StandardSample) -> Dict[str, Any]:
         """
         基于 finragbench_eval_generation.py 的逻辑评估答案正确性。
         支持 'short' 和 'long' 两种 answer_type。
@@ -514,7 +515,7 @@ class FinRAGLoader(BaseDataLoader):
             rouge_score = calculate_rouge(expected_answer, actual_answer)
 
             # LLM Judge (Model Eval)
-            if eval_client:
+            if self.llm_caller:
                 evaluation_prompt = (
                     f"Question: {query_text}\n"
                     f"Ground_truth: {expected_answer}\n"
@@ -523,12 +524,7 @@ class FinRAGLoader(BaseDataLoader):
                     f"If the model answer does not contain any information, it should be judged as 'false'."
                 )
                 try:
-                    # chat_completion = eval_client.chat.completions.create(
-                    #     model="gpt-4o",  # Use a strong model for evaluation
-                    #     messages=[{"role": "user", "content": evaluation_prompt}]
-                    # )
-                    # response_core = chat_completion.choices[0].message.content.strip()
-                    response_core = eval_client(evaluation_prompt)
+                    response_core = self.llm_caller(evaluation_prompt)
                     model_eval = 1 if "true" in response_core.lower() else 0
                 except Exception as e:
                     print(f"Error during model eval for QID {sample.qid}: {e}")
@@ -541,11 +537,11 @@ class FinRAGLoader(BaseDataLoader):
             "model_eval": model_eval
         }
 
-    def _check_images_entailment(self, elements: List[PageElement], answer: str, eval_client) -> bool:
+    def _check_images_entailment(self, elements: List[PageElement], answer: str) -> bool:
         """
         基于 finragbench_eval_citation.py 的逻辑检查图片证据是否蕴含答案。
         """
-        if not elements or not eval_client:
+        if not elements or not self.llm_caller:
             return False
 
         usr_msg = [
@@ -572,12 +568,7 @@ class FinRAGLoader(BaseDataLoader):
         attempt, max_retries, retry_delay = 0, 3, 5
         while attempt < max_retries:
             try:
-                # chat_completion = eval_client.chat.completions.create(
-                #     model="gpt-4o",
-                #     messages=[{"role": "user", "content": usr_msg}]
-                # )
-                # response_core = chat_completion.choices[0].message.content.strip()
-                response_core = eval_client(usr_msg)
+                response_core = self.llm_caller(usr_msg)
                 return "yes" in response_core.lower()
             except Exception as e:
                 attempt += 1
@@ -588,13 +579,11 @@ class FinRAGLoader(BaseDataLoader):
                     return False
         return False
 
-    def evaluate(self, eval_client=None) -> Dict[str, float]:
+    def evaluate(self) -> Dict[str, float]:
         """
         执行完整的评估流程，包含 Answer Correctness 和 Citation Entailment。
-        
-        :param eval_client: 用于评估的 OpenAI 兼容客户端 (推荐 GPT-4o)
         :return: 汇总指标字典
-        """
+        """        
         total_metrics = {
             "em_score": 0, "recall_score": 0, 
             "rouge_score": 0, "model_eval": 0,
@@ -611,7 +600,7 @@ class FinRAGLoader(BaseDataLoader):
                 sample.extra_info = {}
             
             # 1. Evaluate Answer Correctness
-            corr_metrics = self._evaluate_answer_correctness(sample, eval_client)
+            corr_metrics = self._evaluate_answer_correctness(sample)
             sample.extra_info['correctness_metrics'] = corr_metrics
             
             # Aggregate Correctness Metrics
@@ -628,7 +617,7 @@ class FinRAGLoader(BaseDataLoader):
             counts['total'] += 1
 
             # 2. Evaluate Citation Entailment (Requires LLM Client)
-            if eval_client:
+            if self.llm_caller:
                 # 获取 RAG 过程中检索到的 Elements (通常存储在 retrieved_elements 或由 pipeline 生成)
                 # 这里假设 pipeline 运行后结果存储在 'retrieved_elements' 中，或者是手动调用 pipeline
                 # 为了通用性，这里只检查 extra_info 中是否已经有了 evidence elements
@@ -650,7 +639,7 @@ class FinRAGLoader(BaseDataLoader):
                 
                 if elements_obj and final_answer:
                     # 计算 Recall: 是否所有检索图片作为一个整体蕴含了答案
-                    entailment_recall_bool = self._check_images_entailment(elements_obj, final_answer, eval_client)
+                    entailment_recall_bool = self._check_images_entailment(elements_obj, final_answer)
                     entailment_recall = 1 if entailment_recall_bool else 0
                     
                     # 计算 Precision: 如果 Recall 为 1，检查每张图片是否必要 (Leave-One-Out)
@@ -663,7 +652,7 @@ class FinRAGLoader(BaseDataLoader):
                             # 简化版 Precision 计算 (参考 eval_citation.py)
                             # 逐个检查图片是否能支持答案
                             for i, img_el in enumerate(elements_obj):
-                                single_cover = self._check_images_entailment([img_el], final_answer, eval_client)
+                                single_cover = self._check_images_entailment([img_el], final_answer)
                                 precision_scores.append(1 if single_cover else 0)
                             
                             if precision_scores:
@@ -725,6 +714,8 @@ if __name__ == "__main__":
         extractor=extractor
     )
     
+    loader.llm_caller = create_llm_caller()
+    
     loader.load_data()
     
     # 建立索引
@@ -739,4 +730,4 @@ if __name__ == "__main__":
         test_sample.extra_info['final_answer'] = "Generated Answer Here..." # 模拟生成答案
         test_sample.extra_info['retrieved_elements'] = results
         
-        loader.evaluate(eval_client=create_llm_caller())
+        loader.evaluate()
