@@ -305,7 +305,8 @@ class FinRAGLoader(BaseDataLoader):
                 bbox=[0, 0, 1000, 1000],
                 type="page_image",
                 content=f"[Page Retrieved] {rel_path}",
-                corpus_id=rel_path,
+                corpus_id=rel_path.split('/')[-1],
+                corpus_path=abs_path,
                 crop_path=abs_path 
             )
             element.retrieval_score = float(score)
@@ -436,7 +437,8 @@ class FinRAGLoader(BaseDataLoader):
                             type="evidence",
                             content=evidence,
                             corpus_id=page.corpus_id,
-                            crop_path=current_crop_path 
+                            corpus_path=page.corpus_path,
+                            crop_path=current_crop_path
                         )
                         
                         if hasattr(page, 'retrieval_score'):
@@ -455,7 +457,7 @@ class FinRAGLoader(BaseDataLoader):
     def pipeline(self, query: str, image_paths: List[str] = None, top_k: int = 5) -> List[PageElement]:
         """Full RAG Pipeline"""
         if self.lang == "bbox":
-            ranked_pages = [PageElement(bbox=[0,0,1000,1000],type="page_image",content=None,corpus_id=image_paths[0],crop_path=image_paths[0])]
+            ranked_pages = [PageElement(bbox=[0,0,1000,1000],type="page_image",content=None,corpus_id=image_paths[0].split('/')[-1],corpus_path=image_paths[0],crop_path=image_paths[0])]
         else:
             pages = self.retrieve(query, top_k=top_k*2)
             ranked_pages = self.rerank(query, pages)
@@ -542,85 +544,124 @@ class FinRAGLoader(BaseDataLoader):
                     return False
         return False
 
+    # --------------------------------------------------------------------------------
+    # 增加的评估辅助函数
+    # --------------------------------------------------------------------------------
+
+    def _compute_element_metrics(self, pred_elements: List[PageElement], gold_elements: List[PageElement], threshold: float = 0.5) -> Dict[str, float]:
+        """
+        计算元素级别 (BBox) 的 Precision, Recall 和 F1。
+        匹配逻辑：必须在同一页面 (corpus_id 匹配) 且 IoU 超过阈值。
+        """
+        if not gold_elements:
+            return {}
+        if not pred_elements:
+            return {"element_precision": 1.0, "element_recall": 0.0, "element_f1": 0.0}
+
+        def normalize_cid(cid):
+            return os.path.basename(cid) if cid else ""
+
+        # 计算 Precision: 预测出的元素有多少是命中的
+        hit_preds = 0
+        for p in pred_elements:
+            p_cid = normalize_cid(p.corpus_id)
+            for g in gold_elements:
+                g_cid = normalize_cid(g.corpus_id)
+                # 跨页面匹配校验：只有在同一个页面上的框才计算 IoU
+                if p_cid == g_cid:
+                    # 使用 base_loader 中定义的 calc_iou_standard
+                    if self.calc_iou_standard(p.bbox, g.bbox) > threshold:
+                        hit_preds += 1
+                        break
+        precision = hit_preds / len(pred_elements) if pred_elements else 1.0
+
+        # 计算 Recall: 真值元素有多少被找回了
+        hit_golds = 0
+        for g in gold_elements:
+            g_cid = normalize_cid(g.corpus_id)
+            for p in pred_elements:
+                p_cid = normalize_cid(p.corpus_id)
+                if p_cid == g_cid:
+                    if calc_iou_standard(p.bbox, g.bbox) > threshold:
+                        hit_golds += 1
+                        break
+        recall = hit_golds / len(gold_elements) if gold_elements else 1.0
+        
+        f1 = 2 * precision * recall / (precision + recall) if (precision + recall) > 0 else 0.0
+        return {"element_precision": precision, "element_recall": recall, "element_f1": f1}
+
+    # --------------------------------------------------------------------------------
+    # 更新后的 evaluate 方法
+    # --------------------------------------------------------------------------------
+
     def evaluate(self) -> Dict[str, float]:
         """
-        MODIFIED: 仅计算平均 Model Eval 以及 Citation Entailment。
+        执行评估：包含模型回答、页面检索指标和元素提取指标。
         """        
         total_metrics = {
             "model_eval": 0,
-            "entailment_recall": 0, "entailment_precision": 0
+            "page_recall": 0, "page_precision": 0,
+            "element_recall": 0, "element_precision": 0, "element_f1": 0
         }
         counts = {
-            "total": 0, "citation": 0
+            "total": 0, "page": 0, "element": 0
         }
 
-        print(f"Starting ONLY-MODEL Evaluation on {len(self.samples)} samples...")
+        print(f"Starting Evaluation on {len(self.samples)} samples...")
         
         for sample in tqdm(self.samples, desc="Evaluating"):
             if sample.extra_info is None:
                 sample.extra_info = {}
             
-            # 1. Evaluate Answer Correctness (Using ONLY LLM Judge)
+            # 1. 模型答案准确性 (LLM Judge)
             corr_metrics = self._evaluate_answer_correctness(sample)
-            sample.extra_info['correctness_metrics'] = corr_metrics
-            
-            # 累加分数
             total_metrics['model_eval'] += corr_metrics['model_eval']
             counts['total'] += 1
 
-            # 2. Evaluate Citation Entailment (Optional, but is also LLM based)
-            if self.llm_element_judge and self.llm_caller:
-                retrieved_elements = sample.extra_info.get('retrieved_elements', [])
-                # Convert back to PageElement objects if necessary
-                elements_obj = []
-                for el in retrieved_elements:
-                    if isinstance(el, dict):
-                         pe = PageElement(**{k:v for k,v in el.items() if k in PageElement.__annotations__})
-                         elements_obj.append(pe)
-                    elif isinstance(el, PageElement):
-                         elements_obj.append(el)
-                
-                final_answer = sample.extra_info.get('final_answer', "")
-                
-                if elements_obj and final_answer:
-                    # Entailment Recall
-                    entailment_recall_bool = self._check_images_entailment(elements_obj, final_answer)
-                    entailment_recall = 1 if entailment_recall_bool else 0
-                    
-                    # Entailment Precision
-                    entailment_precision = 0
-                    if entailment_recall == 1:
-                        precision_scores = []
-                        if len(elements_obj) == 1:
-                            entailment_precision = 1
-                        else:
-                            for i, img_el in enumerate(elements_obj):
-                                single_cover = self._check_images_entailment([img_el], final_answer)
-                                precision_scores.append(1 if single_cover else 0)
-                            
-                            if precision_scores:
-                                entailment_precision = sum(precision_scores) / len(precision_scores)
-                    
-                    total_metrics['entailment_recall'] += entailment_recall
-                    total_metrics['entailment_precision'] += entailment_precision
-                    counts['citation'] += 1
-                    
-                    sample.extra_info['citation_metrics'] = {
-                        "entailment_recall": entailment_recall,
-                        "entailment_precision": entailment_precision
-                    }
+            # 获取预测的元素列表
+            retrieved_elements = sample.extra_info.get('retrieved_elements', [])
+            # 统一转为 PageElement 对象以使用其属性
+            elements_obj = []
+            for el in retrieved_elements:
+                if isinstance(el, dict):
+                     valid_keys = PageElement.__annotations__.keys()
+                     pe = PageElement(**{k:v for k,v in el.items() if k in valid_keys})
+                     elements_obj.append(pe)
+                elif isinstance(el, PageElement):
+                     elements_obj.append(el)
 
-        # Calculate Averages
+            # 2. 页面指标计算 (Page Precision/Recall)
+            # gold_pages 通常存在于 sample.gold_pages 或 extra_info['from_pages']
+            target_gold_pages = sample.gold_pages if sample.gold_pages else sample.extra_info.get('from_pages', [])
+            if target_gold_pages:
+                page_res = self._compute_page_metrics(elements_obj, target_gold_pages)
+                total_metrics['page_recall'] += page_res['recall']
+                total_metrics['page_precision'] += page_res['precision']
+                counts['page'] += 1
+
+            # 3. 元素指标计算 (BBox Precision/Recall/F1)
+            # 只有当样本包含标注的 gold_elements 时才进行统计
+            if sample.gold_elements:
+                elem_res = self._compute_element_metrics(elements_obj, sample.gold_elements)
+                if elem_res:
+                    total_metrics['element_recall'] += elem_res['element_recall']
+                    total_metrics['element_precision'] += elem_res['element_precision']
+                    total_metrics['element_f1'] += elem_res['element_f1']
+                    counts['element'] += 1
+
+        # 计算平均分
         avg_results = {}
-        
         if counts['total'] > 0:
             avg_results['avg_model_eval'] = total_metrics['model_eval'] / counts['total']
-            
-        if counts['citation'] > 0:
-            avg_results['avg_entailment_recall'] = total_metrics['entailment_recall'] / counts['citation']
-            avg_results['avg_entailment_precision'] = total_metrics['entailment_precision'] / counts['citation']
+        if counts['page'] > 0:
+            avg_results['avg_page_recall'] = total_metrics['page_recall'] / counts['page']
+            avg_results['avg_page_precision'] = total_metrics['page_precision'] / counts['page']
+        if counts['element'] > 0:
+            avg_results['avg_element_recall'] = total_metrics['element_recall'] / counts['element']
+            avg_results['avg_element_precision'] = total_metrics['element_precision'] / counts['element']
+            avg_results['avg_element_f1'] = total_metrics['element_f1'] / counts['element']
 
-        print(f"Evaluation Results (Model Eval Only): {avg_results}")
+        print(f"Evaluation Results: {avg_results}")
         return avg_results
 
 if __name__ == "__main__":

@@ -5,6 +5,7 @@ import torch
 import asyncio
 import json
 import yaml  # 需要安装 pyyaml: pip install pyyaml
+from PIL import Image
 
 # 确保项目根目录在 sys.path 中，以便导入 src 模块
 sys.path.append(os.path.abspath(os.path.dirname(__file__)))

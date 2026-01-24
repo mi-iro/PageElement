@@ -11,6 +11,7 @@ import math
 from math import isclose
 from collections import defaultdict
 from typing import List, Dict, Any, Optional, Callable, Union
+from PIL import Image
 
 # Adjust path to ensure we can import from src and scripts
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../")))
@@ -547,7 +548,8 @@ class MMLongLoader(BaseDataLoader):
                 bbox=[0, 0, 1000, 1000],
                 type="page_image",
                 content="",
-                corpus_id=img_path,
+                corpus_id=img_path.split('/')[-1],
+                corpus_path=img_path,
                 crop_path=img_path
             )
             candidate_pages.append(elem)
@@ -568,7 +570,7 @@ class MMLongLoader(BaseDataLoader):
         extracted_elements = []
 
         for page in target_pages:
-            img_path = page.crop_path
+            img_path = page.corpus_path
             
             try:
                 try:
@@ -656,6 +658,7 @@ class MMLongLoader(BaseDataLoader):
                             type="evidence",
                             content=evidence,
                             corpus_id=img_path.split('/')[-1], 
+                            corpus_path=img_path,
                             crop_path=current_crop_path 
                         )
                         if hasattr(page, 'retrieval_score'):
