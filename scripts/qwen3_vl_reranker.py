@@ -186,7 +186,7 @@ class Qwen3VLReranker():
                 # 计算得分: Sigmoid(yes - no)
                 # Logit difference is roughly equivalent to LogProb difference in this context
                 diff = prob_yes - prob_no
-                score = 1.0 / (1.0 + np.exp(-diff))
+                score = special.expit(diff)
                 scores.append(score.item())
                 
             except Exception as e:

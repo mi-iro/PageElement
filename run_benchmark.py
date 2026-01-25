@@ -52,6 +52,11 @@ def get_parser():
     parser.add_argument("--embedding_model", type=str, default="/mnt/shared-storage-user/mineru3-share/wangzhengren/JIT-RAG/assets/Qwen/Qwen3-VL-Embedding-8B", help="Path to Qwen3-VL-Embedding model (Required for FinRAG).")
     parser.add_argument("--reranker_model", type=str, default="/mnt/shared-storage-user/mineru3-share/wangzhengren/JIT-RAG/assets/Qwen/Qwen3-VL-Reranker-8B", help="Path to Qwen3-VL-Reranker model.")
     
+    # ------------------ 新增 Reranker 远程配置 ------------------
+    parser.add_argument("--reranker_api_base", type=str, default=None, help="vLLM API Base URL for Reranker (Remote mode).")
+    parser.add_argument("--reranker_api_key", type=str, default="EMPTY", help="vLLM API Key for Reranker.")
+    # -----------------------------------------------------------
+    
     # MinerU / OCR 配置
     parser.add_argument("--mineru_server_url", type=str, default="http://10.102.250.36:8000/", help="MinerU API Server URL.")
     parser.add_argument("--mineru_model_path", type=str, default="/root/checkpoints/MinerU2.5-2509-1.2B/", help="MinerU Model Path.")
@@ -130,6 +135,28 @@ def main():
         tool=tool
     )
 
+    # ------------------ 新增：统一初始化 Reranker ------------------
+    # 提前初始化 reranker 以供不同 Loader 使用
+    reranker = None
+    if args.reranker_model:
+        print("🛠️ Initializing Reranker...")
+        if args.reranker_api_base:
+            print(f"   Mode: REMOTE (vLLM at {args.reranker_api_base})")
+            reranker = Qwen3VLReranker(
+                model_name_or_path=args.reranker_model,
+                vllm_api_base=args.reranker_api_base,
+                vllm_api_key=args.reranker_api_key
+            )
+        else:
+            print(f"   Mode: LOCAL ({args.reranker_model})")
+            reranker = Qwen3VLReranker(
+                model_name_or_path=args.reranker_model, 
+                torch_dtype=torch.float16
+            )
+    else:
+        print("⚠️ No Reranker model specified. Reranking steps will be skipped.")
+    # -------------------------------------------------------------
+
     loader = None
 
     # 3. 初始化 DataLoader
@@ -138,25 +165,23 @@ def main():
         loader = MMLongLoader(
             data_root=args.data_root, 
             extractor=extractor,
-            reranker_model_path=args.reranker_model
+            reranker=reranker # 修正：传入对象实例而非路径
         )
         loader.load_data()
 
     elif args.benchmark == "finrag":
         print("📥 Loading FinRAGLoader...")
-        if not args.embedding_model or not args.reranker_model:
-            raise ValueError("FinRAG benchmark requires --embedding_model and --reranker_model.")
+        if not args.embedding_model:
+            raise ValueError("FinRAG benchmark requires --embedding_model.")
         
         print("   Loading Embedding Model (this may take time)...")
         embedder = Qwen3VLEmbedder(model_name_or_path=args.embedding_model, torch_dtype=torch.float16)
-        print("   Loading Reranker Model...")
-        reranker = Qwen3VLReranker(model_name_or_path=args.reranker_model, torch_dtype=torch.float16)
-
+        
         loader = FinRAGLoader(
             data_root=args.data_root,
             lang=args.finrag_lang,
             embedding_model=embedder,
-            rerank_model=reranker,
+            rerank_model=reranker, # 传入统一初始化的 reranker
             extractor=extractor
         )
         loader.load_data()
