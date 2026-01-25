@@ -168,13 +168,11 @@ def eval_score(gt, pred, answer_type):
         if not isinstance(pred, list):
             pred = [pred]
             
-        # print(len(gt), len(pred))
         if len(gt) != len(pred):
             score = 0.0
         else:
             gt = sorted([get_clean_string(a) for a in gt])
             pred = sorted([get_clean_string(a) for a in pred])
-            # print(gt, pred)
             if len(gt) > 0 and (isfloat(gt[0]) or is_exact_match(gt[0])):
                 score = ("-".join(gt) == "-".join(pred))
             else:
@@ -189,6 +187,7 @@ def eval_score(gt, pred, answer_type):
 MMLONG_EXTRACT_PROMPT_TEMPLATE = """Given the question and analysis, you are tasked to extract answers with required formats from the free-form analysis. 
 - Your extracted answers should be one of the following formats: (1) Integer, (2) Float, (3) String and (4) List. If you find the analysis the question can not be answered from the given documents, type "Not answerable". Exception: If the analysis only tells you that it can not read/understand the images or documents, type "Fail to answer".
 - Please make your response as concise as possible. Also note that your response should be formatted as below:
+
 
 ```
 
@@ -235,34 +234,14 @@ class MMLongLoader(BaseDataLoader):
     用于加载 MMLongBench-Doc 中的 DocVQA 任务数据，并支持基于 LLM 的评估流程。
     """
     
-    _reranker_instance = None
-
-    def __init__(self, data_root: str, extractor: Optional[ElementExtractor] = None, reranker_model_path: str = None):
+    def __init__(self, data_root: str, extractor: Optional[ElementExtractor] = None, reranker: Optional[Qwen3VLReranker] = None):
         super().__init__(data_root)
         self.extractor = extractor
-        self.reranker_model_path = reranker_model_path
+        self.reranker = reranker # 取消单例，通过初始化注入对象
         
         self.json_path = os.path.join(data_root, "data", "samples.json")
         self.doc_dir = os.path.join(data_root, "data", "documents")
         self.llm_caller = None
-
-    @classmethod
-    def get_reranker(cls, model_path: str):
-        if cls._reranker_instance is None:
-            if not model_path or not os.path.exists(model_path):
-                print(f"Warning: Reranker model path is invalid: {model_path}")
-                return None
-            print(f"⚡ Initializing Reranker Singleton from {model_path} ...")
-            try:
-                cls._reranker_instance = Qwen3VLReranker(
-                    model_name_or_path=model_path,
-                    torch_dtype=torch.float16 
-                )
-                print("✅ Reranker loaded successfully.")
-            except Exception as e:
-                print(f"❌ Failed to load Reranker: {e}")
-                return None
-        return cls._reranker_instance
 
     def _parse_assistant_content(self, content: str) -> Dict[str, Any]:
         try:
@@ -282,18 +261,14 @@ class MMLongLoader(BaseDataLoader):
         if not raw_response:
             return {"extracted_answer": "", "answer_format": "String"}
             
-        # Construct the prompt with the question and analysis appended at the end
         prompt = MMLONG_EXTRACT_PROMPT_TEMPLATE.format(question=question, analysis=raw_response)
         
         try:
-            # 调用外部传入的 LLM 函数
             llm_output = llm_caller(prompt)
             
-            # 解析输出
             extracted_answer = ""
             answer_format = "String"
             
-            # 使用正则提取 Extracted answer 和 Answer format
             ans_match = re.search(r"Extracted answer:\s*(.*)", llm_output, re.IGNORECASE)
             fmt_match = re.search(r"Answer format:\s*(.*)", llm_output, re.IGNORECASE)
             
@@ -302,7 +277,6 @@ class MMLongLoader(BaseDataLoader):
             if fmt_match:
                 answer_format = fmt_match.group(1).strip()
             
-            # 基础清理
             if extracted_answer.startswith("'") and extracted_answer.endswith("'"):
                 extracted_answer = extracted_answer[1:-1]
             
@@ -326,7 +300,7 @@ class MMLongLoader(BaseDataLoader):
         if self.llm_caller:
             print("Using LLM-based Answer Extraction.")
         else:
-            print("Warning: No LLM caller provided. Skipping Answer Extraction (Scores might be inaccurate for long-context generation).")
+            print("Warning: No LLM caller provided. Skipping Answer Extraction.")
 
         for sample in self.samples:
             if sample.extra_info is None:
@@ -336,26 +310,20 @@ class MMLongLoader(BaseDataLoader):
             
             # --- 1. QA Evaluation ---
             raw_pred_answer = sample.extra_info.get('final_answer', "")
-            # raw_pred_answer = 'Based on the provided document, specifically the pie chart on page 4 (image 0) titled "Latinos see economic upward mobility for their children", 5% of Latinos expect their children to be **less well off** financially than they themselves are now.'
             gold_answer = sample.gold_answer
-            # 默认为 String，但会尝试从数据集或提取步骤更新
             gold_format = sample.extra_info.get('answer_format', 'String') 
 
             if gold_answer:
                 final_pred_to_score = raw_pred_answer
                 
-                # A. LLM Extraction Step
                 if self.llm_caller and raw_pred_answer:
                     extract_res = self._extract_answer_with_llm(sample.query, raw_pred_answer, self.llm_caller)
                     final_pred_to_score = extract_res['extracted_answer']
-                    # 如果提取结果给出了特定格式，优先使用提取的格式，否则回退到数据集格式
-                    # 注意：eval_score 需要正确的 format 来决定比较逻辑 (Int vs String vs List)
                     if extract_res['answer_format']:
                         gold_format = extract_res['answer_format']
                     
                     sample.extra_info['extracted_answer'] = final_pred_to_score
                 
-                # B. Scoring Step (Use ported eval_score)
                 score = eval_score(gold_answer, final_pred_to_score, gold_format)
                 
                 metrics_result['qa_score'] = score
@@ -385,7 +353,6 @@ class MMLongLoader(BaseDataLoader):
 
             sample.extra_info['metrics'] = metrics_result
 
-        # --- Summary ---
         avg_results = {}
         if counts['qa'] > 0:
             avg_results['avg_qa_score'] = total_metrics['qa_score'] / counts['qa']
@@ -457,7 +424,6 @@ class MMLongLoader(BaseDataLoader):
         
         image_map = {}
         
-        # 1. Check cache
         existing_files = [f for f in os.listdir(cache_dir) if f.endswith('.png')]
         if existing_files:
             temp_map = {}
@@ -467,10 +433,8 @@ class MMLongLoader(BaseDataLoader):
                     idx = int(match.group(1))
                     temp_map[idx] = os.path.join(cache_dir, f)
             if temp_map:
-                # print(f"Using cached images for {pdf_name} ({len(temp_map)} pages)")
                 return temp_map
 
-        # 2. Convert if no cache
         print(f"Converting PDF to images: {pdf_path}")
         try:
             from pdf2image import convert_from_path
@@ -491,11 +455,10 @@ class MMLongLoader(BaseDataLoader):
         return image_map
 
     def rerank(self, query: str, pages: List[PageElement]) -> List[PageElement]:
-        reranker = self.get_reranker(self.reranker_model_path)
-        if not reranker or not pages:
+        # 修改：直接使用实例中持有的 reranker 对象
+        if not self.reranker or not pages:
             return pages
             
-        # print(f"Reranking {len(pages)} pages...")
         documents_input = [{"image": page.crop_path} for page in pages]
         rerank_input = {
             "instruction": "Given a search query, retrieve relevant candidates that answer the query.",
@@ -505,7 +468,7 @@ class MMLongLoader(BaseDataLoader):
         }
         
         try:
-            scores = reranker.process(rerank_input)
+            scores = self.reranker.process(rerank_input)
             if len(scores) != len(pages):
                 print(f"Warning: Reranker returned {len(scores)} scores for {len(pages)} pages.")
                 return pages
@@ -527,7 +490,6 @@ class MMLongLoader(BaseDataLoader):
         if not image_paths:
             return []
 
-        # --- 1. Process PDF to Images ---
         processed_image_paths = []
         for path in image_paths:
             if path.lower().endswith('.pdf'):
@@ -541,7 +503,6 @@ class MMLongLoader(BaseDataLoader):
         if not processed_image_paths:
             return []
 
-        # --- 2. Construct Candidate Elements ---
         candidate_pages = []
         for img_path in processed_image_paths:
             elem = PageElement(
@@ -554,16 +515,13 @@ class MMLongLoader(BaseDataLoader):
             )
             candidate_pages.append(elem)
 
-        # --- 3. Conditional Lazy Reranking ---
         target_pages = candidate_pages
-        if self.reranker_model_path and len(candidate_pages) > top_k:
-            # print(f"Page Count ({len(candidate_pages)}) > Top_K ({top_k}). Triggering Rerank...")
+        if self.reranker and len(candidate_pages) > top_k:
             ranked_pages = self.rerank(query, candidate_pages)
             target_pages = ranked_pages[:top_k]
         else:
             target_pages = candidate_pages[:top_k]
 
-        # --- 4. Element Extraction (Agent) ---
         workspace_dir = os.path.abspath(os.path.join(os.getcwd(), "workspace", "crops"))
         os.makedirs(workspace_dir, exist_ok=True)
 
@@ -675,7 +633,16 @@ if __name__ == "__main__":
     root_dir = "/mnt/shared-storage-user/mineru3-share/wangzhengren/PageElement/MMLongBench-Doc"
     reranker_path = "/mnt/shared-storage-user/mineru3-share/wangzhengren/JIT-RAG/assets/Qwen/Qwen3-VL-Reranker-8B"
 
-    loader = MMLongLoader(data_root=root_dir, reranker_model_path=reranker_path)
+    # 修改：在外部实例化 Reranker 对象
+    print(f"⚡ Initializing Reranker instance from {reranker_path} ...")
+    my_reranker = Qwen3VLReranker(
+        model_name_or_path=reranker_path,
+        torch_dtype=torch.float16 
+    )
+
+    # 修改：初始化 Loader 时传入对象
+    loader = MMLongLoader(data_root=root_dir, reranker=my_reranker)
+    
     try:
         loader.load_data()
         if len(loader.samples) > 0:
@@ -693,7 +660,6 @@ if __name__ == "__main__":
             loader.extractor = extractor
             loader.llm_caller = create_llm_caller()
             
-            # Use top_k=2 for testing
             if s.data_source.endswith(".pdf"):
                 print("Testing Pipeline...")
                 results = loader.pipeline(s.query, image_paths=[s.data_source], top_k=2)
