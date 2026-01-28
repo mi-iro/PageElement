@@ -10,6 +10,6 @@ python -m vllm.entrypoints.openai.api_server \
   --served-model-name Qwen2.5-VL-72B-Instruct \
   --model /mnt/shared-storage-user/mineru2-shared/madongsheng/modelscope/Qwen/Qwen2___5-VL-72B-Instruct \
   --port 8002 \
-  --max_model_len 32768 \
+  --max_model_len 65536 \
   --tensor-parallel-size 2 \
   --gpu-memory-utilization 0.9

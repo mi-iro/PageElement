@@ -319,7 +319,7 @@ class FinRAGLoader(BaseDataLoader):
             return pages
         print(f"Reranking {len(pages)} pages...")
         
-        documents_input = [{"image": page.crop_path} for page in pages]
+        documents_input = [{"image": page.corpus_path} for page in pages]
         rerank_input = {
             "instruction": "Given a search query, retrieve relevant candidates that answer the query.",
             "query": {"text": query},
@@ -452,7 +452,11 @@ class FinRAGLoader(BaseDataLoader):
             pages = self.retrieve(query, top_k=top_k*4)
             ranked_pages = self.rerank(query, pages)
             ranked_pages = ranked_pages[:top_k]
+            ranked_pages = [p for p in ranked_pages if p.retrieval_score >= 0.1]
+            # scores = [page.retrieval_score for page in ranked_pages]
+            # print(scores)
         elements = self.extract_elements_from_pages(ranked_pages, query)
+        elements = elements[:top_k]
         return elements
 
     # --------------------------------------------------------------------------------
@@ -678,7 +682,7 @@ if __name__ == "__main__":
 
     loader = FinRAGLoader(
         data_root=root_dir, 
-        lang="bbox", 
+        lang="ch", 
         embedding_model=embedder, 
         rerank_model=reranker,
         extractor=extractor

@@ -148,21 +148,22 @@ def main():
     )
 
     reranker = None
-    if args.reranker_model:
-        print("🛠️ Initializing Reranker...")
-        if args.reranker_api_base:
-            print(f"   Mode: REMOTE (vLLM at {args.reranker_api_base})")
-            reranker = Qwen3VLReranker(
-                model_name_or_path=args.reranker_model,
-                vllm_api_base=args.reranker_api_base,
-                vllm_api_key=args.reranker_api_key
-            )
-        else:
-            print(f"   Mode: LOCAL ({args.reranker_model})")
-            reranker = Qwen3VLReranker(
-                model_name_or_path=args.reranker_model, 
-                torch_dtype=torch.float16
-            )
+    # 修改开始：根据示例调整 Reranker 的初始化逻辑
+    if args.reranker_api_base:
+        # 远程模式：直接将服务地址传入 model_name_or_path
+        print("🛠️ Initializing Reranker (REMOTE Mode)...")
+        print(f"   Address: {args.reranker_api_base}")
+        reranker = Qwen3VLReranker(
+            model_name_or_path=args.reranker_api_base
+        )
+    elif args.reranker_model:
+        # 本地模式：传入本地权重路径
+        print("🛠️ Initializing Reranker (LOCAL Mode)...")
+        print(f"   Model Path: {args.reranker_model}")
+        reranker = Qwen3VLReranker(
+            model_name_or_path=args.reranker_model, 
+            torch_dtype=torch.float16
+        )
 
     # 3. 初始化 DataLoader
     loader = None
