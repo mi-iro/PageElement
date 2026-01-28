@@ -4,7 +4,6 @@ import sys
 import torch
 import numpy as np
 import faiss
-import asyncio
 import re
 import base64
 import time
@@ -358,19 +357,10 @@ class FinRAGLoader(BaseDataLoader):
                 continue
 
             try:
-                try:
-                    loop = asyncio.get_running_loop()
-                except RuntimeError:
-                    loop = None
-                
-                if loop and loop.is_running():
-                    print("Warning: Async event loop is already running. Cannot use asyncio.run(). Skipping this page.")
-                    continue
-                else:
-                    agent_output = asyncio.run(self.extractor.run_agent(
-                        user_text=query,
-                        image_paths=[image_path]
-                    ))
+                agent_output = self.extractor.run_agent(
+                    user_text=query,
+                    image_paths=[image_path]
+                )
                 
                 if not agent_output:
                     continue

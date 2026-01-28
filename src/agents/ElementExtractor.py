@@ -1,14 +1,12 @@
 import re
 import json
-import asyncio
 import base64
 from io import BytesIO
 from PIL import Image
 from typing import List, Dict, Optional
 from .utils import * # Assuming local_image_to_data_url and TOOL_CALL_RE are here
 
-from openai import AsyncOpenAI
-from tqdm.asyncio import tqdm_asyncio
+from openai import OpenAI
 
 SYSTEM_PROMPT = """You are an advanced Visual Document Analysis Agent capable of precise evidence extraction from document images. Your goal is to answer user queries by locating, reading, and extracting specific information from a page.
 
@@ -65,7 +63,7 @@ Let us think step by step, using tool calling for better understanding of detail
 
 class ElementExtractor:
     def __init__(self, base_url: str, api_key: str, model_name: str, tool, max_image_size: int = 2048):
-        self.client = AsyncOpenAI(
+        self.client = OpenAI(
             base_url=base_url,
             api_key=api_key,
         )
@@ -188,14 +186,14 @@ class ElementExtractor:
 
     # ---------- tool mock ----------
 
-    async def _handle_tool_call(self, tool_call, image_path, step, max_rounds) -> str:
+    def _handle_tool_call(self, tool_call, image_path, step, max_rounds) -> str:
         if step >= max_rounds - 2:
             return [False, "You have used up all the available uses of `image_zoom_and_ocr_tool`, please return you final response without use tool."]
         
-        result_list = await self.tool.call(tool_call, image_path)
+        result_list = self.tool.call(tool_call, image_path)
         
         if result_list[0] == False:
-            result_list = await self.tool.call(tool_call, image_path)
+            result_list = self.tool.call(tool_call, image_path)
             if result_list[0] == False: # Retry once
                 return [False, "`image_zoom_and_ocr_tool` is wrong, you can try it again."]
         
@@ -207,7 +205,7 @@ class ElementExtractor:
 
     # ---------- agent loop ----------
 
-    async def run_agent(
+    def run_agent(
         self,
         user_text: str,
         image_paths: Optional[List[str]] = None,
@@ -231,7 +229,7 @@ class ElementExtractor:
 
         for step in range(max_rounds):
             try:
-                resp = await self.client.chat.completions.create(
+                resp = self.client.chat.completions.create(
                     model=self.model_name,
                     messages=messages,
                     temperature=1.0
@@ -254,7 +252,7 @@ class ElementExtractor:
             
             # Use original image path for tool execution (to preserve precision),
             # but the visual feedback to the model will be compressed inside build_multimodal_tool_message
-            tool_response_list = await self._handle_tool_call(tool_call, image_paths[0], step, max_rounds)
+            tool_response_list = self._handle_tool_call(tool_call, image_paths[0], step, max_rounds)
             
             if tool_response_list[0] == False:
                 messages.append(
@@ -284,9 +282,9 @@ if __name__ == "__main__":
     # from .tools import ImageZoomOCRTool 
 
     agent = ElementExtractor(
-        base_url="http://35.220.164.252:3888/v1",
-        api_key="sk-6TGzZJkJ5HfZKwnrS1A1pMb1lH5D7EDfSVC6USq24aN2JaaR",
-        model_name="qwen3-vl-plus",
+        base_url="http://localhost:8001/v1",
+        api_key="sk-123456",
+        model_name="MinerU-Agent-CK800",
         tool=ImageZoomOCRTool(work_dir="/mnt/shared-storage-user/mineru3-share/wangzhengren/PageElement/src/agents/workspace"),
         max_image_size=2048 # Limit longest edge to 2048px
     )
@@ -308,4 +306,6 @@ if __name__ == "__main__":
         
     image_paths = [item["images"][0]]
     
-    results = asyncio.run(agent.run_agent(user_text, image_paths))
+    results = agent.run_agent(user_text, image_paths)
+    
+    print(results)

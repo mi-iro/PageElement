@@ -81,15 +81,19 @@ class ImageZoomOCRTool:
         self.work_dir=work_dir
 
     def _get_mineru_client(self):
-        if self.mineru_client is None:
-            if MinerUClient is None:
-                raise ImportError("MinerUClient module is not installed.")
-            self.mineru_client = MinerUClient(
+        # if self.mineru_client is None:
+        #     if MinerUClient is None:
+        #         raise ImportError("MinerUClient module is not installed.")
+        #     self.mineru_client = MinerUClient(
+        #         model_name=self.mineru_model_path,
+        #         backend="http-client",
+        #         server_url=self.mineru_server_url.rstrip('/')
+        #     )
+        # return self.mineru_client
+        return MinerUClient(
                 model_name=self.mineru_model_path,
                 backend="http-client",
-                server_url=self.mineru_server_url.rstrip('/')
-            )
-        return self.mineru_client
+                server_url=self.mineru_server_url.rstrip('/'))
 
     # Image resizing functions (copied from qwen-vl-utils)
     def round_by_factor(self, number: int, factor: int) -> int:
@@ -194,7 +198,7 @@ class ImageZoomOCRTool:
         bottom = min(bottom, img_height)
         return [left, top, right, bottom]
 
-    async def call(self, tool_call: dict, image_path) -> List[any]:
+    def call(self, tool_call: dict, image_path) -> List[any]:
         try:
             params = tool_call["arguments"]
             bbox = params['bbox']
@@ -268,7 +272,7 @@ class ImageZoomOCRTool:
                 raw_mineru_result = None
                 for attempt in range(max_retries):
                     try:
-                        raw_mineru_result = await client.aio_two_step_extract(img_for_ocr)
+                        raw_mineru_result = client.two_step_extract(img_for_ocr)
                         if raw_mineru_result:
                             break
                     except Exception as e:
@@ -279,7 +283,7 @@ class ImageZoomOCRTool:
                 if raw_mineru_result:
                     if len(raw_mineru_result) == 1 and raw_mineru_result[0].get('type') == 'image':
                         # 对输入区域调用OCR
-                        ocr_text_output = await client.aio_content_extract(img_for_ocr)
+                        ocr_text_output = client.content_extract(img_for_ocr)
                         raw_mineru_result[0]['content'] = ocr_text_output
                     
                     transformed_results = []
