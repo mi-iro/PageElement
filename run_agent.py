@@ -2,9 +2,11 @@ import argparse
 import os
 import sys
 import torch
-import asyncio
 import json
 import yaml
+import concurrent.futures  # <--- 新增
+import traceback          # <--- 新增，用于打印线程报错堆栈
+from tqdm import tqdm     # <--- 新增
 from PIL import Image
 
 # 确保项目根目录在 sys.path 中
@@ -12,7 +14,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../"
 
 # --- 引入两个 Agent ---
 from src.agents.AgenticRAGAgent import AgenticRAGAgent
-from src.agents.RAGAgent import RAGAgent  # <--- 新增导入
+from src.agents.RAGAgent import RAGAgent
 
 from src.agents.ElementExtractor import ElementExtractor
 from src.agents.utils import ImageZoomOCRTool
@@ -29,12 +31,16 @@ except ImportError:
 def get_parser():
     parser = argparse.ArgumentParser(description="Run RAG Evaluation (Agentic or Standard).")
 
-    # ------------------ 核心控制参数 (新增) ------------------
+    # ------------------ 核心控制参数 ------------------
     parser.add_argument("--agent_type", type=str, default="standard", choices=["agentic", "standard"], 
                         help="Choose the type of agent: 'agentic' (ReAct loop) or 'standard' (One-pass RAG).")
     parser.add_argument("--top_k", type=int, default=10, 
                         help="Top-K Parameter.")
     # -------------------------------------------------------
+
+    # 多线程配置 (新增)
+    parser.add_argument("--num_threads", type=int, default=1, 
+                        help="Number of threads for parallel processing. Default is 1 (sequential).")
 
     # 配置文件路径
     parser.add_argument("--config", type=str, default=None, help="Path to YAML configuration file.")
@@ -90,6 +96,21 @@ def parse_args_with_config():
     args = parser.parse_args()
     return args
 
+def process_single_sample_safe(agent, sample, index, total):
+    """
+    单个样本处理的包装函数，用于线程池调用。
+    包含异常捕获，防止单个样本报错导致整个进程崩溃。
+    """
+    try:
+        # 简单的进度日志（多线程下可能乱序，主要用于Debug）
+        # print(f"[Thread-Start] Processing QID: {sample.qid}")
+        agent.process_sample(sample)
+        return True
+    except Exception as e:
+        print(f"❌ Error processing sample {sample.qid}: {e}")
+        traceback.print_exc()
+        return False
+
 def main():
     args = parse_args_with_config()
 
@@ -107,6 +128,7 @@ def main():
 
     print(f"🚀 Starting Benchmark: {args.benchmark.upper()}")
     print(f"🤖 Agent Type: {args.agent_type.upper()}")
+    print(f"🧵 Threads: {args.num_threads}")
     if args.agent_type == "standard":
         print(f"🔍 Top-K: {args.top_k}")
     
@@ -198,11 +220,33 @@ def main():
     else:
         raise ValueError(f"Unknown agent type: {args.agent_type}")
 
-    # 5. 执行处理循环
+    # 5. 执行处理循环 (支持多线程)
     print("\n⚡ Starting Processing Loop...")
-    for i, sample in enumerate(loader.samples):
-        print(f"[{i+1}/{len(loader.samples)}] Processing Sample QID: {sample.qid}")
-        agent.process_sample(sample)
+    
+    total_samples = len(loader.samples)
+    
+    if args.num_threads > 1:
+        print(f"🔥 Parallel execution enabled with {args.num_threads} threads.")
+        with concurrent.futures.ThreadPoolExecutor(max_workers=args.num_threads) as executor:
+            # 提交任务
+            future_to_sample = {
+                executor.submit(process_single_sample_safe, agent, sample, i, total_samples): sample 
+                for i, sample in enumerate(loader.samples)
+            }
+            
+            # 使用 tqdm 显示进度
+            for future in tqdm(concurrent.futures.as_completed(future_to_sample), total=total_samples, desc="Processing"):
+                sample = future_to_sample[future]
+                try:
+                    future.result() # 这里会抛出 process_single_sample_safe 中未捕获的异常（虽然我们在函数内捕获了大部分）
+                except Exception as exc:
+                    print(f"Sample {sample.qid} generated an exception: {exc}")
+    else:
+        # 单线程模式 (保持原有逻辑，便于调试)
+        print("🐢 Sequential execution (Single Thread).")
+        for i, sample in enumerate(tqdm(loader.samples, desc="Processing")):
+            # print(f"[{i+1}/{total_samples}] Processing Sample QID: {sample.qid}") # 使用tqdm后可以减少print
+            agent.process_sample(sample)
 
     # 6. 保存结果 (文件名区分 Agent 类型)
     excel_path = os.path.join(args.output_dir, f"{args.benchmark}_{args.agent_type}_results.xlsx")
