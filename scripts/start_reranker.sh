@@ -1,15 +1,15 @@
 export CUDA_VISIBLE_DEVICES=1
+export VLLM_LOGGING_LEVEL=DEBUG
 vllm serve /mnt/shared-storage-user/mineru3-share/wangzhengren/JIT-RAG/assets/Qwen/Qwen3-VL-Reranker-8B \
     --served-model-name Qwen3-VL-Reranker-8B \
     --host 0.0.0.0 \
-    --port 8004 \
+    --port 8003 \
     --runner pooling \
     --max-model-len 8192 \
     --gpu_memory_utilization 0.6 \
     --hf_overrides '{"architectures": ["Qwen3VLForSequenceClassification"],"classifier_from_token": ["no", "yes"],"is_original_qwen3_reranker": true}' \
     --chat-template /mnt/shared-storage-user/mineru3-share/wangzhengren/PageElement/scripts/qwen3_vl_reranker.jinja \
-    --allowed-local-media-path /mnt/shared-storage-user/mineru3-share/
-
+    --allowed-local-media-path /mnt/shared-storage-user/
 
 # (APIServer pid=2148152) INFO 01-28 19:17:54 [api_server.py:1346] Starting vLLM API server 0 on http://0.0.0.0:8004
 # (APIServer pid=2148152) INFO 01-28 19:17:54 [launcher.py:38] Available routes are:

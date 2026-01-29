@@ -3,7 +3,7 @@ import json
 
 
 class Qwen3VLReranker:
-    def __init__(self, model_name_or_path):
+    def __init__(self, model_name_or_path, **kwargs):
         self.base_url = model_name_or_path.rstrip('/')
         self.models_url = f"{self.base_url}/v1/models"
         self.rerank_url = f"{self.base_url}/rerank"

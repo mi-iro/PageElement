@@ -59,7 +59,7 @@ documents = {
 def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument("--host", type=str, default="localhost")
-    parser.add_argument("--port", type=int, default=8004)
+    parser.add_argument("--port", type=int, default=8003)
     return parser.parse_args()
 
 

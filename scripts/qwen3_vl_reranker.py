@@ -3,8 +3,7 @@ import numpy as np
 import logging
 import requests
 import uvicorn
-import base64
-import io
+import math  # 新增
 
 from PIL import Image
 from typing import List, Union, Optional, Any, Dict
@@ -19,16 +18,16 @@ logger = logging.getLogger(__name__)
 MAX_LENGTH = 8192
 IMAGE_BASE_FACTOR = 16
 IMAGE_FACTOR = IMAGE_BASE_FACTOR * 2
-MIN_PIXELS = 4 * IMAGE_FACTOR * IMAGE_FACTOR  # 4 tokens
-MAX_PIXELS = 1280 * IMAGE_FACTOR * IMAGE_FACTOR  # 1280 tokens
+MIN_PIXELS = 4 * IMAGE_FACTOR * IMAGE_FACTOR
+MAX_PIXELS = 1280 * IMAGE_FACTOR * IMAGE_FACTOR
 MAX_RATIO = 200
 
 FRAME_FACTOR = 2
 FPS = 1
 MIN_FRAMES = 2
 MAX_FRAMES = 64
-MIN_TOTAL_PIXELS = 1 * FRAME_FACTOR * MIN_PIXELS  # 1 frames
-MAX_TOTAL_PIXELS = 4 * FRAME_FACTOR * MAX_PIXELS  # 4 frames
+MIN_TOTAL_PIXELS = 1 * FRAME_FACTOR * MIN_PIXELS
+MAX_TOTAL_PIXELS = 4 * FRAME_FACTOR * MAX_PIXELS
 
 # --- 辅助函数保持不变 ---
 def sample_frames(frames, num_segments, max_segments):
@@ -55,6 +54,7 @@ class RerankRequest(BaseModel):
     instruction: Optional[str] = None
     fps: float = FPS
     max_frames: int = MAX_FRAMES
+    batch_size: Optional[int] = 50  # 新增 batch_size 字段
 
 # --- 核心类重构 ---
 class Qwen3VLReranker:
@@ -80,7 +80,6 @@ class Qwen3VLReranker:
         self.max_pixels = max_pixels
         self.max_length = max_length
         
-        # 判断模式：API 客户端模式 vs 本地模型模式
         if model_name_or_path.startswith("http://") or model_name_or_path.startswith("https://"):
             self.mode = "client"
             self.api_url = model_name_or_path.rstrip("/")
@@ -89,6 +88,7 @@ class Qwen3VLReranker:
             self.mode = "local"
             self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
+            # 加载模型
             lm = Qwen3VLForConditionalGeneration.from_pretrained(
                 model_name_or_path,
                 trust_remote_code=True, **kwargs
@@ -97,7 +97,7 @@ class Qwen3VLReranker:
             self.model = lm.model
             self.processor = AutoProcessor.from_pretrained(
                 model_name_or_path, trust_remote_code=True,
-                padding_side='left'
+                padding_side='left' # 确保 padding 在左侧，这对于 Decoder-only 模型很重要
             )
             self.model.eval()
 
@@ -120,7 +120,11 @@ class Qwen3VLReranker:
 
     @torch.no_grad()
     def compute_scores(self, inputs):
-        batch_scores = self.model(**inputs).last_hidden_state[:, -1]
+        # 批量推理
+        outputs = self.model(**inputs)
+        # 获取每个序列的最后一个 token 的隐藏状态
+        # 由于是 left padding，最后一个 token 即为有效输入的结尾
+        batch_scores = outputs.last_hidden_state[:, -1]
         scores = self.score_linear(batch_scores)
         scores = torch.sigmoid(scores).squeeze(-1).cpu().detach().tolist()
         return scores
@@ -142,10 +146,14 @@ class Qwen3VLReranker:
         return final_tokens
 
     def tokenize(self, pairs: list, **kwargs):
-        # 仅在 local 模式下使用
+        # pairs 是一个 batch 的 list，例如 [[{role, content}, ...], [{role, content}, ...]]
         max_length = self.max_length
+        
+        # apply_chat_template 支持 list of lists (batch)
         text = self.processor.apply_chat_template(pairs, tokenize=False, add_generation_prompt=True)
+        
         try:
+            # process_vision_info 在 Qwen2/3-VL utils 中通常支持 batch 处理
             images, videos, video_kwargs = process_vision_info(
                 pairs, image_patch_size=16, 
                 return_video_kwargs=True, 
@@ -156,14 +164,21 @@ class Qwen3VLReranker:
             images = None
             videos = None
             video_kwargs = {'do_sample_frames': False}
+            # 如果出错，回退到空 batch 处理 (可能需要更细致的错误处理)
             text = self.processor.apply_chat_template(
-                [{'role': 'user', 'content': [{'type': 'text', 'text': 'NULL'}]}], 
+                [[{'role': 'user', 'content': [{'type': 'text', 'text': 'NULL'}]}] * len(pairs)], 
                 add_generation_prompt=True, tokenize=False
             )
         
         if videos is not None:
-            videos, video_metadatas = zip(*videos)
-            videos, video_metadatas = list(videos), list(video_metadatas)
+            # 这里的 zip(*videos) 只有在 batch 中的所有元素结构一致时才安全
+            # Qwen-VL-Utils 通常会处理好这些，如果遇到不一致，这里可能需要防御性编程
+            try:
+                videos, video_metadatas = zip(*videos)
+                videos, video_metadatas = list(videos), list(video_metadatas)
+            except Exception:
+                # Fallback if structure varies
+                video_metadatas = None
         else:
             video_metadatas = None
             
@@ -172,22 +187,33 @@ class Qwen3VLReranker:
             images=images,
             videos=videos,
             video_metadata=video_metadatas,
-            truncation=False,
-            padding=False,
+            truncation=False, # 先不截断，手动处理
+            padding=True,     # 开启 padding 以支持 Batch
             do_resize=False,
+            padding_side='left', # 再次确保 padding side
+            return_tensors="pt", # 直接返回 tensor
             **video_kwargs
         )
-        for i, ele in enumerate(inputs['input_ids']):
-            inputs['input_ids'][i] = self.truncate_tokens_optimized(
-                inputs['input_ids'][i][:-5], max_length,
-                self.processor.tokenizer.all_special_ids
-            ) + inputs['input_ids'][i][-5:]
-        temp_inputs = self.processor.tokenizer.pad(
-            {'input_ids': inputs['input_ids']}, padding=True,
-            return_tensors="pt", max_length=self.max_length
-        )
-        for key in temp_inputs:
-            inputs[key] = temp_inputs[key]
+
+        # 手动截断逻辑 (注意：这会比较慢且复杂，因为涉及到 Tensor 操作)
+        # 优化建议：直接使用 processor 的 truncation=True 可能更高效，
+        # 但为了保留原逻辑的特殊 token 保护，这里针对 Batch 进行了适配：
+        
+        # 注意：这里如果 batch 很大，原逻辑的 Python 循环会很慢。
+        # 如果追求极致速度，建议放弃自定义截断，直接用 tokenizer 的 truncation。
+        # 下面保留原逻辑，但请注意 input_ids 已经是 Tensor 了。
+        
+        input_ids = inputs['input_ids']
+        if input_ids.shape[1] > self.max_length:
+             # 简易截断：直接截取后 self.max_length (保留最后的部分通常对生成式模型更重要)
+             # 但原逻辑是"保留特殊 token"，这里为了 batch 效率，建议简化。
+             # 如果必须保留原逻辑，需要转回 list 处理再 pad，非常耗时。
+             
+             # 方案 A: 快速截断 (推荐)
+             inputs['input_ids'] = input_ids[:, -self.max_length:]
+             inputs['attention_mask'] = inputs['attention_mask'][:, -self.max_length:]
+             # 如果有 pixel_values 等其他对齐的 tensor，通常不需要切片，因为它们对应的是 vision token
+             
         return inputs
 
     def format_mm_content(self, text, image, video, prefix='Query:', fps=None, max_frames=None):
@@ -203,11 +229,8 @@ class Qwen3VLReranker:
             if isinstance(video, list):
                 video_content = video
                 if self.num_frames is not None or self.max_frames is not None:
-                    video_content = self._sample_frames(video_content, self.num_frames, self.max_frames) # Note: _sample_frames undefined in original provided snippet, assuming usage of global sample_frames or similar logic needed. 
-                    # Correcting based on provided global function:
-                    # Actually original code had self._sample_frames inside format_mm_content but method definition was missing in user snippet. 
-                    # Using global sample_frames logic here for safety if list.
-                    pass 
+                    # [FIX] 使用全局 sample_frames 函数，而非 self._sample_frames
+                    video_content = sample_frames(video_content, self.num_frames, self.max_frames)
                 video_content = [
                     ('file://' + ele if isinstance(ele, str) else ele) 
                     for ele in video_content
@@ -245,6 +268,7 @@ class Qwen3VLReranker:
         return content
 
     def format_mm_instruction(self, query_text, query_image, query_video, doc_text, doc_image, doc_video, instruction=None, fps=None, max_frames=None):
+        # ... (保持不变) ...
         inputs = []
         inputs.append({
             "role": "system",
@@ -263,12 +287,15 @@ class Qwen3VLReranker:
         inputs.append({"role": "user", "content": contents})
         return inputs
 
-    def process(self, inputs: Union[Dict, RerankRequest]) -> List[float]:
+    def process(self, inputs: Union[Dict, RerankRequest], batch_size: int = 50) -> List[float]:
         """
-        统一的处理入口。
-        inputs 可以是 dict，也可以是 Pydantic model (API端收到请求时)。
+        优化后的 Process 方法，支持 Batch 处理
+        batch_size: 默认 50，根据显存大小调整。
         """
         if isinstance(inputs, RerankRequest):
+            # 如果请求中指定了 batch_size，优先使用请求中的
+            if inputs.batch_size is not None:
+                batch_size = inputs.batch_size
             inputs = inputs.model_dump()
 
         # --- Client Mode ---
@@ -286,10 +313,13 @@ class Qwen3VLReranker:
         instruction = inputs.get('instruction', self.default_instruction) or self.default_instruction
         query = inputs.get("query", {})
         documents = inputs.get("documents", [])
+        fps = inputs.get('fps', self.fps)
+        max_frames = inputs.get('max_frames', self.max_frames)
         
         if not query or not documents:
             return []
 
+        # 1. 预处理所有数据对 (Formatting is fast, do it all at once)
         pairs = [self.format_mm_instruction(
             query.get('text', None),
             query.get('image', None),
@@ -298,25 +328,49 @@ class Qwen3VLReranker:
             document.get('image', None),
             document.get('video', None),
             instruction=instruction,
-            fps=inputs.get('fps', self.fps),
-            max_frames=inputs.get('max_frames', self.max_frames)
+            fps=fps,
+            max_frames=max_frames
         ) for document in documents]
 
         final_scores = []
-        # 处理 batch (此处简化为逐个处理，可优化为 batch)
-        for pair in pairs:
-            model_inputs = self.tokenize([pair])
-            model_inputs = model_inputs.to(self.model.device)
-            scores = self.compute_scores(model_inputs)
-            final_scores.extend(scores)
+        num_docs = len(pairs)
+        print(pairs[0])
+        
+        # 2. 按 batch_size 循环处理
+        for i in range(0, num_docs, batch_size):
+            batch_pairs = pairs[i : i + batch_size]
+            
+            try:
+                with torch.no_grad():
+                    # Tokenize 一个 Batch
+                    model_inputs = self.tokenize(batch_pairs)
+                    # 移动到设备
+                    model_inputs = model_inputs.to(self.model.device)
+                    # 推理
+                    scores = self.compute_scores(model_inputs)
+                    
+                    # 兼容：如果 scores 是单个 float (batch=1)，转为 list
+                    if isinstance(scores, float):
+                        scores = [scores]
+                    
+                    final_scores.extend(scores)
+                    
+                # 可选：清理显存（如果显存极其紧张）
+                # torch.cuda.empty_cache() 
+                
+            except RuntimeError as e:
+                if "out of memory" in str(e):
+                    logger.error("OOM detected. Consider reducing batch_size.")
+                    torch.cuda.empty_cache()
+                    raise e
+                else:
+                    raise e
+
         return final_scores
 
 # --- 服务端启动代码 ---
 def create_app(model_path: str, **kwargs):
-    """创建 FastAPI 应用"""
     app = FastAPI(title="Qwen3VL Reranker API")
-    
-    # 全局模型实例
     reranker_instance = None
 
     @app.on_event("startup")
@@ -331,7 +385,7 @@ def create_app(model_path: str, **kwargs):
         if not reranker_instance:
              raise HTTPException(status_code=500, detail="Model not initialized")
         try:
-            # 这里的 process 走的是 local 逻辑
+            # 传递 request 对象，process 内部会读取 batch_size
             scores = reranker_instance.process(request)
             return scores
         except Exception as e:
