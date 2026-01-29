@@ -24,7 +24,7 @@ from src.utils.llm_helper import create_llm_caller
 
 try:
     from scripts.qwen3_vl_embedding import Qwen3VLEmbedder
-    from scripts.qwen3_vl_reranker import Qwen3VLReranker
+    from scripts.qwen3_vl_reranker_client import Qwen3VLReranker
 except ImportError:
     print("Warning: Qwen3 VL scripts not found.")
 
@@ -72,7 +72,7 @@ def get_parser():
     parser.add_argument("--reranker_api_key", type=str, default="EMPTY")
     
     # MinerU / Extractor
-    parser.add_argument("--mineru_server_url", type=str, default="http://10.102.250.36:8000/")
+    parser.add_argument("--mineru_server_url", type=str, default="http://10.102.98.181:8000/")
     parser.add_argument("--mineru_model_path", type=str, default="/root/checkpoints/MinerU2.5-2509-1.2B/")
     parser.add_argument("--extractor_model_name", type=str, default="MinerU-Agent-CK300")
     parser.add_argument("--extractor_base_url", type=str, default="http://localhost:8001/v1")
@@ -187,7 +187,6 @@ def main():
             extractor=extractor
         )
         loader.load_data()
-        loader.build_page_vector_pool(batch_size=4, force_rebuild=args.force_rebuild_index)
 
     loader.llm_caller = create_llm_caller()
 

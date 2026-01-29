@@ -14,10 +14,10 @@ class Qwen3VLReranker:
         if not self.api_url.endswith("/rerank"):
              self.api_url = self.api_url + "/rerank"
         # 简单测试一下连接是否通畅（可选）
-        try:
-            requests.get(self.api_url.replace("/rerank", "/health"), timeout=1)
-        except Exception:
-            print(f"Warning: Could not connect to {self.api_url} immediately. Ensure server is running.")
+        # try:
+        #     requests.get(self.api_url.replace("/rerank", "/health"), timeout=1)
+        # except Exception:
+        #     print(f"Warning: Could not connect to {self.api_url} immediately. Ensure server is running.")
 
     def process(self, inputs: Dict[str, Any]) -> List[float]:
         """
