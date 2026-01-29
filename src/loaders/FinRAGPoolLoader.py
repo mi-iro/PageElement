@@ -11,7 +11,6 @@ from tqdm import tqdm
 from typing import List, Dict, Any, Optional
 from PIL import Image
 import uuid
-import re
 
 # 引入评估所需的库
 try:
@@ -40,27 +39,6 @@ def encode_image_to_base64(image_path):
     with open(image_path, "rb") as image_file:
         return base64.b64encode(image_file.read()).decode('utf-8')
 
-def extract_pdf_prefix(filename):
-    """
-    从图片文件名中提取PDF原始前缀，移除页码后缀（如 _116.png-2）
-    
-    Args:
-        filename (str): 待处理的文件名字符串
-        
-    Returns:
-        str: 提取后的前缀。如果匹配失败，则返回原字符串。
-    """
-    # 逻辑：匹配从开头直到最后一个“_数字.png”之前的内容
-    # ^       : 匹配开头
-    # (.*)    : 捕获组，匹配前缀
-    # (?=     : 正向预查（不计入结果）
-    # _\d+    : 下划线后跟一个或多个数字（页码）
-    # \.png   : 匹配 .png 扩展名
-    pattern = r"^(.*)(?=_\d+\.png)"
-    
-    match = re.search(pattern, filename)
-    return match.group(1) if match else filename
-
 class FinRAGLoader(BaseDataLoader):
     def __init__(self, data_root: str, lang: str = "ch", embedding_model=None, rerank_model=None, extractor: Optional[ElementExtractor] = None):
         super().__init__(data_root)
@@ -71,15 +49,17 @@ class FinRAGLoader(BaseDataLoader):
         
         # --- 路径配置 ---
         self.query_path = os.path.join(data_root, "data", "queries", f"queries_{self.lang}.json")
-        self.corpus_root = os.path.join(data_root, "data", "corpus", self.lang, "img")
+        self.corpus_root = os.path.join(data_root, "data", "corpus", self.lang)
         self.qrels_path = os.path.join(data_root, "data", "qrels", f"qrels_{self.lang}.tsv")
         self.citation_root = os.path.join(data_root, "data", "citation_labels", "citation_labels_new")
         
         # 索引路径
         cache_dir = os.path.join(data_root, "data", "indices")
         os.makedirs(cache_dir, exist_ok=True)
+        self.index_path = os.path.join(cache_dir, f"finrag_{self.lang}_hnsw.index")
         self.doc_map_path = os.path.join(cache_dir, f"finrag_{self.lang}_hnsw_docmap.json")
         
+        self.index = None
         self.doc_id_map = {} 
         self.llm_caller = None
         self.llm_element_judge = False
@@ -203,7 +183,7 @@ class FinRAGLoader(BaseDataLoader):
             
             sample = StandardSample(
                 qid=qid, query=query_text, dataset=f"finrag-{self.lang}",
-                data_source=extract_pdf_prefix(qid), gold_answer=gold_answer,
+                data_source=self.index_path, gold_answer=gold_answer,
                 gold_elements=None, gold_pages=gold_pages, extra_info=extra_info
             )
             self.samples.append(sample)
@@ -236,96 +216,102 @@ class FinRAGLoader(BaseDataLoader):
         embeddings = self.embedding_model.process(inputs)
         return embeddings.cpu().numpy().astype('float32')
 
-    def _pdf_to_images(self, pdf_path: str) -> Dict[int, str]:
-        """
-        修改后逻辑：
-        根据 data_source (PDF文件名/前缀) 在 corpus_root 中查找已存在的页面图片。
-        图片命名格式预期为: {pdf_prefix}_{page_num}.png
-        例如: 1-s2.0-S0304405X24001697-main_17.png
-        """
-        import glob
+    def build_page_vector_pool(self, batch_size=4, force_rebuild=False):
+        """Build or load page-level vector index using HNSW."""
+        if self.lang == "bbox":
+            return
         
-        # 1. 提取 PDF 前缀 (移除路径和 .pdf 后缀)
-        # pdf_path 可能是 "xxx.pdf" 也可能是单纯的 ID "xxx"
-        pdf_prefix = os.path.basename(pdf_path)
-        if pdf_prefix.lower().endswith('.pdf'):
-            pdf_prefix = pdf_prefix[:-4]
+        if not force_rebuild and os.path.exists(self.index_path) and os.path.exists(self.doc_map_path):
+            print(f"Loading existing HNSW index from {self.index_path}...")
+            self.index = faiss.read_index(self.index_path)
+            with open(self.doc_map_path, 'r', encoding='utf-8') as f:
+                self.doc_id_map = {int(k): v for k, v in json.load(f).items()}
+            print(f"Index loaded. Total vectors: {self.index.ntotal}")
+            return
 
-        image_map = {}
-        
-        # 2. 检查 corpus 目录是否存在
-        if not os.path.exists(self.corpus_root):
-            print(f"Warning: Corpus root directory not found: {self.corpus_root}")
-            return {}
+        if self.embedding_model is None:
+            raise ValueError("Embedding model is required to build the index!")
 
-        # 3. 构建搜索模式: corpus_root/前缀_*.png
-        # 注意：这里加 "_" 是为了防止前缀部分匹配 (如 doc_1 匹配到 doc_10_1.png)
-        search_pattern = os.path.join(self.corpus_root, f"{pdf_prefix}_*.png")
-        
-        # 4. 查找匹配的文件
-        found_files = glob.glob(search_pattern)
-        
-        for file_path in found_files:
-            filename = os.path.basename(file_path)
-            
-            # 5. 使用正则提取末尾的页码
-            # 匹配逻辑: 查找文件名末尾的 "_数字.png"
-            match = re.search(r"_(\d+)\.png$", filename)
-            if match:
-                try:
-                    # 提取页码并存入字典
-                    page_num = int(match.group(1))
-                    image_map[page_num] = file_path
-                except ValueError:
-                    continue
-        
-        if not image_map:
-            # 调试信息：如果没有找到图片，可能是前缀不匹配或者目录不对
-            print(f"Warning: No pre-processed images found for prefix '{pdf_prefix}' in {self.corpus_root}")
-
-        return image_map
-
-    def pipeline(self, query: str, image_paths: List[str] = None, top_k: int = 10) -> List[PageElement]:
-        """
-        修改后的 Pipeline：直接处理 PDF 文档而非检索池
-        """
+        print("Building new HNSW vector index...")
+        image_paths = self._get_all_image_paths()
         if not image_paths:
-            return []
+            raise FileNotFoundError(f"No images found in {self.corpus_root}")
 
-        # 1. 解析 PDF 或直接使用图片路径
-        all_pages_to_process = []
-        for path in image_paths:
-            if not path.lower().endswith('.png'):
-                page_map = self._pdf_to_images(path)
-                # 将 PDF 每一页包装成待排序的 PageElement
-                for p_idx in sorted(page_map.keys()):
-                    all_pages_to_process.append(PageElement(
-                        bbox=[0, 0, 1000, 1000],
-                        type="page_image",
-                        corpus_id=os.path.basename(page_map[p_idx]),
-                        corpus_path=page_map[p_idx],
-                        crop_path=page_map[p_idx]
-                    ))
-            else:
-                all_pages_to_process.append(PageElement(
-                    bbox=[0, 0, 1000, 1000],
-                    type="page_image",
-                    corpus_path=path,
-                    crop_path=path
-                ))
+        sample_emb = self._embed_images([image_paths[0]]) 
+        d = sample_emb.shape[1]
+        
+        M = 32 
+        index = faiss.IndexHNSWFlat(d, M, faiss.METRIC_INNER_PRODUCT)
+        index.hnsw.efConstruction = 64 
+        index.verbose = True 
 
-        # 2. 如果页面较多，使用 Reranker 进行筛选
-        if self.rerank_model and len(all_pages_to_process) > top_k:
-            ranked_pages = self.rerank(query, all_pages_to_process)
-            target_pages = ranked_pages[:top_k]
-            target_pages = [ page for page in ranked_pages if page.retrieval_score >= 0.1]
-        else:
-            target_pages = all_pages_to_process[:top_k]
+        doc_id_counter = 0
+        batch_paths = []
+        
+        for path in tqdm(image_paths, desc="Indexing Pages (HNSW)"):
+            batch_paths.append(path)
+            
+            if len(batch_paths) >= batch_size:
+                embeddings = self._embed_images(batch_paths)
+                faiss.normalize_L2(embeddings) 
+                index.add(embeddings)
+                
+                for p in batch_paths:
+                    rel_path = os.path.relpath(p, self.corpus_root)
+                    self.doc_id_map[doc_id_counter] = rel_path
+                    doc_id_counter += 1
+                
+                batch_paths = []
 
-        # 3. 调用 ElementExtractor 进行细粒度提取
-        elements = self.extract_elements_from_pages(target_pages, query)
-        return elements[:top_k]
+        if batch_paths:
+            embeddings = self._embed_images(batch_paths)
+            faiss.normalize_L2(embeddings)
+            index.add(embeddings)
+            for p in batch_paths:
+                rel_path = os.path.relpath(p, self.corpus_root)
+                self.doc_id_map[doc_id_counter] = rel_path
+                doc_id_counter += 1
 
+        self.index = index
+        
+        print(f"Saving HNSW index to {self.index_path}...")
+        faiss.write_index(self.index, self.index_path)
+        with open(self.doc_map_path, 'w', encoding='utf-8') as f:
+            json.dump(self.doc_id_map, f)
+        print("HNSW Index build complete.")
+
+    def retrieve(self, query: str, top_k: int = 5, ef_search: int = 64) -> List[PageElement]:
+        """Step 1: Vector Search with HNSW"""
+        if self.index is None:
+            raise RuntimeError("Index not built. Call build_page_vector_pool() first.")
+
+        if hasattr(self.index, 'hnsw'):
+             self.index.hnsw.efSearch = max(ef_search, top_k * 2)
+
+        query_vec = self._embed_text(query)
+        faiss.normalize_L2(query_vec)
+        
+        scores, indices = self.index.search(query_vec, top_k)
+        
+        retrieved_pages = []
+        for score, idx in zip(scores[0], indices[0]):
+            if idx == -1: continue
+            
+            rel_path = self.doc_id_map[idx]
+            abs_path = os.path.join(self.corpus_root, rel_path)
+            
+            element = PageElement(
+                bbox=[0, 0, 1000, 1000],
+                type="page_image",
+                content=f"[Page Retrieved] {rel_path}",
+                corpus_id=rel_path.split('/')[-1],
+                corpus_path=abs_path,
+                crop_path=abs_path 
+            )
+            element.retrieval_score = float(score)
+            retrieved_pages.append(element)
+            
+        return retrieved_pages
 
     def rerank(self, query: str, pages: List[PageElement]) -> List[PageElement]:
         """Step 2: Reranking using Qwen3-VL-Reranker"""
@@ -457,6 +443,21 @@ class FinRAGLoader(BaseDataLoader):
             print("No fine-grained elements extracted.")
             
         return fine_grained_elements
+
+    def pipeline(self, query: str, image_paths: List[str] = None, top_k: int = 5) -> List[PageElement]:
+        """Full RAG Pipeline"""
+        if self.lang == "bbox":
+            ranked_pages = [PageElement(bbox=[0,0,1000,1000],type="page_image",content=None,corpus_id=image_paths[0].split('/')[-1],corpus_path=image_paths[0],crop_path=image_paths[0])]
+        else:
+            pages = self.retrieve(query, top_k=top_k*4)
+            ranked_pages = self.rerank(query, pages)
+            ranked_pages = ranked_pages[:top_k]
+            ranked_pages = [p for p in ranked_pages if p.retrieval_score >= 0.1]
+            # scores = [page.retrieval_score for page in ranked_pages]
+            # print(scores)
+        elements = self.extract_elements_from_pages(ranked_pages, query)
+        elements = elements[:top_k]
+        return elements
 
     # --------------------------------------------------------------------------------
     # Evaluation Methods (Modified to ONLY use Model Eval)
@@ -660,7 +661,7 @@ class FinRAGLoader(BaseDataLoader):
 if __name__ == "__main__":
     # 配置路径
     embedding_model_path = "/mnt/shared-storage-user/mineru3-share/wangzhengren/JIT-RAG/assets/Qwen/Qwen3-VL-Embedding-8B"
-    reranker_model_path = "http://localhost:8003"
+    reranker_model_path = "/mnt/shared-storage-user/mineru3-share/wangzhengren/JIT-RAG/assets/Qwen/Qwen3-VL-Reranker-8B"
     root_dir = "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V"
     
     # 模拟工具和 Extractor 的初始化参数
@@ -675,7 +676,7 @@ if __name__ == "__main__":
     extractor = ElementExtractor(
         base_url="http://localhost:8001/v1",
         api_key="sk-123456",
-        model_name="MinerU-Agent-CK800",
+        model_name="MinerU-Agent-CK300",
         tool=tool
     )
 
@@ -691,12 +692,15 @@ if __name__ == "__main__":
     
     loader.load_data()
     
+    # 建立索引
+    loader.build_page_vector_pool(batch_size=16)
+    
     if len(loader.samples) > 0:
         test_sample = loader.samples[0]
         print(f"\nTesting Query: {test_sample.query}")
         
         # 运行 pipeline 并保存结果到 extra_info
-        results = loader.pipeline(test_sample.query, image_paths=[test_sample.data_source], top_k=10) 
+        results = loader.pipeline(test_sample.query, image_paths=[test_sample.data_source], top_k=2) 
         test_sample.extra_info['final_answer'] = "Generated Answer Here..." # 模拟生成答案
         test_sample.extra_info['retrieved_elements'] = results
         

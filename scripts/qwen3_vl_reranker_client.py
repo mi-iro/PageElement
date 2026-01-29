@@ -74,7 +74,8 @@ if __name__ == "__main__":
                 "text": "A woman shares a joyful moment with her golden retriever on a sun-drenched beach at sunset, as the dog offers its paw in a heartwarming display of companionship and trust.",
                 "image": "/mnt/shared-storage-user/mineru3-share/wangzhengren/PageElement/Qwen3-VL-Embedding/demo.jpeg"
             }
-        ]
+        ],
+        "fps": 1.0
     }
 
     try:

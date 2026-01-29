@@ -118,8 +118,8 @@ if __name__ == "__main__":
     # 1. 初始化模型
     # 注意：在 spawn 模式下，模型初始化必须在主进程保护块内
     llm = LLM(
-        # model='/mnt/shared-storage-user/mineru3-share/wangzhengren/JIT-RAG/assets/Qwen/Qwen3-VL-Reranker-8B',
-        model='/mnt/shared-storage-user/mineru2-shared/madongsheng/modelscope/Qwen/Qwen3-VL-Reranker-2B',
+        model='/mnt/shared-storage-user/mineru3-share/wangzhengren/JIT-RAG/assets/Qwen/Qwen3-VL-Reranker-8B',
+        # model='/mnt/shared-storage-user/mineru2-shared/madongsheng/modelscope/Qwen/Qwen3-VL-Reranker-2B',
         runner='pooling',
         dtype='bfloat16',
         trust_remote_code=True,

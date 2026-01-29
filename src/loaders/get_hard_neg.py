@@ -18,7 +18,7 @@ from FinRAGLoader import FinRAGLoader
 EMBEDDING_MODEL_PATH = "/mnt/shared-storage-user/mineru3-share/wangzhengren/JIT-RAG/assets/Qwen/Qwen3-VL-Embedding-8B"
 RERANKER_MODEL_PATH = "http://localhost:8003"
 DATA_ROOT_DIR = "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V"
-OUTPUT_FILE = "retrieved_labeled_results.json"
+OUTPUT_FILE = "retrieved_labeled_results_ch.json"
 
 TOP_K_RETRIEVE = 50   # 向量检索召回数量
 TOP_K_RERANK = 10     # Rerank后保留的最终数量
@@ -59,7 +59,7 @@ def main():
 
     # 1. 加载数据 (Queries 和 Qrels)
     loader.load_data()
-    loader.samples = loader.samples[:10]
+    # loader.samples = loader.samples[:10]
     
     # 2. 构建或加载向量索引
     # force_rebuild=False 表示如果存在缓存索引直接加载

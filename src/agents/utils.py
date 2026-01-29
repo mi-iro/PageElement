@@ -74,9 +74,9 @@ class ImageZoomOCRTool:
         'required': ['bbox', 'label']
     }
 
-    def __init__(self,work_dir ,mineru_server_url="http://10.102.250.36:8000/",mineru_model_path="/root/checkpoints/MinerU2.5-2509-1.2B/"):
-        self.mineru_model_path = "/root/checkpoints/MinerU2.5-2509-1.2B/"
-        self.mineru_server_url = "http://10.102.250.36:8000/"
+    def __init__(self,work_dir ,mineru_server_url="http://10.102.98.181:8000/",mineru_model_path="/root/checkpoints/MinerU2.5-2509-1.2B/"):
+        self.mineru_model_path = mineru_model_path
+        self.mineru_server_url = mineru_server_url
         self.mineru_client = None
         self.work_dir=work_dir
 
