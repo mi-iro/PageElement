@@ -318,7 +318,7 @@ class FinRAGLoader(BaseDataLoader):
         if self.rerank_model and len(all_pages_to_process) > top_k:
             ranked_pages = self.rerank(query, all_pages_to_process)
             target_pages = ranked_pages[:top_k]
-            target_pages = [ page for page in target_pages if page.retrieval_score >= 0.1]
+            # target_pages = [ page for page in target_pages if page.retrieval_score >= 0.1]
         else:
             target_pages = all_pages_to_process[:top_k]
 
