@@ -9,3 +9,5 @@ VisRAG/
 =10.1
 Qwen3-VL-Embedding/
 retrieved_labeled_results*
+batch_run.sh
+config*.yaml

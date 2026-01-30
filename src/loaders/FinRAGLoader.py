@@ -324,7 +324,7 @@ class FinRAGLoader(BaseDataLoader):
 
         # 3. 调用 ElementExtractor 进行细粒度提取
         elements = self.extract_elements_from_pages(target_pages, query)
-        return elements[:top_k]
+        return elements
 
 
     def rerank(self, query: str, pages: List[PageElement]) -> List[PageElement]:
