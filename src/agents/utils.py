@@ -377,7 +377,7 @@ class MinerUBboxExtractor:
             
         return h_bar, w_bar
 
-    def extract_content_str(self, image_path: str, bbox: List[float], padding_ratio: float = 0.1) -> str:
+    def extract_content_str(self, image_path: str, bbox: List[float], padding_ratio: float = 0.15) -> str:
         """
         Extracts content from a BBox, crops in memory, adds padding, and returns concatenated text.
         

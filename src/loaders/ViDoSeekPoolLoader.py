@@ -530,7 +530,7 @@ class ViDoSeekLoader(BaseDataLoader):
 if __name__ == "__main__":
     # 配置路径
     embedding_model_path = "/mnt/shared-storage-user/mineru3-share/wangzhengren/JIT-RAG/assets/Qwen/Qwen3-VL-Embedding-8B"
-    reranker_model_path = "/mnt/shared-storage-user/mineru3-share/wangzhengren/JIT-RAG/assets/Qwen/Qwen3-VL-Reranker-8B"
+    reranker_model_path = "http://localhost:8000"
     
     # ViDoSeek 数据集根目录
     root_dir = "/mnt/shared-storage-user/mineru3-share/wangzhengren/PageElement/VisRAG/data/EVisRAG-Test-ViDoSeek"
@@ -540,10 +540,8 @@ if __name__ == "__main__":
     tool_work_dir = "./workspace" 
     
     print("Initializing Models...")
-    # embedder = Qwen3VLEmbedder(model_name_or_path=embedding_model_path, torch_dtype=torch.float16)
-    # reranker = Qwen3VLReranker(model_name_or_path=reranker_model_path, torch_dtype=torch.float16)
-    embedder = None
-    reranker = None
+    embedder = Qwen3VLEmbedder(model_name_or_path=embedding_model_path, torch_dtype=torch.float16)
+    reranker = Qwen3VLReranker(model_name_or_path=reranker_model_path, torch_dtype=torch.float16)
     
     tool = ImageZoomOCRTool(work_dir=tool_work_dir)
     extractor = ElementExtractor(
@@ -565,7 +563,9 @@ if __name__ == "__main__":
     loader.load_data()
     
     # 建立索引 (扫描 imgs 目录)
-    loader.build_page_vector_pool(batch_size=16)
+    loader.build_page_vector_pool(batch_size=1)
+    
+    exit(0)
     
     if len(loader.samples) > 0:
         test_sample = loader.samples[0]
