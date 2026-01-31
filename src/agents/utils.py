@@ -335,3 +335,163 @@ class ImageZoomOCRTool:
         except Exception as e:
             obs = f'Tool Execution Error: {str(e)}'
             return [False,obs]
+        
+import os
+import math
+import time
+from typing import List, Tuple, Union
+from PIL import Image, ImageOps
+from mineru_vl_utils import MinerUClient
+
+class MinerUBboxExtractor:
+    def __init__(self, mineru_server_url: str = "http://10.102.98.181:8000/", 
+                 mineru_model_path: str = "/root/checkpoints/MinerU2.5-2509-1.2B/"):
+        self.mineru_server_url = mineru_server_url
+        self.mineru_model_path = mineru_model_path
+
+    def _get_mineru_client(self) -> MinerUClient:
+        return MinerUClient(
+            model_name=self.mineru_model_path,
+            backend="http-client",
+            server_url=self.mineru_server_url.rstrip('/')
+        )
+
+    def _smart_resize(self, height: int, width: int, factor: int = 32, 
+                      min_pixels: int = 56 * 56, max_pixels: int = 12845056) -> Tuple[int, int]:
+        """Smart resize image dimensions based on factor and pixel constraints."""
+        def round_by_factor(n, f): return round(n / f) * f
+        def floor_by_factor(n, f): return math.floor(n / f) * f
+        def ceil_by_factor(n, f): return math.ceil(n / f) * f
+
+        h_bar = max(factor, round_by_factor(height, factor))
+        w_bar = max(factor, round_by_factor(width, factor))
+        
+        if h_bar * w_bar > max_pixels:
+            beta = math.sqrt((height * width) / max_pixels)
+            h_bar = floor_by_factor(height / beta, factor)
+            w_bar = floor_by_factor(width / beta, factor)
+        elif h_bar * w_bar < min_pixels:
+            beta = math.sqrt(min_pixels / (height * width))
+            h_bar = ceil_by_factor(height * beta, factor)
+            w_bar = ceil_by_factor(width * beta, factor)
+            
+        return h_bar, w_bar
+
+    def extract_content_str(self, image_path: str, bbox: List[float], padding_ratio: float = 0.1) -> str:
+        """
+        Extracts content from a BBox, crops in memory, adds padding, and returns concatenated text.
+        
+        Args:
+            image_path (str): Path to the original image.
+            bbox (List[float]): [x1, y1, x2, y2] in relative coordinates (0-1000).
+            padding_ratio (float): Padding ratio to fix edge recognition issues.
+
+        Returns:
+            str: The concatenated content text (joined by newlines). Returns empty string on failure.
+        """
+        try:
+            if not os.path.exists(image_path):
+                print(f"Error: Image file not found at {image_path}")
+                return ""
+            
+            original_image = Image.open(image_path).convert("RGB")
+            orig_w, orig_h = original_image.size
+
+            # 1. Coordinate Conversion (Relative 0-1000 -> Absolute)
+            rel_x1, rel_y1, rel_x2, rel_y2 = bbox
+            
+            x1 = min(rel_x1, rel_x2)
+            y1 = min(rel_y1, rel_y2)
+            x2 = max(rel_x1, rel_x2)
+            y2 = max(rel_y1, rel_y2)
+
+            abs_x1 = int((x1 / 1000.0) * orig_w)
+            abs_y1 = int((y1 / 1000.0) * orig_h)
+            abs_x2 = int((x2 / 1000.0) * orig_w)
+            abs_y2 = int((y2 / 1000.0) * orig_h)
+
+            # Clamp to bounds
+            abs_x1 = max(0, abs_x1)
+            abs_y1 = max(0, abs_y1)
+            abs_x2 = min(orig_w, abs_x2)
+            abs_y2 = min(orig_h, abs_y2)
+
+            crop_w = abs_x2 - abs_x1
+            crop_h = abs_y2 - abs_y1
+
+            if crop_w <= 0 or crop_h <= 0:
+                print("Error: Invalid bbox dimensions resulting in 0 size crop.")
+                return ""
+
+            # 2. Crop Image (In Memory)
+            cropped_image = original_image.crop((abs_x1, abs_y1, abs_x2, abs_y2))
+            
+            # 3. Add White Padding (Crucial for edge recognition)
+            pad_size_x = int(crop_w * padding_ratio)
+            pad_size_y = int(crop_h * padding_ratio)
+            
+            # Fill with white background
+            padded_image = ImageOps.expand(
+                cropped_image, 
+                border=(pad_size_x, pad_size_y, pad_size_x, pad_size_y), 
+                fill='white'
+            )
+            
+            # 4. Smart Resize
+            new_h, new_w = self._smart_resize(padded_image.height, padded_image.width)
+            final_image = padded_image.resize((new_w, new_h), resample=Image.BICUBIC)
+
+            # 5. MinerU Inference
+            client = self._get_mineru_client()
+            
+            max_retries = 3
+            raw_result = None
+            
+            for attempt in range(max_retries):
+                try:
+                    # Pass the PIL object directly, no disk saving
+                    raw_result = client.two_step_extract(final_image)
+                    if raw_result:
+                        break
+                except Exception as e:
+                    if attempt == max_retries - 1:
+                        print(f"MinerU extraction failed: {e}")
+                    time.sleep(1)
+
+            # 6. Extract and Concatenate Content
+            extracted_texts = []
+            if raw_result:
+                for item in raw_result:
+                    # MinerU returns blocks with 'content'
+                    content = item.get('content', '').strip()
+                    if content:
+                        extracted_texts.append(content)
+                
+                # Join with newlines to separate distinct text blocks or formulas
+                return "\n".join(extracted_texts)
+            else:
+                return ""
+
+        except Exception as e:
+            print(f"Processing Error: {str(e)}")
+            return ""
+
+# Usage Example
+if __name__ == "__main__":
+    extractor = MinerUBboxExtractor()
+    
+    # 示例参数
+    img_path = "/mnt/shared-storage-user/mineru3-share/wangzhengren/PageElement/VisRAG/data/EVisRAG-Test-DocVQA/imgs/15.png" 
+    target_bbox = [
+        93,
+        165,
+        914,
+        218
+    ]
+    
+    # 直接获取字符串结果
+    content_str = extractor.extract_content_str(img_path, target_bbox)
+    
+    print("----- 识别结果 -----")
+    print(content_str)
+    print("-------------------")
