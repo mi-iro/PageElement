@@ -6,6 +6,9 @@ import mimetypes
 import pandas as pd
 from typing import List, Dict, Any, Optional, Union
 from openai import OpenAI
+from collections import defaultdict  # 新增
+from io import BytesIO               # 新增
+from PIL import Image                # 新增
 
 # 确保可以导入 src 下的模块
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../")))
@@ -13,9 +16,10 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../"
 from src.loaders.base_loader import BaseDataLoader, StandardSample, PageElement
 from src.agents.utils import MinerUBboxExtractor
 
-def local_image_to_data_url(path: str) -> str:
+def local_image_to_data_url(path: str, max_pixels: int = None) -> str:
     """
-    将本地图片转换为 Data URL (Base64)
+    将本地图片转换为 Data URL (Base64)，支持最大分辨率限制 (max_pixels)。
+    如果图片像素总数超过 max_pixels，将保持长宽比进行缩放。
     """
     if not path or not os.path.exists(path):
         return ""
@@ -25,8 +29,29 @@ def local_image_to_data_url(path: str) -> str:
         mime = "image/png"
 
     try:
-        with open(path, "rb") as f:
-            b64 = base64.b64encode(f.read()).decode("utf-8")
+        with Image.open(path) as img:
+            # 分辨率控制逻辑
+            if max_pixels:
+                w, h = img.size
+                if w * h > max_pixels:
+                    ratio = (max_pixels / (w * h)) ** 0.5
+                    new_w = int(w * ratio)
+                    new_h = int(h * ratio)
+                    # 使用 BICUBIC 进行高质量缩放
+                    img = img.resize((new_w, new_h), Image.Resampling.BICUBIC)
+            
+            # 保存到内存 buffer
+            buffer = BytesIO()
+            # 统一转为 RGB 处理 JPEG，或者保持原格式
+            save_format = "PNG"
+            if mime == "image/jpeg":
+                save_format = "JPEG"
+            elif mime == "image/webp":
+                save_format = "WEBP"
+                
+            img.save(buffer, format=save_format)
+            b64 = base64.b64encode(buffer.getvalue()).decode("utf-8")
+            
         return f"data:{mime};base64,{b64}"
     except Exception as e:
         print(f"Error encoding image {path}: {e}")
@@ -65,25 +90,14 @@ class RAGAgent:
         api_key: str, 
         model_name: str,
         top_k: int = 5,
-        cache_dir: str = "./cache_results_rag",  # 新增缓存目录参数
+        cache_dir: str = "./cache_results_rag",
         use_page: bool = False,
         use_crop: bool = True,
         use_ocr: bool = True,
         use_ocr_raw: bool = False,
+        max_page_pixels: int = 1024 * 1024,  # [新增] 默认限制约 100万像素 (如 1024x1024)
         **kwargs
     ):
-        """
-        :param loader: 数据集加载器 (FinRAGLoader, MMLongLoader 等)，用于执行 pipeline 检索。
-        :param base_url: LLM API 地址。
-        :param api_key: LLM API Key。
-        :param model_name: 模型名称。
-        :param top_k: 单次检索的证据数量。
-        :param cache_dir: 结果缓存目录。
-        :param use_page: 是否在 Context 中包含整页图像。
-        :param use_crop: 是否在 Context 中包含 BBox 截图。
-        :param use_ocr: 是否在 Context 中包含 OCR 文本。
-        :param use_ocr_raw: 是否使用 raw_content (from MinerUBboxExtractor) 替代 Agent 总结的 content。
-        """
         self.loader = loader
         self.client = OpenAI(base_url=base_url, api_key=api_key)
         self.model_name = model_name
@@ -94,6 +108,7 @@ class RAGAgent:
         self.use_crop = use_crop
         self.use_ocr = use_ocr
         self.use_ocr_raw = use_ocr_raw
+        self.max_page_pixels = max_page_pixels  # [新增] 保存参数
         
         if not os.path.exists(self.cache_dir):
             os.makedirs(self.cache_dir, exist_ok=True)
@@ -101,46 +116,71 @@ class RAGAgent:
     def build_context_message(self, elements: List[PageElement]) -> List[Dict[str, Any]]:
         """
         将检索到的 PageElement 列表转换为多模态 Context 消息。
-        根据 use_page, use_crop, use_ocr, use_ocr_raw 控制包含的内容。
+        优化内容：
+        1. 按页面分组 (Group by Page)。
+        2. 添加页面元信息 (Source Filename)。
+        3. 控制整页图像的最大分辨率。
         """
         content_list = []
-        content_list.append({"type": "text", "text": "Here is the retrieved context/evidence from the documents:\n"})
+        content_list.append({"type": "text", "text": "Here is the retrieved context/evidence from the documents, grouped by page:\n"})
         
-        for i, el in enumerate(elements):
-            content_list.append({"type": "text", "text": f"\n--- Evidence {i+1} ---\n"})
+        # --- 1. Group elements by page (corpus_path) ---
+        # 使用 pages_map 存储页面内容，page_order 保持检索到的页面出现顺序
+        pages_map = defaultdict(list)
+        page_order = []
+        
+        for el in elements:
+            if el.corpus_path not in pages_map:
+                page_order.append(el.corpus_path)
+            pages_map[el.corpus_path].append(el)
             
-            # 1. Page Image (整页图像)
+        # 实例化一次提取器，避免循环中重复开销
+        bbox_extractor = MinerUBboxExtractor() if self.use_ocr_raw else None
+        
+        # --- 2. Iterate through grouped pages ---
+        for p_idx, page_path in enumerate(page_order):
+            page_elements = pages_map[page_path]
+            file_name = os.path.basename(page_path)
+            
+            # 添加页面 Header 元信息
+            content_list.append({"type": "text", "text": f"\n=== Evidence Group {p_idx+1} (Source: {file_name}) ===\n"})
+            
+            # A. Page Image (整页图像 - 每页只放一次)
             if self.use_page:
-                page_path = el.corpus_path
                 if page_path and os.path.exists(page_path):
-                    img_url = local_image_to_data_url(page_path)
+                    # 使用 self.max_page_pixels 控制分辨率
+                    img_url = local_image_to_data_url(page_path, max_pixels=self.max_page_pixels)
                     if img_url:
-                        content_list.append({"type": "text", "text": "Page Image:\n"})
+                        content_list.append({"type": "text", "text": "Full Page Context:\n"})
                         content_list.append({"type": "image_url", "image_url": {"url": img_url}})
 
-            # 2. Crop Image (证据截图)
-            if self.use_crop:
-                # 只有当 crop_path 存在时才展示，不再回退到 corpus_path (因为 use_page 独立控制)
-                img_path = el.crop_path
-                if img_path and os.path.exists(img_path):
-                    img_url = local_image_to_data_url(img_path)
-                    if img_url:
-                        content_list.append({"type": "text", "text": "Region Crop:\n"})
-                        content_list.append({"type": "image_url", "image_url": {"url": img_url}})
-            
-            # 3. Text Content (OCR / Summary)
-            if self.use_ocr:
-                text_content = ""
-                bbox_extractor = MinerUBboxExtractor()
-                # 如果请求 raw OCR 且元素具有 raw_content 属性
-                if self.use_ocr_raw:
-                    el.raw_content = bbox_extractor.extract_content_str(el.corpus_path, el.bbox)
-                    text_content = el.raw_content
-                else:
-                    text_content = el.content
+            # B. Elements (Regions) in this page
+            for i, el in enumerate(page_elements):
+                content_list.append({"type": "text", "text": f"\n-- Key Region {i+1} on this Page --\n"})
                 
-                if text_content:
-                    content_list.append({"type": "text", "text": f"Text Content: {text_content}\n"})
+                # Crop Image (证据截图)
+                if self.use_crop:
+                    img_path = el.crop_path
+                    if img_path and os.path.exists(img_path):
+                        # 截图通常较小，一般不需要强缩放，除非显存非常紧张
+                        img_url = local_image_to_data_url(img_path)
+                        if img_url:
+                            content_list.append({"type": "text", "text": "Region Detail:\n"})
+                            content_list.append({"type": "image_url", "image_url": {"url": img_url}})
+                
+                # Text Content (OCR / Summary)
+                if self.use_ocr:
+                    text_content = ""
+                    if self.use_ocr_raw and bbox_extractor:
+                        # 实时提取 Raw OCR
+                        el.raw_content = bbox_extractor.extract_content_str(el.corpus_path, el.bbox)
+                        text_content = el.raw_content
+                    else:
+                        # 使用预存的 Summary/OCR
+                        text_content = el.content
+                    
+                    if text_content:
+                        content_list.append({"type": "text", "text": f"Text Content: {text_content}\n"})
         
         content_list.append({"type": "text", "text": "\n---------------------\n"})
         return content_list

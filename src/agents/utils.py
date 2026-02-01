@@ -463,7 +463,10 @@ class MinerUBboxExtractor:
             if raw_result:
                 for item in raw_result:
                     # MinerU returns blocks with 'content'
-                    content = item.get('content', '').strip()
+                    content = item.get('content', '')
+                    if content is None:
+                        content = ''
+                    content = content.strip()
                     if content:
                         extracted_texts.append(content)
                 

@@ -215,6 +215,7 @@ def main():
     print("\n⚡ Starting Processing Loop...")
     
     total_samples = len(loader.samples)
+    # loader.samples = [s for s in loader.samples if "FATF：2024年萨尔瓦多打击洗钱和恐怖主义融资的措施报告（英文版）_multipage_163-164.png-" in s.qid]
     
     if args.num_threads > 1:
         print(f"🔥 Parallel execution enabled with {args.num_threads} threads.")
