@@ -95,7 +95,9 @@ class RAGAgent:
         use_crop: bool = True,
         use_ocr: bool = True,
         use_ocr_raw: bool = False,
-        max_page_pixels: int = 1024 * 1024,  # [新增] 默认限制约 100万像素 (如 1024x1024)
+        max_page_pixels: int = 1024 * 1024,
+        trunc_thres: float = 0.0,  # [Added]
+        trunc_bbox: bool = False,   # [Added]
         **kwargs
     ):
         self.loader = loader
@@ -108,7 +110,9 @@ class RAGAgent:
         self.use_crop = use_crop
         self.use_ocr = use_ocr
         self.use_ocr_raw = use_ocr_raw
-        self.max_page_pixels = max_page_pixels  # [新增] 保存参数
+        self.max_page_pixels = max_page_pixels
+        self.trunc_thres = trunc_thres # [Saved]
+        self.trunc_bbox = trunc_bbox   # [Saved]
         
         if not os.path.exists(self.cache_dir):
             os.makedirs(self.cache_dir, exist_ok=True)
@@ -232,7 +236,9 @@ class RAGAgent:
             retrieved_elements = self.loader.pipeline(
                 query=sample.query, 
                 image_paths=image_inputs, 
-                top_k=self.top_k
+                top_k=self.top_k,
+                trunc_thres=self.trunc_thres,
+                trunc_bbox=self.trunc_bbox,
             )
             sample.extra_info['retrieved_elements'] = retrieved_elements
         except Exception as e:

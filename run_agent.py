@@ -73,6 +73,10 @@ def get_parser():
     parser.add_argument("--use_ocr", action="store_true", help="Include OCR text in context.")
     parser.add_argument("--use_ocr_raw", action="store_true", help="Use raw OCR content instead of Agent summary.")
 
+    # [Added] New parameters for truncation
+    parser.add_argument("--trunc_thres", type=float, default=None, help="Threshold score for truncation.")
+    parser.add_argument("--trunc_bbox", action="store_true", help="Enable bounding box based truncation.")
+
     return parser
 
 def parse_args_with_config():
@@ -115,7 +119,8 @@ def main():
     if args.agent_type == "standard":
         print(f"🔍 Top-K: {args.top_k}")
         print(f"🖼️  Context Controls: Page={args.use_page}, Crop={args.use_crop}, OCR={args.use_ocr}, RawOCR={args.use_ocr_raw}")
-    
+        print(f"✂️  Truncation: Thres={args.trunc_thres}, BBox={args.trunc_bbox}")
+
     print("🛠️ Initializing Tools and Extractor...")
     tool = ImageZoomOCRTool(
         work_dir=os.path.join(workspace_dir, "crops"),
@@ -194,6 +199,8 @@ def main():
             top_k=args.top_k,
             cache_dir=cache_dir,
             max_rounds=args.max_rounds,
+            trunc_thres=args.trunc_thres, # [Added]
+            trunc_bbox=args.trunc_bbox    # [Added]
         )
     elif args.agent_type == "standard":
         print(f"📜 Initializing RAGAgent (Standard, Top-K: {args.top_k})...")
@@ -208,6 +215,8 @@ def main():
             use_crop=args.use_crop,
             use_ocr=args.use_ocr,
             use_ocr_raw=args.use_ocr_raw,
+            trunc_thres=args.trunc_thres, # [Added]
+            trunc_bbox=args.trunc_bbox    # [Added]
         )
     else:
         raise ValueError(f"Unknown agent type: {args.agent_type}")
@@ -215,7 +224,6 @@ def main():
     print("\n⚡ Starting Processing Loop...")
     
     total_samples = len(loader.samples)
-    # loader.samples = [s for s in loader.samples if "FATF：2024年萨尔瓦多打击洗钱和恐怖主义融资的措施报告（英文版）_multipage_163-164.png-" in s.qid]
     
     if args.num_threads > 1:
         print(f"🔥 Parallel execution enabled with {args.num_threads} threads.")
@@ -251,8 +259,6 @@ def main():
                 json.dump(metrics, f, indent=2)
             print(f"✅ Evaluation complete. Metrics saved to {metrics_path}")
 
-            # ================== 修改开始 ==================
-            # 1. 准备错误分析目录
             error_analysis_dir = os.path.join(args.output_dir, "error_cases")
             os.makedirs(error_analysis_dir, exist_ok=True)
             
@@ -262,16 +268,12 @@ def main():
             count_errors = 0
             
             for sample in loader.samples:
-                # 获取 evaluate 阶段存入的 metrics 字典
                 sample_metrics = sample.extra_info.get('metrics', {})
                 
-                # A. 保存 model_eval 为错的样本
-                # model_eval: 1 为正确，0 为错误
                 if 'model_eval' in sample_metrics and sample_metrics['model_eval'] == 0:
                     try:
                         error_file = os.path.join(error_analysis_dir, f"{sample.qid}_error.json")
                         
-                        # 构造详细的错误分析数据
                         dump_data = {
                             "qid": sample.qid,
                             "query": sample.query,
@@ -292,8 +294,6 @@ def main():
                     except Exception as e:
                         print(f"Error saving error case for {sample.qid}: {e}")
 
-                # B. 将 page_recall 和 page_precision 等指标更新回缓存文件
-                # 只有当 metrics 中确实包含 page_recall 等信息时才更新
                 if agent and hasattr(agent, 'cache_dir'):
                     cache_file_path = os.path.join(agent.cache_dir, f"{sample.qid}.json")
                     if os.path.exists(cache_file_path):
@@ -301,12 +301,7 @@ def main():
                             with open(cache_file_path, 'r', encoding='utf-8') as f:
                                 cache_data = json.load(f)
                             
-                            # 更新数据
-                            # 1. 保存整个 metrics 字典
                             cache_data['metrics'] = sample_metrics
-                            
-                            # 2. 显式提取 page_recall / page_precision 到顶层或 metrics 层
-                            # (根据需求，这里存在 cache_data['metrics'] 里即可，或者您可以根据需要提到顶层)
                             cache_data['page_recall'] = sample_metrics.get('page_recall', 0.0)
                             cache_data['page_precision'] = sample_metrics.get('page_precision', 0.0)
                             cache_data['model_eval'] = sample_metrics.get('model_eval', 0)
@@ -319,7 +314,6 @@ def main():
 
             print(f"✅ Saved {count_errors} error cases to {error_analysis_dir}")
             print(f"✅ Updated {count_updated} cache files with evaluation metrics.")
-            # ================== 修改结束 ==================
 
         except Exception as e:
             print(f"❌ Evaluation failed: {e}")
