@@ -126,6 +126,9 @@ class ViDoSeekLoader(BaseDataLoader):
         self.samples = samples
         print(f"✅ Successfully loaded {len(self.samples)} samples from {self.jsonl_path}.")
 
+        # 建立索引 (扫描 imgs 目录)
+        self.build_page_vector_pool(batch_size=1)
+
     def _get_all_image_paths(self) -> List[str]:
         print(f"Scanning images in {self.corpus_root}...")
         image_files = []
@@ -562,9 +565,6 @@ if __name__ == "__main__":
     loader.llm_caller = create_llm_caller()
     
     loader.load_data()
-    
-    # 建立索引 (扫描 imgs 目录)
-    loader.build_page_vector_pool(batch_size=1)
     
     if len(loader.samples) > 0:
         test_sample = loader.samples[0]

@@ -12,7 +12,6 @@ from omegaconf import OmegaConf  # [New] 引入 OmegaConf
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../")))
 
-from src.agents.AgenticRAGAgent import AgenticRAGAgent
 from src.agents.RAGAgent import RAGAgent
 
 from src.agents.ElementExtractor import ElementExtractor
