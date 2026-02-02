@@ -26,6 +26,7 @@ defs:
     finrag_root:  "${defs.roots.mineru2}/jiayu/data/FinRAGBench-V"
     docvqa_root:  "${defs.roots.mineru3}/wangzhengren/PageElement/VisRAG/data/EVisRAG-Test-DocVQA"
     mmlong_root:  "${defs.roots.mineru3}/wangzhengren/PageElement/MMLongBench-Doc"
+    vidoseek_root: "${defs.roots.mineru3}/PageElement/VisRAG/data/EVisRAG-Test-ViDoSeek"
     mineru: "/root/checkpoints/MinerU2.5-2509-1.2B/"
 
   # --- 服务地址 ---
