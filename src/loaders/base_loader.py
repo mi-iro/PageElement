@@ -130,10 +130,22 @@ class BaseDataLoader(abc.ABC):
         根据查询检索页面元素。
         """
         raise NotImplementedError
-    
+
     def evaluate(self) -> Dict[str, float]:
         """
         执行评估
+        """
+        raise NotImplementedError
+
+    def evaluate_retrieval(self) -> Dict[str, float]:
+        """
+        执行检索侧评估
+        """
+        raise NotImplementedError
+    
+    def evaluate_generation(self) -> Dict[str, float]:
+        """
+        执行生成侧评估
         """
         raise NotImplementedError
         

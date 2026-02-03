@@ -1,3 +1,5 @@
+# src/agents/RAGAgent.py
+
 import os
 import sys
 import json
@@ -6,9 +8,9 @@ import mimetypes
 import pandas as pd
 from typing import List, Dict, Any, Optional, Union
 from openai import OpenAI
-from collections import defaultdict  # 新增
-from io import BytesIO               # 新增
-from PIL import Image                # 新增
+from collections import defaultdict
+from io import BytesIO
+from PIL import Image
 
 # 确保可以导入 src 下的模块
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../")))
@@ -75,12 +77,8 @@ The user will provide:
 
 class RAGAgent:
     """
-    Standard RAG Agent (Baseline).
-    执行标准的 "Retrieve-then-Generate" 流程：
-    1. 根据 Query 检索 Top-K 证据。
-    2. 将所有证据拼接 Prompt。
-    3. 调用 LLM 生成最终回答。
-    包含缓存机制，支持断点续跑。
+    Standard RAG Agent (Refactored).
+    支持独立的 Retrieve 和 Generate 方法。
     """
 
     def __init__(
@@ -96,8 +94,8 @@ class RAGAgent:
         use_ocr: bool = True,
         use_ocr_raw: bool = False,
         max_page_pixels: int = 1024 * 1024,
-        trunc_thres: float = 0.0,  # [Added]
-        trunc_bbox: bool = False,   # [Added]
+        trunc_thres: float = 0.0,
+        trunc_bbox: bool = False,
         **kwargs
     ):
         self.loader = loader
@@ -111,126 +109,17 @@ class RAGAgent:
         self.use_ocr = use_ocr
         self.use_ocr_raw = use_ocr_raw
         self.max_page_pixels = max_page_pixels
-        self.trunc_thres = trunc_thres # [Saved]
-        self.trunc_bbox = trunc_bbox   # [Saved]
+        self.trunc_thres = trunc_thres
+        self.trunc_bbox = trunc_bbox
         
         if not os.path.exists(self.cache_dir):
             os.makedirs(self.cache_dir, exist_ok=True)
 
-    def build_context_message(self, elements: List[PageElement]) -> List[Dict[str, Any]]:
+    def retrieve(self, sample: StandardSample) -> List[PageElement]:
         """
-        将检索到的 PageElement 列表转换为多模态 Context 消息。
-        优化内容：
-        1. 按页面分组 (Group by Page)。
-        2. 添加页面元信息 (Source Filename)。
-        3. 控制整页图像的最大分辨率。
+        独立检索步骤：执行检索并返回 PageElement 列表。
         """
-        content_list = []
-        content_list.append({"type": "text", "text": "Here is the retrieved context/evidence from the documents, grouped by page:\n"})
-        
-        # --- 1. Group elements by page (corpus_path) ---
-        # 使用 pages_map 存储页面内容，page_order 保持检索到的页面出现顺序
-        pages_map = defaultdict(list)
-        page_order = []
-        
-        for el in elements:
-            if el.corpus_path not in pages_map:
-                page_order.append(el.corpus_path)
-            pages_map[el.corpus_path].append(el)
-            
-        # 实例化一次提取器，避免循环中重复开销
-        bbox_extractor = MinerUBboxExtractor() if self.use_ocr_raw else None
-        
-        # --- 2. Iterate through grouped pages ---
-        for p_idx, page_path in enumerate(page_order):
-            page_elements = pages_map[page_path]
-            file_name = os.path.basename(page_path)
-            
-            # 添加页面 Header 元信息
-            content_list.append({"type": "text", "text": f"\n=== Evidence Group {p_idx+1} (Source: {file_name}) ===\n"})
-            
-            # A. Page Image (整页图像 - 每页只放一次)
-            if self.use_page:
-                if page_path and os.path.exists(page_path):
-                    # 使用 self.max_page_pixels 控制分辨率
-                    img_url = local_image_to_data_url(page_path, max_pixels=self.max_page_pixels)
-                    if img_url:
-                        content_list.append({"type": "text", "text": "Full Page Context:\n"})
-                        content_list.append({"type": "image_url", "image_url": {"url": img_url}})
-
-            # B. Elements (Regions) in this page
-            for i, el in enumerate(page_elements):
-                content_list.append({"type": "text", "text": f"\n-- Key Region {i+1} on this Page --\n"})
-                
-                # Crop Image (证据截图)
-                if self.use_crop:
-                    img_path = el.crop_path
-                    if img_path and os.path.exists(img_path):
-                        # 截图通常较小，一般不需要强缩放，除非显存非常紧张
-                        img_url = local_image_to_data_url(img_path)
-                        if img_url:
-                            content_list.append({"type": "text", "text": "Region Detail:\n"})
-                            content_list.append({"type": "image_url", "image_url": {"url": img_url}})
-                
-                # Text Content (OCR / Summary)
-                if self.use_ocr:
-                    text_content = ""
-                    if self.use_ocr_raw and bbox_extractor:
-                        # 实时提取 Raw OCR
-                        el.raw_content = bbox_extractor.extract_content_str(el.corpus_path, el.bbox)
-                        text_content = el.raw_content
-                    else:
-                        # 使用预存的 Summary/OCR
-                        text_content = el.content
-                    
-                    if text_content:
-                        content_list.append({"type": "text", "text": f"Text Content: {text_content}\n"})
-        
-        content_list.append({"type": "text", "text": "\n---------------------\n"})
-        return content_list
-
-    def process_sample(self, sample: StandardSample) -> StandardSample:
-        """
-        处理单个样本：Retrieve -> Generate
-        优先读取缓存。
-        """
-        if sample.extra_info is None:
-            sample.extra_info = {}
-
-        cache_file = os.path.join(self.cache_dir, f"{sample.qid}.json")
-
-        # --- 1. 尝试从缓存加载 ---
-        if os.path.exists(cache_file):
-            print(f"Loading cached result for Sample {sample.qid}...")
-            try:
-                with open(cache_file, 'r', encoding='utf-8') as f:
-                    cached_data = json.load(f)
-                
-                # 恢复核心字段
-                sample.extra_info['final_answer'] = cached_data.get('final_answer', "")
-                sample.extra_info['messages'] = cached_data.get('messages', [])
-                
-                if sample.extra_info['final_answer'] and "Error during" not in sample.extra_info['final_answer']:
-                    # 恢复 retrieved_elements 对象列表
-                    elements_dicts = cached_data.get('retrieved_elements', [])
-                    restored_elements = []
-                    for el_dict in elements_dicts:
-                        # 过滤掉非 PageElement 字段以防止报错
-                        valid_keys = PageElement.__annotations__.keys()
-                        filtered_dict = {k: v for k, v in el_dict.items() if k in valid_keys}
-                        
-                        el_obj = PageElement(**filtered_dict)
-                        restored_elements.append(el_obj)
-                    
-                    sample.extra_info['retrieved_elements'] = restored_elements
-                    return sample
-            except Exception as e:
-                print(f"Error loading cache for {sample.qid}, rerunning inference. Error: {e}")
-
-        # --- 2. 执行推理 (Retrival + Generation) ---
-        print(f"Processing Sample {sample.qid} with Standard RAG...")
-
-        # Step A: Retrieval
+        print(f"Retrieving for Sample {sample.qid}...")
         try:
             image_inputs = [sample.data_source] if sample.data_source else []
             retrieved_elements = self.loader.pipeline(
@@ -240,12 +129,16 @@ class RAGAgent:
                 trunc_thres=self.trunc_thres,
                 trunc_bbox=self.trunc_bbox,
             )
-            sample.extra_info['retrieved_elements'] = retrieved_elements
+            return retrieved_elements
         except Exception as e:
             print(f"Error during retrieval for {sample.qid}: {e}")
-            retrieved_elements = []
+            return []
 
-        # Step B: Generation
+    def generate(self, query: str, retrieved_elements: List[PageElement]) -> Dict[str, Any]:
+        """
+        独立生成步骤：根据 Query 和检索到的 Elements 生成回答。
+        返回包含 'final_answer' 和 'messages' 的字典。
+        """
         messages = [{"role": "system", "content": RAG_SYSTEM_PROMPT}]
         
         user_content = []
@@ -255,7 +148,7 @@ class RAGAgent:
         else:
             user_content.append({"type": "text", "text": "No relevant context found.\n"})
 
-        user_content.append({"type": "text", "text": f"Question: {sample.query}"})
+        user_content.append({"type": "text", "text": f"Question: {query}"})
         messages.append({"role": "user", "content": user_content})
 
         final_answer = ""
@@ -270,42 +163,84 @@ class RAGAgent:
             print(f"LLM API Error: {e}")
             final_answer = "Error during generation."
 
-        print(f"  [Standard RAG Answer]: {final_answer[:100]}...")
+        return {
+            "final_answer": final_answer,
+            "messages": messages[1:] # 不返回 system prompt
+        }
 
-        # 记录结果
-        sample.extra_info['final_answer'] = final_answer
-        sample.extra_info['messages'] = messages[1:] 
-
-        # --- 3. 写入缓存 ---
-        try:
-            # 序列化 retrieved_elements
-            elements_to_save = []
-            if 'retrieved_elements' in sample.extra_info:
-                for el in sample.extra_info['retrieved_elements']:
-                    if hasattr(el, 'to_dict'):
-                        el_d = el.to_dict()
-                        elements_to_save.append(el_d)
-                    elif isinstance(el, dict):
-                         elements_to_save.append(el)
-
-            cache_data = {
-                "qid": sample.qid,
-                "query": sample.query,
-                "gold_answer": sample.gold_answer,
-                "final_answer": final_answer,
-                "messages": sample.extra_info['messages'], # 注意：包含大量 base64 图片URL，文件可能会较大
-                "retrieved_elements": elements_to_save
-            }
-            
-            with open(cache_file, 'w', encoding='utf-8') as f:
-                json.dump(cache_data, f, ensure_ascii=False, indent=2)
-            print(f"Saved result for Sample {sample.qid} to cache.")
-            
-        except Exception as e:
-            print(f"Error saving cache for {sample.qid}: {e}")
+    def build_context_message(self, elements: List[PageElement]) -> List[Dict[str, Any]]:
+        """
+        保持原有的 Context 构建逻辑不变。
+        """
+        content_list = []
+        content_list.append({"type": "text", "text": "Here is the retrieved context/evidence from the documents, grouped by page:\n"})
         
-        return sample
+        pages_map = defaultdict(list)
+        page_order = []
+        
+        for el in elements:
+            if el.corpus_path not in pages_map:
+                page_order.append(el.corpus_path)
+            pages_map[el.corpus_path].append(el)
+            
+        bbox_extractor = MinerUBboxExtractor() if self.use_ocr_raw else None
+        
+        for p_idx, page_path in enumerate(page_order):
+            page_elements = pages_map[page_path]
+            file_name = os.path.basename(page_path)
+            content_list.append({"type": "text", "text": f"\n=== Evidence Group {p_idx+1} (Source: {file_name}) ===\n"})
+            
+            if self.use_page:
+                if page_path and os.path.exists(page_path):
+                    img_url = local_image_to_data_url(page_path, max_pixels=self.max_page_pixels)
+                    if img_url:
+                        content_list.append({"type": "text", "text": "Full Page Context:\n"})
+                        content_list.append({"type": "image_url", "image_url": {"url": img_url}})
 
+            for i, el in enumerate(page_elements):
+                content_list.append({"type": "text", "text": f"\n-- Key Region {i+1} on this Page --\n"})
+                
+                if self.use_crop:
+                    img_path = el.crop_path
+                    if img_path and os.path.exists(img_path):
+                        img_url = local_image_to_data_url(img_path)
+                        if img_url:
+                            content_list.append({"type": "text", "text": "Region Detail:\n"})
+                            content_list.append({"type": "image_url", "image_url": {"url": img_url}})
+                
+                if self.use_ocr:
+                    text_content = ""
+                    if self.use_ocr_raw and bbox_extractor:
+                        el.raw_content = bbox_extractor.extract_content_str(el.corpus_path, el.bbox)
+                        text_content = el.raw_content
+                    else:
+                        text_content = el.content
+                    
+                    if text_content:
+                        content_list.append({"type": "text", "text": f"Text Content: {text_content}\n"})
+        
+        content_list.append({"type": "text", "text": "\n---------------------\n"})
+        return content_list
+
+    def process_sample(self, sample: StandardSample) -> StandardSample:
+        """
+        兼容旧版的单次运行方法，依次调用 retrieve 和 generate。
+        """
+        if sample.extra_info is None:
+            sample.extra_info = {}
+
+        # 1. Retrieval
+        retrieved_elements = self.retrieve(sample)
+        sample.extra_info['retrieved_elements'] = retrieved_elements
+        
+        # 2. Generation
+        gen_result = self.generate(sample.query, retrieved_elements)
+        sample.extra_info['final_answer'] = gen_result['final_answer']
+        sample.extra_info['messages'] = gen_result['messages']
+
+        print(f"  [Standard RAG Answer]: {gen_result['final_answer'][:100]}...")
+        return sample
+    
     def save_results(self, excel_path: str = "rag_results_summary.xlsx", json_path: str = "rag_results_summary.json"):
         """
         汇总所有样本的处理结果并保存。
