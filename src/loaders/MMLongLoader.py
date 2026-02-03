@@ -407,6 +407,7 @@ class MMLongLoader(BaseDataLoader):
                 extra_info=extra_info
             )
             self.samples.append(sample)
+            self._pdf_to_images(main_doc_path)
             count += 1
             
         print(f"✅ Successfully loaded {count} MMLongBench samples.")
