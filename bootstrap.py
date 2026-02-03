@@ -63,7 +63,14 @@ def get_common_parser():
     # Limit
     parser.add_argument("--limit", type=int, default=None)
     parser.add_argument("--num_threads", type=int, default=1)
-
+    
+    # Staged
+    parser.add_argument("--evaluation_task", type=str, default="retrieval", choices=["retrieval", "generation", "all"], 
+                        help="Specify which metrics to evaluate.")
+    parser.add_argument("--generation_input", type=str, default=None, 
+                        help="Path to the results JSON file. If None, auto-selects based on task.")
+    parser.add_argument("--evaluation_input", type=str, default=None, 
+                        help="Path to the results JSON file. If None, auto-selects based on task.")
     return parser
 
 def parse_args():

@@ -17,7 +17,6 @@ import re
 try:
     from rouge_score import rouge_scorer
 except ImportError:
-    # 即使只用Model Eval，保留此检查以防依赖报错，但在本逻辑中不会使用它
     rouge_scorer = None
 
 # Adjust path to ensure we can import from src and scripts
@@ -43,31 +42,9 @@ def encode_image_to_base64(image_path):
 def extract_pdf_prefix(filename):
     """
     从图片文件名中提取PDF原始前缀，移除页码后缀。
-    
-    支持以下格式后缀：
-    1. _116.png-3  (标准单页)
-    2. _multipage_163-164.png-3 (多页合并)
-    
-    Args:
-        filename (str): 待处理的文件名字符串
-        
-    Returns:
-        str: 提取后的前缀。如果匹配失败，则返回原字符串。
     """
-    # 修改后的正则逻辑：
-    # ^       : 匹配开头
-    # (.*)    : 捕获组，匹配前缀（贪婪匹配）
-    # (?=     : 正向预查开始（遇到以下内容即停止捕获，但不消耗字符）
-    #   (?:   : 非捕获组，用于逻辑“或”
-    #     _\d+\.png   : 匹配标准格式（下划线+数字+.png），例如 _116.png
-    #     |           : 或者
-    #     _multipage  : 匹配多页标记（_multipage），例如 _multipage_163...
-    #   )
-    # )
     pattern = r"^(.*)(?=(?:_\d+\.png|_multipage))"
-    
     match = re.search(pattern, filename)
-    
     if match:
         return match.group(1)
     return filename
@@ -119,9 +96,7 @@ class FinRAGLoader(BaseDataLoader):
         return qrels_map
 
     def load_bbox_data(self) -> None:
-        """
-        加载 selected_200_with_bboxes.json 数据集。
-        """
+        """加载 selected_200_with_bboxes.json 数据集。"""
         json_file_path = os.path.join(self.citation_root, "selected_200_with_bboxes.json")
         img_root_dir = self.citation_root
 
@@ -138,7 +113,6 @@ class FinRAGLoader(BaseDataLoader):
             query_text = item.get("query", "")
             gold_answer = item.get("answer", "")
             
-            # 解析 Metadata
             extra_info = {
                 'category': item.get('category'),
                 'answer_type': item.get('answer_type'),
@@ -146,7 +120,6 @@ class FinRAGLoader(BaseDataLoader):
                 'from_pages': item.get('from_pages')
             }
 
-            # 解析 Ground Truth Pages 和 BBoxes
             gold_pages = []
             gold_elements = []
             
@@ -189,7 +162,6 @@ class FinRAGLoader(BaseDataLoader):
         print(f"✅ Successfully loaded {count} samples from selected_200_with_bboxes.json.")
 
     def load_data(self) -> None:
-        
         if self.lang == 'bbox':
             self.load_bbox_data()
             return
@@ -222,7 +194,6 @@ class FinRAGLoader(BaseDataLoader):
             count += 1
         print(f"✅ Successfully loaded {count} queries.")
     
-
     def _get_all_image_paths(self) -> List[str]:
         print(f"Scanning images in {self.corpus_root}...")
         image_files = []
@@ -249,67 +220,42 @@ class FinRAGLoader(BaseDataLoader):
         return embeddings.cpu().numpy().astype('float32')
 
     def _pdf_to_images(self, pdf_path: str) -> Dict[int, str]:
-        """
-        修改后逻辑：
-        根据 data_source (PDF文件名/前缀) 在 corpus_root 中查找已存在的页面图片。
-        图片命名格式预期为: {pdf_prefix}_{page_num}.png
-        例如: 1-s2.0-S0304405X24001697-main_17.png
-        """
         import glob
-        
-        # 1. 提取 PDF 前缀 (移除路径和 .pdf 后缀)
-        # pdf_path 可能是 "xxx.pdf" 也可能是单纯的 ID "xxx"
         pdf_prefix = os.path.basename(pdf_path)
         if pdf_prefix.lower().endswith('.pdf'):
             pdf_prefix = pdf_prefix[:-4]
 
         image_map = {}
-        
-        # 2. 检查 corpus 目录是否存在
         if not os.path.exists(self.corpus_root):
             print(f"Warning: Corpus root directory not found: {self.corpus_root}")
             return {}
 
-        # 3. 构建搜索模式: corpus_root/前缀_*.png
-        # 注意：这里加 "_" 是为了防止前缀部分匹配 (如 doc_1 匹配到 doc_10_1.png)
         search_pattern = os.path.join(self.corpus_root, f"{pdf_prefix}_*.png")
-        
-        # 4. 查找匹配的文件
         found_files = glob.glob(search_pattern)
         
         for file_path in found_files:
             filename = os.path.basename(file_path)
-            
-            # 5. 使用正则提取末尾的页码
-            # 匹配逻辑: 查找文件名末尾的 "_数字.png"
             match = re.search(r"_(\d+)\.png$", filename)
             if match:
                 try:
-                    # 提取页码并存入字典
                     page_num = int(match.group(1))
                     image_map[page_num] = file_path
                 except ValueError:
                     continue
         
         if not image_map:
-            # 调试信息：如果没有找到图片，可能是前缀不匹配或者目录不对
             print(f"Warning: No pre-processed images found for prefix '{pdf_prefix}' in {self.corpus_root}")
 
         return image_map
 
     def pipeline(self, query: str, image_paths: List[str] = None, top_k: int = 10, trunc_thres=0.0, trunc_bbox=False) -> List[PageElement]:
-        """
-        修改后的 Pipeline：直接处理 PDF 文档而非检索池
-        """
         if not image_paths:
             return []
 
-        # 1. 解析 PDF 或直接使用图片路径
         all_pages_to_process = []
         for path in image_paths:
             if not path.lower().endswith('.png'):
                 page_map = self._pdf_to_images(path)
-                # 将 PDF 每一页包装成待排序的 PageElement
                 for p_idx in sorted(page_map.keys()):
                     all_pages_to_process.append(PageElement(
                         bbox=[0, 0, 1000, 1000],
@@ -326,7 +272,6 @@ class FinRAGLoader(BaseDataLoader):
                     crop_path=path
                 ))
 
-        # 2. 如果页面较多，使用 Reranker 进行筛选
         if self.rerank_model and len(all_pages_to_process) > top_k:
             ranked_pages = self.rerank(query, all_pages_to_process)
             target_pages = ranked_pages[:top_k]
@@ -334,15 +279,12 @@ class FinRAGLoader(BaseDataLoader):
         else:
             target_pages = all_pages_to_process[:top_k]
 
-        # 3. 调用 ElementExtractor 进行细粒度提取
         elements = self.extract_elements_from_pages(target_pages, query)
         if trunc_bbox:
             elements = elements[:top_k]
         return elements
 
-
     def rerank(self, query: str, pages: List[PageElement]) -> List[PageElement]:
-        """Step 2: Reranking using Qwen3-VL-Reranker"""
         if not self.rerank_model or not pages:
             return pages
         print(f"Reranking {len(pages)} pages...")
@@ -367,7 +309,6 @@ class FinRAGLoader(BaseDataLoader):
         return sorted_pages
 
     def extract_elements_from_pages(self, pages: List[PageElement], query: str) -> List[PageElement]:
-        """Step 3: Downstream Element Extraction using ElementExtractor."""
         if self.extractor is None:
             print("Warning: ElementExtractor is not initialized, skipping fine-grained extraction.")
             return pages 
@@ -473,19 +414,12 @@ class FinRAGLoader(BaseDataLoader):
         return fine_grained_elements
 
     # --------------------------------------------------------------------------------
-    # Evaluation Methods (Modified to ONLY use Model Eval)
+    # Evaluation Methods
     # --------------------------------------------------------------------------------
     def _evaluate_answer_correctness(self, sample: StandardSample) -> Dict[str, Any]:
-        """
-        完善后的模型评估逻辑：
-        1. 解析 1-5 分制。
-        2. 将分数映射到 0-1 区间或保留原始分。
-        3. 增加鲁棒的正规表达式解析。
-        """
-        import re
+        """模型评估逻辑"""
         query_text = sample.query
         expected_answer = sample.gold_answer
-        # 兼容性处理：防止 NoneType 报错
         actual_answer = (sample.extra_info.get('final_answer') 
                         if sample.extra_info else None) or "error output"
 
@@ -495,7 +429,6 @@ class FinRAGLoader(BaseDataLoader):
         if not actual_answer or "error output" in actual_answer or not self.llm_caller:
             return {"model_eval": 0.0, "raw_score": 1, "eval_reason": "Invalid answer or missing LLM"}
 
-        # 保持您原有的高效 Prompt 模板
         evaluation_prompt = f"""You are an expert evaluation system for a question answering chatbot.
 
 You are given the following information:
@@ -543,30 +476,18 @@ User:
         try:
             response_text = self.llm_caller(evaluation_prompt)
             
-            # --- 解析逻辑优化 ---
-            
-            # 1. 提取分数 (匹配 SCORE: 5 或直接匹配行尾数字)
             score_match = re.search(r"SCORE:\s*(\d+)", response_text, re.IGNORECASE)
             if not score_match:
-                # 备选方案：尝试匹配最后一行出现的数字
                 score_match = re.search(r"(\d+)\s*$", response_text.strip())
                 
-            # 2. 提取原因
             reason_match = re.search(r"REASON:\s*(.*)", response_text, re.IGNORECASE)
             if reason_match:
                 reasoning = reason_match.group(1).strip()
 
             if score_match:
                 raw_score = int(score_match.group(1))
-                # 限制分数范围在 1-5
                 raw_score = max(1, min(5, raw_score))
-                
-                # 3. 映射逻辑：
-                # 如果您需要 binary (0/1) 结果：通常 4-5 分算对(1.0)，1-3 分算错(0.0)
                 model_score = 1.0 if raw_score >= 4 else 0.0
-                
-                # 如果您需要连续分值 (0, 0.25, 0.5, 0.75, 1.0)：
-                # model_score = (raw_score - 1) / 4.0
             else:
                 print(f"Warning: Could not parse score from response for QID {sample.qid}")
                 model_score = 0.0
@@ -576,15 +497,13 @@ User:
             model_score = 0.0
 
         return {
-            "model_eval": model_score,  # 用于计算平均准确率
+            "model_eval": model_score,
             "raw_score": raw_score if 'raw_score' in locals() else 1,
             "eval_reason": reasoning
         }
 
     def _check_images_entailment(self, elements: List[PageElement], answer: str) -> bool:
-        """
-        检查图片证据是否蕴含答案 (保持原逻辑，这本身就是一种 Model Eval)。
-        """
+        """检查图片证据是否蕴含答案"""
         if not elements or not self.llm_caller:
             return False
 
@@ -622,15 +541,8 @@ User:
                     return False
         return False
 
-    # --------------------------------------------------------------------------------
-    # 增加的评估辅助函数
-    # --------------------------------------------------------------------------------
-
     def _compute_element_metrics(self, pred_elements: List[PageElement], gold_elements: List[PageElement], threshold: float = 0.5) -> Dict[str, float]:
-        """
-        计算元素级别 (BBox) 的 Precision, Recall 和 F1。
-        匹配逻辑：必须在同一页面 (corpus_id 匹配) 且 IoU 超过阈值。
-        """
+        """计算元素级别 (BBox) 的 Precision, Recall 和 F1。"""
         if not gold_elements:
             return {}
         if not pred_elements:
@@ -639,28 +551,24 @@ User:
         def normalize_cid(cid):
             return os.path.basename(cid) if cid else ""
 
-        # 计算 Precision: 预测出的元素有多少是命中的
         hit_preds = 0
         for p in pred_elements:
             p_cid = normalize_cid(p.corpus_id)
             for g in gold_elements:
                 g_cid = normalize_cid(g.corpus_id)
-                # 跨页面匹配校验：只有在同一个页面上的框才计算 IoU
                 if p_cid == g_cid:
-                    # 使用 base_loader 中定义的 calc_iou_standard
                     if self.calc_iou_standard(p.bbox, g.bbox) > threshold:
                         hit_preds += 1
                         break
         precision = hit_preds / len(pred_elements) if pred_elements else 1.0
 
-        # 计算 Recall: 真值元素有多少被找回了
         hit_golds = 0
         for g in gold_elements:
             g_cid = normalize_cid(g.corpus_id)
             for p in pred_elements:
                 p_cid = normalize_cid(p.corpus_id)
                 if p_cid == g_cid:
-                    if calc_iou_standard(p.bbox, g.bbox) > threshold:
+                    if self.calc_iou_standard(p.bbox, g.bbox) > threshold:
                         hit_golds += 1
                         break
         recall = hit_golds / len(gold_elements) if gold_elements else 1.0
@@ -669,37 +577,30 @@ User:
         return {"element_precision": precision, "element_recall": recall, "element_f1": f1}
 
     # --------------------------------------------------------------------------------
-    # 更新后的 evaluate 方法
+    # Refactored Evaluation Interface
     # --------------------------------------------------------------------------------
 
-    def evaluate(self) -> Dict[str, float]:
+    def evaluate_retrieval(self) -> Dict[str, float]:
         """
-        执行评估：包含模型回答、页面检索指标和元素提取指标。
-        **修改点：将每个样本的具体指标存储到 extra_info['metrics'] 中。**
-        """        
+        Retrieval Task Evaluation:
+        - Page Recall / Precision
+        - Element (BBox) Recall / Precision / F1
+        """
         total_metrics = {
-            "model_eval": 0,
             "page_recall": 0, "page_precision": 0,
             "element_recall": 0, "element_precision": 0, "element_f1": 0
         }
-        counts = {
-            "total": 0, "page": 0, "element": 0
-        }
+        counts = {"page": 0, "element": 0}
 
-        print(f"Starting Evaluation on {len(self.samples)} samples...")
-        
-        for sample in tqdm(self.samples, desc="Evaluating"):
+        print(f"Starting Retrieval Evaluation on {len(self.samples)} samples...")
+
+        for sample in tqdm(self.samples, desc="Evaluating Retrieval"):
             if sample.extra_info is None:
                 sample.extra_info = {}
             
-            # --- 初始化单样本指标字典 ---
-            sample_metrics = {}
-
-            # 1. 模型答案准确性 (LLM Judge)
-            corr_metrics = self._evaluate_answer_correctness(sample)
-            total_metrics['model_eval'] += corr_metrics['model_eval']
-            sample_metrics.update(corr_metrics) # Store: model_eval
-            counts['total'] += 1
+            # 使用 .get 避免初始化 dict 覆盖
+            current_metrics = sample.extra_info.get('metrics', {})
+            retrieval_sample_metrics = {}
 
             # 获取预测的元素列表
             retrieved_elements = sample.extra_info.get('retrieved_elements', [])
@@ -712,34 +613,30 @@ User:
                 elif isinstance(el, PageElement):
                      elements_obj.append(el)
 
-            # 2. 页面指标计算 (Page Precision/Recall)
+            # 1. 页面指标计算
             target_gold_pages = sample.gold_pages if sample.gold_pages else sample.extra_info.get('from_pages', [])
             if target_gold_pages:
                 page_res = self._compute_page_metrics(elements_obj, target_gold_pages)
                 total_metrics['page_recall'] += page_res['recall']
                 total_metrics['page_precision'] += page_res['precision']
-                # Store: page_recall, page_precision
-                sample_metrics.update({"page_recall": page_res['recall'], "page_precision": page_res['precision']})
+                retrieval_sample_metrics.update({"page_recall": page_res['recall'], "page_precision": page_res['precision']})
                 counts['page'] += 1
 
-            # 3. 元素指标计算 (BBox Precision/Recall/F1)
+            # 2. 元素指标计算
             if sample.gold_elements:
                 elem_res = self._compute_element_metrics(elements_obj, sample.gold_elements)
                 if elem_res:
                     total_metrics['element_recall'] += elem_res['element_recall']
                     total_metrics['element_precision'] += elem_res['element_precision']
                     total_metrics['element_f1'] += elem_res['element_f1']
-                    # Store: element_recall, element_precision, element_f1
-                    sample_metrics.update(elem_res)
+                    retrieval_sample_metrics.update(elem_res)
                     counts['element'] += 1
 
-            # --- 将计算好的指标存入 extra_info ---
-            sample.extra_info['metrics'] = sample_metrics
+            # 更新 metrics 而不是覆盖
+            current_metrics.update(retrieval_sample_metrics)
+            sample.extra_info['metrics'] = current_metrics
 
-        # 计算平均分
         avg_results = {}
-        if counts['total'] > 0:
-            avg_results['avg_model_eval'] = total_metrics['model_eval'] / counts['total']
         if counts['page'] > 0:
             avg_results['avg_page_recall'] = total_metrics['page_recall'] / counts['page']
             avg_results['avg_page_precision'] = total_metrics['page_precision'] / counts['page']
@@ -747,9 +644,61 @@ User:
             avg_results['avg_element_recall'] = total_metrics['element_recall'] / counts['element']
             avg_results['avg_element_precision'] = total_metrics['element_precision'] / counts['element']
             avg_results['avg_element_f1'] = total_metrics['element_f1'] / counts['element']
-
-        print(f"Evaluation Results: {avg_results}")
+        
         return avg_results
+
+    def evaluate_generation(self) -> Dict[str, float]:
+        """
+        Generation Task Evaluation:
+        - Model Evaluation (LLM Judge)
+        """
+        total_metrics = {"model_eval": 0}
+        counts = {"total": 0}
+
+        print(f"Starting Generation Evaluation on {len(self.samples)} samples...")
+
+        for sample in tqdm(self.samples, desc="Evaluating Generation"):
+            if sample.extra_info is None:
+                sample.extra_info = {}
+
+            current_metrics = sample.extra_info.get('metrics', {})
+            gen_sample_metrics = {}
+
+            # 模型答案准确性
+            corr_metrics = self._evaluate_answer_correctness(sample)
+            total_metrics['model_eval'] += corr_metrics['model_eval']
+            gen_sample_metrics.update(corr_metrics)
+            counts['total'] += 1
+
+            # 更新 metrics
+            current_metrics.update(gen_sample_metrics)
+            sample.extra_info['metrics'] = current_metrics
+
+        avg_results = {}
+        if counts['total'] > 0:
+            avg_results['avg_model_eval'] = total_metrics['model_eval'] / counts['total']
+        
+        return avg_results
+
+    def evaluate(self) -> Dict[str, float]:
+        """
+        Legacy wrapper for full evaluation.
+        Calls both retrieval and generation evaluations and merges results.
+        """
+        print("Running Full Evaluation Pipeline...")
+        
+        results = {}
+        
+        # 1. Run Retrieval Evaluation
+        r_metrics = self.evaluate_retrieval()
+        results.update(r_metrics)
+        
+        # 2. Run Generation Evaluation
+        g_metrics = self.evaluate_generation()
+        results.update(g_metrics)
+        
+        print(f"Final Combined Results: {results}")
+        return results
 
 if __name__ == "__main__":
     # 配置路径
@@ -791,7 +740,14 @@ if __name__ == "__main__":
         
         # 运行 pipeline 并保存结果到 extra_info
         results = loader.pipeline(test_sample.query, image_paths=[test_sample.data_source], top_k=10) 
-        test_sample.extra_info['final_answer'] = "Generated Answer Here..." # 模拟生成答案
+        test_sample.extra_info['final_answer'] = "Generated Answer Here..." 
         test_sample.extra_info['retrieved_elements'] = results
         
+        # 仅调用新接口测试
+        print("\n--- Testing Split Interfaces ---")
+        loader.evaluate_retrieval()
+        loader.evaluate_generation()
+        
+        # 测试 Legacy 接口
+        print("\n--- Testing Legacy Interface ---")
         loader.evaluate()

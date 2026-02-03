@@ -14,7 +14,7 @@ def main():
     agent, _ = initialize_components(args, init_retriever=False, init_generator=True)
     
     # 读取检索阶段的结果
-    retrieval_file = os.path.join(args.output_dir, "retrieval_results.json")
+    retrieval_file = os.path.join(args.output_dir, "retrieval_results.json" if args.generation_input is None else args.generation_input)
     if not os.path.exists(retrieval_file):
         print(f"❌ Error: Retrieval file not found at {retrieval_file}. Run run_retrieval.py first.")
         return
