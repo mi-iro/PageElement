@@ -81,7 +81,7 @@ def main():
         if has_answers:
             try:
                 print("\n--- Generation Metrics ---")
-                g_metrics = loader.evaluate_generation()
+                g_metrics = loader.evaluate_generation(num_threads=args.num_threads)
                 print(json.dumps(g_metrics, indent=2))
                 final_metrics.update(g_metrics)
             except Exception as e:

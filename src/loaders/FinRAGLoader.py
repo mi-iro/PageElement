@@ -11,7 +11,7 @@ from tqdm import tqdm
 from typing import List, Dict, Any, Optional
 from PIL import Image
 import uuid
-import re
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
 # 引入评估所需的库
 try:
@@ -647,7 +647,7 @@ User:
         
         return avg_results
 
-    def evaluate_generation(self) -> Dict[str, float]:
+    def evaluate_generation(self, num_threads: int = 8) -> Dict[str, float]:
         """
         Generation Task Evaluation:
         - Model Evaluation (LLM Judge)
@@ -655,9 +655,10 @@ User:
         total_metrics = {"model_eval": 0}
         counts = {"total": 0}
 
-        print(f"Starting Generation Evaluation on {len(self.samples)} samples...")
-
-        for sample in tqdm(self.samples, desc="Evaluating Generation"):
+        print(f"Starting Generation Evaluation on {len(self.samples)} samples with {num_threads} workers...")
+        
+        def process_single_sample(sample):
+            """内部辅助函数，用于处理单个样本的评估"""
             if sample.extra_info is None:
                 sample.extra_info = {}
 
@@ -666,13 +667,34 @@ User:
 
             # 模型答案准确性
             corr_metrics = self._evaluate_answer_correctness(sample)
-            total_metrics['model_eval'] += corr_metrics['model_eval']
+            
+            # 返回需要累加的分数
+            score = corr_metrics['model_eval']
+            
             gen_sample_metrics.update(corr_metrics)
-            counts['total'] += 1
-
-            # 更新 metrics
             current_metrics.update(gen_sample_metrics)
             sample.extra_info['metrics'] = current_metrics
+            
+            return score
+
+        if num_threads > 1:
+            # 多线程模式
+            with ThreadPoolExecutor(max_workers=num_threads) as executor:
+                future_to_sample = {executor.submit(process_single_sample, sample): sample for sample in self.samples}
+                
+                for future in tqdm(as_completed(future_to_sample), total=len(self.samples), desc="Evaluating Generation"):
+                    try:
+                        score = future.result()
+                        total_metrics['model_eval'] += score
+                        counts['total'] += 1
+                    except Exception as e:
+                        print(f"Error processing sample in thread: {e}")
+        else:
+            # 单线程模式 (保持原有逻辑)
+            for sample in tqdm(self.samples, desc="Evaluating Generation"):
+                score = process_single_sample(sample)
+                total_metrics['model_eval'] += score
+                counts['total'] += 1
 
         avg_results = {}
         if counts['total'] > 0:
