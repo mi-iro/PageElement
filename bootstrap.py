@@ -5,6 +5,7 @@ import os
 import sys
 import torch
 import yaml
+import datetime
 from omegaconf import OmegaConf
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../")))
@@ -60,9 +61,9 @@ def get_common_parser():
     parser.add_argument("--use_ocr", action="store_true")
     parser.add_argument("--use_ocr_raw", action="store_true")
     
-    # Limit
+    # Limit & Threading
     parser.add_argument("--limit", type=int, default=None)
-    parser.add_argument("--num_threads", type=int, default=1)
+    parser.add_argument("--num_threads", type=int, default=1, help="Number of threads for parallel processing.")
     
     # Staged
     parser.add_argument("--evaluation_task", type=str, default="retrieval", choices=["retrieval", "generation", "all"], 
@@ -83,8 +84,29 @@ def parse_args():
             parser.set_defaults(**config_data)
     args = parser.parse_args()
     
-    os.makedirs(args.output_dir, exist_ok=True)
+    if args.output_dir:
+        os.makedirs(args.output_dir, exist_ok=True)
     return args
+
+def save_run_config(args, stage_name="run"):
+    """
+    保存当前运行的配置到 output_dir，文件名包含时间戳。
+    """
+    if not args.output_dir:
+        return
+        
+    timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+    config_filename = f"config_{stage_name}_{timestamp}.yaml"
+    config_path = os.path.join(args.output_dir, config_filename)
+    
+    try:
+        # 将 args 转换为字典并保存
+        config_dict = vars(args)
+        with open(config_path, 'w', encoding='utf-8') as f:
+            yaml.dump(config_dict, f, allow_unicode=True, default_flow_style=False)
+        print(f"📝 Configuration saved to {config_path}")
+    except Exception as e:
+        print(f"⚠️ Failed to save configuration: {e}")
 
 def initialize_components(args, init_retriever=True, init_generator=True):
     """
@@ -123,7 +145,7 @@ def initialize_components(args, init_retriever=True, init_generator=True):
         loader = DocVQALoader(data_root=args.data_root, rerank_model=reranker, extractor=extractor)
         loader.load_data()
     elif args.benchmark == "vidoseek":
-        # Note: ViDoSeek needs embedder too, adding simplified handling here
+        # Note: ViDoSeek needs embedder too
         embedder = Qwen3VLEmbedder(model_name_or_path=args.embedding_model, torch_dtype=torch.float16) if init_retriever else None
         loader = ViDoSeekLoader(data_root=args.data_root, embedding_model=embedder, rerank_model=reranker, extractor=extractor)
         loader.load_data()
@@ -138,7 +160,7 @@ def initialize_components(args, init_retriever=True, init_generator=True):
         api_key=args.api_key,
         model_name=args.model_name,
         top_k=args.top_k,
-        cache_dir=os.path.join(args.output_dir, "cache"),
+        cache_dir=os.path.join(args.output_dir, "cache_agent"),
         use_page=args.use_page,
         use_crop=args.use_crop,
         use_ocr=args.use_ocr,

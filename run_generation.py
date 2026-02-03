@@ -1,16 +1,66 @@
 # run_generation.py
 import json
 import os
+import time
 from tqdm import tqdm
-from bootstrap import parse_args, initialize_components
+from concurrent.futures import ThreadPoolExecutor, as_completed
+from bootstrap import parse_args, initialize_components, save_run_config
 from src.loaders.base_loader import PageElement
+
+def process_single_sample_generation(item, agent, cache_dir):
+    """
+    单个样本的生成处理函数，支持缓存读取
+    """
+    qid = str(item['qid'])
+    query = item['query']
+    
+    # 处理特殊字符
+    safe_qid = "".join([c if c.isalnum() else "_" for c in qid])
+    cache_path = os.path.join(cache_dir, f"{safe_qid}.json")
+
+    # 1. Check Cache
+    if os.path.exists(cache_path):
+        try:
+            with open(cache_path, 'r', encoding='utf-8') as f:
+                return json.load(f)
+        except Exception:
+            pass
+
+    # 2. Run Generation
+    # 反序列化 PageElement
+    retrieved_elements_data = item.get('retrieved_elements', [])
+    retrieved_elements = []
+    for el_dict in retrieved_elements_data:
+        valid_keys = PageElement.__annotations__.keys()
+        filtered_dict = {k: v for k, v in el_dict.items() if k in valid_keys}
+        retrieved_elements.append(PageElement(**filtered_dict))
+    
+    try:
+        gen_output = agent.generate(query, retrieved_elements)
+        
+        # 更新结果
+        item['model_answer'] = gen_output['final_answer']
+        item['messages'] = gen_output['messages']
+    except Exception as e:
+        print(f"Error generating for {qid}: {e}")
+        item['model_answer'] = "Error"
+        item['messages'] = []
+
+    # 3. Save Cache
+    try:
+        with open(cache_path, 'w', encoding='utf-8') as f:
+            json.dump(item, f, ensure_ascii=False, indent=2)
+    except Exception as e:
+        print(f"Error saving cache for {qid}: {e}")
+
+    return item
 
 def main():
     args = parse_args()
-    print(f"🚀 Starting Generation Stage for {args.benchmark}...")
+    save_run_config(args, "generation")
+    print(f"🚀 Starting Generation Stage for {args.benchmark} (Threads: {args.num_threads})...")
     
-    # 这一步其实不需要加载 heavy 的 Reranker 或 Loader 数据，但为了复用 Agent 初始化逻辑，我们简单调用
-    # 实际上可以将 init_retriever=False 从而跳过加载 Reranker 模型
+    # 这一步不需要 Retriever
     agent, _ = initialize_components(args, init_retriever=False, init_generator=True)
     
     # 读取检索阶段的结果
@@ -22,31 +72,40 @@ def main():
     with open(retrieval_file, 'r', encoding='utf-8') as f:
         data_items = json.load(f)
     
+    # 准备缓存目录
+    cache_dir = os.path.join(args.output_dir, "cache_generation_results")
+    os.makedirs(cache_dir, exist_ok=True)
+    print(f"📂 Cache directory: {cache_dir}")
+
     generation_results = []
     
+    # 限制处理数量 (Debug 用)
+    if args.limit and args.limit > 0:
+        data_items = data_items[:args.limit]
+
     print(f"Generating answers for {len(data_items)} samples...")
-    for item in tqdm(data_items, desc="Generating"):
-        qid = item['qid']
-        query = item['query']
-        
-        # 反序列化 PageElement
-        retrieved_elements_data = item.get('retrieved_elements', [])
-        retrieved_elements = []
-        for el_dict in retrieved_elements_data:
-            # 过滤掉不属于 PageElement 的字段 (防止报错)
-            valid_keys = PageElement.__annotations__.keys()
-            filtered_dict = {k: v for k, v in el_dict.items() if k in valid_keys}
-            retrieved_elements.append(PageElement(**filtered_dict))
-        
-        # 调用 RAGAgent 的 generate 方法
-        gen_output = agent.generate(query, retrieved_elements)
-        
-        # 更新结果
-        item['model_answer'] = gen_output['final_answer']
-        item['messages'] = gen_output['messages'] # 包含图片 Base64，文件可能较大
-        
-        generation_results.append(item)
     
+    # 使用线程池
+    with ThreadPoolExecutor(max_workers=args.num_threads) as executor:
+        future_to_qid = {
+            executor.submit(process_single_sample_generation, item, agent, cache_dir): item['qid']
+            for item in data_items
+        }
+        
+        for future in tqdm(as_completed(future_to_qid), total=len(data_items), desc="Generating"):
+            try:
+                result = future.result()
+                if result:
+                    generation_results.append(result)
+            except Exception as e:
+                print(f"Thread exception: {e}")
+
+    # 排序
+    try:
+        generation_results.sort(key=lambda x: int(x['qid']) if str(x['qid']).isdigit() else str(x['qid']))
+    except:
+        pass
+
     # 保存最终结果
     output_file = os.path.join(args.output_dir, "generation_results.json")
     with open(output_file, 'w', encoding='utf-8') as f:
