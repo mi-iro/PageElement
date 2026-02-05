@@ -234,7 +234,7 @@ class MMLongLoader(BaseDataLoader):
     用于加载 MMLongBench-Doc 中的 DocVQA 任务数据，并支持基于 LLM 的评估流程。
     """
     
-    def __init__(self, data_root: str, output_dir: str = "./", extractor: Optional[ElementExtractor] = None, reranker: Optional[Qwen3VLReranker] = None, judger: Optional[ElementExtractor] = None):
+    def __init__(self, data_root: str, output_dir: str = "./", reranker: Optional[Qwen3VLReranker] = None, extractor: Optional[ElementExtractor] = None, judger: Optional[ElementExtractor] = None):
         super().__init__(data_root)
         self.extractor = extractor
         self.reranker = reranker # 取消单例，通过初始化注入对象
@@ -531,10 +531,6 @@ class MMLongLoader(BaseDataLoader):
             return []
 
     def pipeline(self, query: str, image_paths: List[str] = None, top_k: int = 10, trunc_thres=0.0, trunc_bbox=False) -> List[PageElement]:
-        if self.extractor is None:
-            print("Error: ElementExtractor is not initialized in MMLongLoader.")
-            return []
-
         if not image_paths:
             return []
 
@@ -573,6 +569,9 @@ class MMLongLoader(BaseDataLoader):
 
         workspace_dir = os.path.abspath(os.path.join(self.output_dir, "workspace", "crops"))
         os.makedirs(workspace_dir, exist_ok=True)
+
+        if self.extractor is None:
+            return target_pages
 
         extracted_elements = []
 

@@ -355,9 +355,8 @@ class FinRAGLoader(BaseDataLoader):
             return []
 
     def extract_elements_from_pages(self, pages: List[PageElement], query: str) -> List[PageElement]:
-        if self.judger is None or self.extractor is None:
-            print("Warning: ElementExtractor is not initialized, skipping fine-grained extraction.")
-            return pages 
+        if self.extractor is None:
+            return pages
 
         workspace_dir = os.path.abspath(os.path.join(self.output_dir, "workspace", "crops"))
         os.makedirs(workspace_dir, exist_ok=True)

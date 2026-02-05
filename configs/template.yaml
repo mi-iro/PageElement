@@ -8,11 +8,14 @@ defs:
   secrets:
     gen_key: "sk-6TGzZJkJ5HfZKwnrS1A1pMb1lH5D7EDfSVC6USq24aN2JaaR"
     ext_key: "sk-123456"
+    jdg_key: "sk-123456"
 
   # --- 模型标识 ---
   models:
     gen: "Qwen2.5-VL-72B-Instruct"
-    ext: "MinerU-Agent-CK800"
+    # ext: "MinerU-Agent-CK800"
+    ext: null
+    jdg: null
 
   # --- 路径前缀 (拼接演示) ---
   roots:
@@ -25,16 +28,17 @@ defs:
     qwen_root:    "${defs.roots.mineru3}/wangzhengren/JIT-RAG/assets/Qwen"
     finrag_root:  "${defs.roots.mineru2}/jiayu/data/FinRAGBench-V"
     mmlong_root:  "${defs.roots.mineru3}/wangzhengren/PageElement/data/MMLongBench-Doc"
-    docvqa_root:  "${defs.roots.mineru3}/wangzhengren/PageElement/data/VisRAG/data/EVisRAG-Test-DocVQA"
     vidoseek_root: "${defs.roots.mineru3}/wangzhengren/PageElement/data/VisRAG/data/EVisRAG-Test-ViDoSeek"
+    docvqa_root:  "${defs.roots.mineru3}/wangzhengren/PageElement/data/VisRAG/data/EVisRAG-Test-DocVQA"
     mineru: "/root/checkpoints/MinerU2.5-2509-1.2B/"
 
   # --- 服务地址 ---
   urls:
-    mineru:  "http://10.102.98.181:8000/"
-    rerank:  "http://localhost:8000/"
-    extract: "http://localhost:8001/v1"
-    generate:     "http://localhost:8002/v1"
+    mineru:   "http://10.102.98.181:8000/"
+    rerank:   "http://localhost:8000/"
+    extract:  "http://localhost:8001/v1"
+    generate: "http://localhost:8002/v1"
+    judge:    "http://localhost:8003/v1"
 
 # ==============================================================================
 # 2. 实际配置区 (ACTUAL CONFIGURATION)
@@ -79,5 +83,10 @@ reranker_api_key:  EMPTY
 extractor_model_name: "${defs.models.ext}"
 extractor_base_url:   "${defs.urls.extract}"
 extractor_api_key:    "${defs.secrets.ext_key}"
+
 mineru_model_path:    "${defs.paths.mineru}"
 mineru_server_url:    "${defs.urls.mineru}"
+
+judger_model_name: "${defs.models.jdg}"
+judger_base_url:   "${defs.urls.judge}"
+judger_api_key:    "${defs.secrets.jdg_key}"

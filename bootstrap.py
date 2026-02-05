@@ -51,12 +51,14 @@ def get_common_parser():
     # Extractor Params
     parser.add_argument("--mineru_server_url", type=str, default="http://10.102.98.181:8000/")
     parser.add_argument("--mineru_model_path", type=str, default="/root/checkpoints/MinerU2.5-2509-1.2B/")
-    parser.add_argument("--extractor_model_name", type=str, default="MinerU-Agent-CK300")
-    parser.add_argument("--extractor_base_url", type=str, default="http://localhost:8001/v1")
-    parser.add_argument("--extractor_api_key", type=str, default="sk-123456")
+    
     parser.add_argument("--judger_model_name", type=str, default="")
     parser.add_argument("--judger_base_url", type=str, default="")
     parser.add_argument("--judger_api_key", type=str, default="")
+    
+    parser.add_argument("--extractor_model_name", type=str, default="MinerU-Agent-CK300")
+    parser.add_argument("--extractor_base_url", type=str, default="http://localhost:8001/v1")
+    parser.add_argument("--extractor_api_key", type=str, default="sk-123456")
 
     # Generation Context Params
     parser.add_argument("--use_page", action="store_true")
@@ -132,12 +134,15 @@ def initialize_components(args, init_retriever=True, init_generator=True):
     else:
         judger = None
 
-    extractor = ElementExtractor(
-        base_url=args.extractor_base_url,
-        api_key=args.extractor_api_key,
-        model_name=args.extractor_model_name,
-        tool=tool
-    )
+    if args.extractor_base_url and args.extractor_api_key and args.extractor_model_name:
+        extractor = ElementExtractor(
+            base_url=args.extractor_base_url,
+            api_key=args.extractor_api_key,
+            model_name=args.extractor_model_name,
+            tool=tool
+        )
+    else:
+        extractor = None
 
     # 2. Reranker
     reranker = None
@@ -150,19 +155,20 @@ def initialize_components(args, init_retriever=True, init_generator=True):
     # 3. Loader
     loader = None
     if args.benchmark == "mmlong":
-        loader = MMLongLoader(data_root=args.data_root, output_dir=args.output_dir, extractor=extractor, reranker=reranker)
+        loader = MMLongLoader(data_root=args.data_root, output_dir=args.output_dir, reranker=reranker, extractor=extractor, judger=judger)
         loader.load_data()
     elif args.benchmark == "finrag":
-        loader = FinRAGLoader(data_root=args.data_root, output_dir=args.output_dir, lang=args.finrag_lang, rerank_model=reranker, extractor=extractor, judger=judger, embedding_model=None)
-        loader.load_data()
-    elif args.benchmark == "docvqa":
-        loader = DocVQALoader(data_root=args.data_root, rerank_model=reranker, extractor=extractor)
+        loader = FinRAGLoader(data_root=args.data_root, output_dir=args.output_dir, lang=args.finrag_lang, embedding_model=None, rerank_model=reranker, extractor=extractor, judger=judger)
         loader.load_data()
     elif args.benchmark == "vidoseek":
-        # Note: ViDoSeek needs embedder too
         embedder = Qwen3VLEmbedder(model_name_or_path=args.embedding_model, torch_dtype=torch.float16) if init_retriever else None
-        loader = ViDoSeekLoader(data_root=args.data_root, embedding_model=embedder, rerank_model=reranker, extractor=extractor)
+        loader = ViDoSeekLoader(data_root=args.data_root, output_dir=args.output_dir, embedding_model=embedder, rerank_model=reranker, extractor=extractor, judger=judger)
         loader.load_data()
+    else:
+        raise NotImplementedError
+    # elif args.benchmark == "docvqa":
+    #     loader = DocVQALoader(data_root=args.data_root, rerank_model=reranker, extractor=extractor)
+    #     loader.load_data()
     
     if args.limit and args.limit > 0:
         loader.samples = loader.samples[:args.limit]
