@@ -1,0 +1,3250 @@
+[
+    {
+        "id": "finragbench_pos_0",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n根据国电电力发展股份有限公司2007年6月30日母公司资产负债表数据，计算总资产与所有者权益总计之间的比例关系，此结果是什么？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"比例约为1.70\", \"bbox\": [118, 147, 893, 190]}, {\"evidence\": \"比例约为1.70\", \"bbox\": [114, 743, 886, 806]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/11463b6562c6ba2afde67a29bca314452ea9a2e0_125.png-3/11463b6562c6ba2afde67a29bca314452ea9a2e0_125.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_1",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n依据国电电力发展股份有限公司公开增发A股招股意向书，在2004年12月31日至2007年6月30日期间，公司总负债金额的总增长率是多少？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"77.40%。\", \"bbox\": [74, 431, 932, 576]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/11463b6562c6ba2afde67a29bca314452ea9a2e0_143.png-3/11463b6562c6ba2afde67a29bca314452ea9a2e0_143.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_2",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n根据东方财富财经晚报，在2024年12月25日市场表现中，哪个指数在收盘时表现最为积极？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"科创50指数在收盘时表现最为积极，涨幅达到0.33%。\", \"bbox\": [105, 410, 613, 680]}, {\"evidence\": \"科创50指数在收盘时表现最为积极，涨幅达到0.33%。\", \"bbox\": [76, 212, 605, 242]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/12月25日东方财富财经晚报（附新闻联播） _ 东方财富网_1.png-2/12月25日东方财富财经晚报（附新闻联播） _ 东方财富网_1.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_3",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n有关2024年11月A00级轿车、A/B/C级SUV的批发销售情况，在A00级新车、A/B/C级SUV中，哪个车型的环比增长率最高？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"A00级新车\", \"bbox\": [52, 404, 958, 613]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/12月需求创新高2024年智驾迎拐点比亚迪发力_15.png-2/12月需求创新高2024年智驾迎拐点比亚迪发力_15.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_4",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n开源证券行业深度报告中，如何分析2023年11月不同电动车品牌在新能源车市场的表现？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"通过销售数据，可以看出比亚迪、特斯拉、吉利等在11月的销售额表现优异比亚迪的销售表现尤为突出。具体表现在SUV及跨界车型的显著增长。\", \"bbox\": [52, 559, 945, 858]}, {\"evidence\": \"通过销售数据，可以看出比亚迪、特斯拉、吉利等在11月的销售额表现优异比亚迪的销售表现尤为突出。具体表现在SUV及跨界车型的显著增长。\", \"bbox\": [53, 646, 947, 908]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/12月需求创新高2024年智驾迎拐点比亚迪发力_multipage_21-30.png-1/12月需求创新高2024年智驾迎拐点比亚迪发力_22.png",
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/12月需求创新高2024年智驾迎拐点比亚迪发力_multipage_21-30.png-1/12月需求创新高2024年智驾迎拐点比亚迪发力_23.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_5",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n根据2017-2018年互联网金融行业舆情监测分析，请分析哪几个月份套路贷的搜索指数出现明显峰值，可能是什么原因导致的？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"套路贷的搜索指数在2018年1月、4月和5月出现明显峰值。这可能是因为1月有借贷高峰，很多人在年初进行金钱周转，导致搜索热度上升；4月和5月可能是因为与一些负面新闻报道相关，引发公众关注和讨论。\", \"bbox\": [1, 2, 1000, 1000]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/2017-2018中国互联网金融行业舆情监测分析报告_21.png-2/2017-2018中国互联网金融行业舆情监测分析报告_21.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_6",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n结合套路贷和网贷催收的媒介报道情感比例，分析这两者在公众眼中的声誉有何不同？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"套路贷的负面报道占比为53.9%，而网贷催收的负面报道占比为33.6%。这表明在公众眼中，套路贷的声誉更差，而网贷催收则有相对较高的中立报道比例（55.1%）。\", \"bbox\": [512, 282, 843, 913]}, {\"evidence\": \"套路贷的负面报道占比为53.9%，而网贷催收的负面报道占比为33.6%。这表明在公众眼中，套路贷的声誉更差，而网贷催收则有相对较高的中立报道比例（55.1%）。\", \"bbox\": [240, 196, 724, 239]}, {\"evidence\": \"套路贷的负面报道占比为53.9%，而网贷催收的负面报道占比为33.6%。这表明在公众眼中，套路贷的声誉更差，而网贷催收则有相对较高的中立报道比例（55.1%）。\", \"bbox\": [519, 270, 843, 921]}, {\"evidence\": \"套路贷的负面报道占比为53.9%，而网贷催收的负面报道占比为33.6%。这表明在公众眼中，套路贷的声誉更差，而网贷催收则有相对较高的中立报道比例（55.1%）。\", \"bbox\": [35, 139, 963, 244]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/2017-2018中国互联网金融行业舆情监测分析报告_multipage_21-30.png-1/2017-2018中国互联网金融行业舆情监测分析报告_22.png",
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/2017-2018中国互联网金融行业舆情监测分析报告_multipage_21-30.png-1/2017-2018中国互联网金融行业舆情监测分析报告_23.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_7",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n在餐饮市场金融服务产品沿着产业链逆向发展的分析中，沿产业链方向，如何描述上游融资服务、下游供应链金融、众筹、ERP、支付等金融服务产品的成熟度变化趋势？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"沿产业链方向，上游融资服务、下游供应链金融、众筹、ERP、支付成熟度呈现逐步提高的趋势，其中支付的成熟度为非常高，众筹为高，而下游供应链金融为低。\", \"bbox\": [5, 9, 992, 986]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/2017中国餐饮市场金融服务_14.png-1/2017中国餐饮市场金融服务_14.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_8",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n在2017年亚太地区DR交易金额和项目数分析中，哪些子行业的DR交易金额在2015年实现了增长?"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"互联网软件及服务，互联网及零售\", \"bbox\": [133, 89, 934, 339]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/20180326-平安证券-策略专题：CDR详析，拥抱新经济，迎接独角兽_10.png-1/20180326-平安证券-策略专题：CDR详析，拥抱新经济，迎接独角兽_10.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_9",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n有关2018年家庭用户投资理财产品的选择，各种产品的占比情况如何？请详细描述。"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"2018年家庭用户投资理财产品中，银行理财占比34.88%，货币基金占比30.25%，互联网理财产品占比23.26%，信托占比5.33%，理财型保险占比3.33%，其他占比1.35%，众筹占比1.33%，券商集合理财占比0.28%。\", \"bbox\": [120, 354, 486, 739]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/2018中国家庭金融市场专题分析_7.png-1/2018中国家庭金融市场专题分析_7.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_10",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n关于2020年1-10月中国原创财经新媒体移动端用户规模中提到的不同时间段的移动端用户数量，请问2020年8月到9月间的用户增加量是多少？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"18万。\", \"bbox\": [53, 466, 495, 906]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/2020年中国原创财经新媒体案例研究报告_11.png-1/2020年中国原创财经新媒体案例研究报告_11.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_11",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n在第一财经用户的购房面积分布中，61-90平米与91-120平米的已购房占比分别是多少？哪一种房屋面积的已购房占比更高？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"在第一财经用户中，61-90平米的已购房占比为21.1%，而91-120平米的已购房占比为51.1%。显然，91-120平米的房屋面积已购房占比更高。\", \"bbox\": [501, 337, 1000, 1000]}, {\"evidence\": \"在第一财经用户中，61-90平米的已购房占比为21.1%，而91-120平米的已购房占比为51.1%。显然，91-120平米的房屋面积已购房占比更高。\", \"bbox\": [49, 232, 1000, 333]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/2020年中国原创财经新媒体案例研究报告_36.png-3/2020年中国原创财经新媒体案例研究报告_36.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_12",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n根据地摊经济产业链的速冻食品销售研究，2018年中国速冻食品行业的产量达到多少万吨？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"1035万吨\", \"bbox\": [1, 289, 505, 864]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/2020年中国地摊经济行业研究报告_12.png-1/2020年中国地摊经济行业研究报告_12.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_13",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n有关2014-2020年5月中国日用品类零售额情况，哪个年份占商品零售总额比重最低？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"2018年，1.59%\", \"bbox\": [47, 336, 508, 894]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/2020年中国地摊经济行业研究报告_17.png-1/2020年中国地摊经济行业研究报告_17.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_14",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n2020年5月银发人群在移动购物行业中，哪个应用的活跃渗透率最高？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"手机淘宝活跃渗透率最高，为42.3%。\", \"bbox\": [47, 368, 545, 922]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/2020银发经济洞察报告_26.png-1/2020银发经济洞察报告_26.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_15",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n根据苏州科达科技股份有限公司2020年度报告中，应收账款表格部分，1至2年和2至3年的期末账面余额之和是多少？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"395,640,347.83元。\", \"bbox\": [92, 501, 864, 784]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/2021-03-23__苏州科达科技股份有限公司__603660__苏州科达__2020年__年度报告_107.png-2/2021-03-23__苏州科达科技股份有限公司__603660__苏州科达__2020年__年度报告_107.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_16",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n依据苏州科达科技股份有限公司2020年度报告，关于应收账款融资的数据，请计算期末余额与期初余额的差额。"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"期末余额是51,185,418.66元，期初余额是8,557,095.63元，减少了42,628,323.03元。\", \"bbox\": [90, 479, 888, 595]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/2021-03-23__苏州科达科技股份有限公司__603660__苏州科达__2020年__年度报告_110.png-2/2021-03-23__苏州科达科技股份有限公司__603660__苏州科达__2020年__年度报告_110.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_17",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n在苏州科达科技股份有限公司的2020年度报告中，列出期末所有外币余额转换成人民币后的总额是多少？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"期末折算人民币余额的总额为352,492.45元（货币资金20,141,931.84+应收账款8,552,712.47-应付账款20,188,766.52-其他应付款352,492.45）。\", \"bbox\": [142, 98, 906, 441]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/2021-03-23__苏州科达科技股份有限公司__603660__苏州科达__2020年__年度报告_153.png-1/2021-03-23__苏州科达科技股份有限公司__603660__苏州科达__2020年__年度报告_153.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_18",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n在苏州科达科技股份有限公司2020年度报告中，有关合并资产负债情况，2020年12月31日和2019年12月31日的货币资金相比，增长了多少？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"增长了282,160,964.85元\", \"bbox\": [105, 215, 869, 346]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/2021-03-23__苏州科达科技股份有限公司__603660__苏州科达__2020年__年度报告_70.png-1/2021-03-23__苏州科达科技股份有限公司__603660__苏州科达__2020年__年度报告_70.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_19",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n2021年香港银行业的业绩排名中，对于有限制牌照银行，税后净利润排名第五的银行是？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"开泰银行（大众）有限公司\", \"bbox\": [52, 307, 948, 536]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/2021年香港银行业报告_62.png-2/2021年香港银行业报告_62.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_20",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n对于2020年的香港十大本地注册持牌银行，恒生银行的净息差为多少？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"1.73%\", \"bbox\": [53, 194, 947, 594]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/2021年香港银行业报告_7.png-1/2021年香港银行业报告_7.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_21",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n在四川明星电力股份有限公司2020年度报告中，有关按坏账计提方法分类披露，计算无风险组合未计提坏账准备的应收账款的账面余额从期初到期末的变化是多少？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"减少金额1,116,451.93元。\", \"bbox\": [73, 171, 919, 360]}, {\"evidence\": \"减少金额1,116,451.93元。\", \"bbox\": [70, 717, 927, 787]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/2021-04-16__四川明星电力股份有限公司__600101__明星电力__2020年__年度报告_118.png-2/2021-04-16__四川明星电力股份有限公司__600101__明星电力__2020年__年度报告_118.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_22",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n在四川明星电力股份有限公司2020年度报告中，2020年投资收益相比上期减少了多少元？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"4,971,948.3元。\", \"bbox\": [133, 378, 919, 693]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/2021-04-16__四川明星电力股份有限公司__600101__明星电力__2020年__年度报告_160.png-2/2021-04-16__四川明星电力股份有限公司__600101__明星电力__2020年__年度报告_160.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_23",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n在四川明星电力股份有限公司2020年度报告，有关公司负债情况，少数股东权益在2020年的相较于上一年度的变化比例是多少？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"198.56%\", \"bbox\": [81, 394, 948, 445]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/2021-04-16__四川明星电力股份有限公司__600101__明星电力__2020年__年度报告_22.png-1/2021-04-16__四川明星电力股份有限公司__600101__明星电力__2020年__年度报告_22.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_24",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n在2020年度明星电力年报中，负债和所有者权益总计在2019年和2020年的变化趋势如何？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"从2019年到2020年，负债和所有者权益总计从2,936,563,003.83增加到2,961,672,401.22，增加了25,109,397.39，呈现增长趋势。\", \"bbox\": [136, 329, 902, 370]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/2021-04-16__四川明星电力股份有限公司__600101__明星电力__2020年__年度报告_72.png-1/2021-04-16__四川明星电力股份有限公司__600101__明星电力__2020年__年度报告_72.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_25",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n在开源证券行业深度报告中，分析2023年7月到2024年9月期间理想L8车型在高阶智驾领域的市占率变化趋势。请详细描述其市占率的波动。"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"开源证券行业深度报告显示，理想L8从2023年7月开始市占率持续上涨，从2023年7月的10%左右上涨到2024年9月的接近60%。\", \"bbox\": [505, 324, 936, 586]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/12月需求创新高2024年智驾迎拐点比亚迪发力_33.png-3/12月需求创新高2024年智驾迎拐点比亚迪发力_33.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_26",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n根据“12月需求创新高2024年智驾迎拐点比亚迪发力的报道”，比亚迪与Momenta合作的具体领域和成果是什么？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"比亚迪与Momenta联合在自动驾驶领域进行合作，包括自主驾驶技术的研发及应用，如在汉、海豚等多款车型中实现成果。此外，双方还合作在方程豹新车型上进行自动驾驶技术的扩展。\", \"bbox\": [289, 371, 943, 561]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/12月需求创新高2024年智驾迎拐点比亚迪发力_9.png-2/12月需求创新高2024年智驾迎拐点比亚迪发力_9.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_27",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n关于餐饮行业对推动消费增长的图表，请问2011至2016年，哪一年餐饮收入增长率最低？餐饮收入增长率的趋势如何变化？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"2014年餐饮收入增长率最低，为8.96%。从2011到2016年，餐饮收入增长率总体呈下降趋势。\", \"bbox\": [19, 365, 483, 924]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/2017中国餐饮市场金融服务_5.png-1/2017中国餐饮市场金融服务_5.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_28",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n从2017产业互联网领域可能受益企业来看，位于杭州的企业中估值最高的是哪个企业？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"蚂蚁金服\", \"bbox\": [241, 639, 939, 690]}, {\"evidence\": \"蚂蚁金服\", \"bbox\": [250, 286, 928, 328]}, {\"evidence\": \"蚂蚁金服\", \"bbox\": [236, 95, 936, 176]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/20180326-平安证券-策略专题：CDR详析，拥抱新经济，迎接独角兽_24.png-3/20180326-平安证券-策略专题：CDR详析，拥抱新经济，迎接独角兽_24.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_29",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n中国线上信贷在今年迎来爆发期的文档中预测2017年至2020年线上信贷交易规模的增幅是多少亿？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"290499亿。\", \"bbox\": [73, 432, 916, 921]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/2018年中国金融科技发展现状研究—以爱财集团为例_9.png-3/2018年中国金融科技发展现状研究—以爱财集团为例_9.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_30",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n根据2020年中国地摊经济行业研究报告，2014-2020年5月中国饮料类零售额的变化趋势是怎样的？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"从2014年到2020年5月，中国饮料类的零售额总体呈先升后降趋势，从2017年的高峰2274亿下降到2020年5月的819亿。\", \"bbox\": [509, 357, 975, 906]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/2020年中国地摊经济行业研究报告_13.png-3/2020年中国地摊经济行业研究报告_13.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_31",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n2019年Q1到2020年Q3期间，普通性小微企业贷款占比最高的是在什么时间段？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"普通性小微企业贷款占比最高的是在2020年Q3，占比为35.1%。\", \"bbox\": [31, 343, 972, 941]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/2020年中国金融行业数字化发展专题洞察_31.png-2/2020年中国金融行业数字化发展专题洞察_31.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_32",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n在创新代理记账模式助推代理记账市场加速发展中，描述市场活跃率自2012年至2019年的变化趋势是什么？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"从2012年至2019年，市场活跃率整体呈现出逐渐下降趋势，从2012年的21.8%下降到2019年的18.7%。尽管2018年市场活跃率略有回升至17.9%，但整体趋势依然是向下的。\", \"bbox\": [49, 28, 997, 913]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/2020年中国金融行业数字化发展专题洞察_32.png-2/2020年中国金融行业数字化发展专题洞察_32.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_33",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n根据mUserTracker-学而思网校总独立设备数在疫情前后城市等级结构变化情况，疫情后的中低线城市占比增加了多少百分点？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"疫情后的中低线城市占比增加了12.7个百分点（44% - 31.3% = 12.7%）。\", \"bbox\": [496, 344, 959, 839]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/2020年疫情下中国新经济产业投资研究报告_11.png-2/2020年疫情下中国新经济产业投资研究报告_11.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_34",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n在四川明星电力股份有限公司2020年年度报告中，有关其他应付款的期末余额，“代收代缴基金、污水处理费、水资源费、税金等”和“工程扣款及尾款”的总和是多少？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"其他应付款下，代收代缴基金、污水处理费、水资源费、税金等期末余额为41,061,667.51元，工程扣款及尾款期末余额为13,376,404.42元，合计为54,438,071.93元。\", \"bbox\": [134, 777, 912, 918]}, {\"evidence\": \"其他应付款下，代收代缴基金、污水处理费、水资源费、税金等期末余额为41,061,667.51元，工程扣款及尾款期末余额为13,376,404.42元，合计为54,438,071.93元。\", \"bbox\": [144, 109, 902, 195]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/2021-04-16__四川明星电力股份有限公司__600101__明星电力__2020年__年度报告_multipage_147-148.png-2/2021-04-16__四川明星电力股份有限公司__600101__明星电力__2020年__年度报告_147.png",
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/2021-04-16__四川明星电力股份有限公司__600101__明星电力__2020年__年度报告_multipage_147-148.png-2/2021-04-16__四川明星电力股份有限公司__600101__明星电力__2020年__年度报告_148.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_35",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n分析四川明星电力股份有限公司2020年年度报告中的合并财务报表的流动负债和非流动负债的变化。"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"流动负债从609,983,587.66增加到721,091,521.10元,增加主要来自应付账款和一年内到期的非流动负债。非流动负债从327,031,829.78减少到248,880,787.39,主要来源于长期借款的减少。\", \"bbox\": [142, 125, 904, 223]}, {\"evidence\": \"流动负债从609,983,587.66增加到721,091,521.10元,增加主要来自应付账款和一年内到期的非流动负债。非流动负债从327,031,829.78减少到248,880,787.39,主要来源于长期借款的减少。\", \"bbox\": [142, 885, 910, 914]}, {\"evidence\": \"流动负债从609,983,587.66增加到721,091,521.10元,增加主要来自应付账款和一年内到期的非流动负债。非流动负债从327,031,829.78减少到248,880,787.39,主要来源于长期借款的减少。\", \"bbox\": [144, 384, 910, 406]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/2021-04-16__四川明星电力股份有限公司__600101__明星电力__2020年__年度报告_multipage_61-70.png-3/2021-04-16__四川明星电力股份有限公司__600101__明星电力__2020年__年度报告_67.png",
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/2021-04-16__四川明星电力股份有限公司__600101__明星电力__2020年__年度报告_multipage_61-70.png-3/2021-04-16__四川明星电力股份有限公司__600101__明星电力__2020年__年度报告_68.png",
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/2021-04-16__四川明星电力股份有限公司__600101__明星电力__2020年__年度报告_multipage_61-70.png-3/2021-04-16__四川明星电力股份有限公司__600101__明星电力__2020年__年度报告_69.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_36",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n依据德尔未来科技控股集团股份有限公司2020年度报告，厦门烯成石墨烯科技有限公司在商誉减值准备中的期初余额和本期增加金额的总和是多少？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"184,251,482.14元\", \"bbox\": [24, 401, 950, 585]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/2021-04-16__德尔未来科技控股集团股份有限公司__002631__德尔未来__2020年__年度报告_170.png-1/2021-04-16__德尔未来科技控股集团股份有限公司__002631__德尔未来__2020年__年度报告_170.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_37",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n根据甲子引力对2021中国数字经济的判断，从2020年到2021年，企业数字化实践预算总额占公司年收入的4%百分比区间的企业数量增长率百分之多少？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"103.88%\", \"bbox\": [438, 294, 911, 445]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/2021中国数字经济50条判断_84.png-3/2021中国数字经济50条判断_84.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_38",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n2011年至2020年中标普500的指数峰值何时出现？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"2020年\", \"bbox\": [30, 250, 443, 847]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/2021年的全球经济与中国经济_11.png-2/2021年的全球经济与中国经济_11.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_39",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n在2021年的全球经济与中国经济中，有关不确定、不平衡的全球经济回复问题，IMF在2020年10月分进行了预测，根据预测结果，2021年拉丁美洲及加勒比地区经济增长率较2020年变化了多少百分比？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"11.7个百分点\", \"bbox\": [164, 188, 1000, 1000]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/2021年的全球经济与中国经济_6.png-2/2021年的全球经济与中国经济_6.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_40",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n依据2021年社会融资规模的整体分析，政府债券净融资同比减少的数值为多少？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"政府债券净融资同比减少为1.3万亿元。\", \"bbox\": [103, 77, 479, 423]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/2022中国区域金融运行报告_12.png-2/2022中国区域金融运行报告_12.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_41",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n根据电机系统发展趋势，2019年至2020年第三方供应商在市场层面的占有率降低了多少个百分点？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"7.4个\", \"bbox\": [41, 217, 490, 584]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/2022中国新能源汽车行业投资机会观察_14.png-2/2022中国新能源汽车行业投资机会观察_14.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_42",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n在电动车和插电混动乘用车之间，2030年中国市场哪个类型的车所占比例更高？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"纯电动乘用车，比例为90%。\", \"bbox\": [30, 268, 636, 800]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/2022中国新能源汽车行业投资机会观察_9.png-2/2022中国新能源汽车行业投资机会观察_9.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_43",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n有关2022年上半年末的信贷结构，相比2019年末的结构，房地产贷款的增长率是多少？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"-1.14%\", \"bbox\": [153, 547, 849, 780]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/2022第二季度中国货币政策执行报告_26.png-3/2022第二季度中国货币政策执行报告_26.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_44",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n有关主要发达经济体宏观经济金融指标，在2022年第一季度和第二季度中，哪一个月份元区的失业率较低？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"2022年4、5、6月欧洲区的失业率较低，均为6.6%。\", \"bbox\": [79, 230, 928, 742]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/2022第二季度中国货币政策执行报告_42.png-2/2022第二季度中国货币政策执行报告_42.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_45",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n在2020年至2022年期间，在招聘技能中，销售类和支持类岗位占比的趋势是怎样变化的？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"在2020年至2022年期间，销售类岗位占比从2020年的36.1%下降到2022年的34.5%，呈现出略微下降的趋势。支持类岗位占比则从2020年的34.9%下降到2021年再到2022年的29.5%。\", \"bbox\": [145, 87, 904, 473]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/2022金融行业薪酬趋势报告（上半年）_11.png-1/2022金融行业薪酬趋势报告（上半年）_11.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_46",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n2022年金融行业招聘区域中哪个地区的招聘量最高？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"华东地区的招聘量最高。\", \"bbox\": [140, 91, 867, 411]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/2022金融行业薪酬趋势报告（上半年）_12.png-1/2022金融行业薪酬趋势报告（上半年）_12.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_47",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n在2024年中国银行业理财市场报告中，六大银行的净息差在2018到2023年期间有什么明显的趋势变化？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"自2018年起，国有六大商业银行的净息差开始普遍下降，尤其是交行和邮储银行的净息差降幅明显，表明各大银行面临着不断加剧的市场竞争和利润空间压缩的挑战。\", \"bbox\": [84, 400, 905, 721]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/2024年中国银行业调查报告_41.png-3/2024年中国银行业调查报告_41.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_48",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n根据思看科技股份有限公司科创板IPO上市招股说明书，对比2022年同期行业的综合毛利率，公司相较于平均值高出多少？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"21.55%。\", \"bbox\": [134, 590, 873, 806]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/思看科技(杭州)股份有限公司科创板IPO上市招股说明书_302.png-3/思看科技(杭州)股份有限公司科创板IPO上市招股说明书_302.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_49",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n中国央行货币金储备量在2020年1月至2024年3月的增长趋势如何？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"持续增长，显示出明显的上升趋势。\", \"bbox\": [359, 113, 939, 372]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/财经2024年9期_37.png-1/财经2024年9期_37.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_50",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n在全球经济金融展望报告中，2021年欧元区实际GDP增速贡献率比前一年高百分之多少？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"12.30%\", \"bbox\": [114, 191, 915, 456]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/中国银行全球经济金融展望报告（2025年）：经济增长不确定性加大，货币政策进入降息周期_21.png-3/中国银行全球经济金融展望报告（2025年）：经济增长不确定性加大，货币政策进入降息周期_21.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_51",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n分析2019-2020高技术产业投资累计同比变化趋势，累计同比增长率为负的是哪几年？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"2020年\", \"bbox\": [320, 430, 952, 733]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/《中国经济观察》_16.png-2/《中国经济观察》_16.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_52",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n在央行季度城镇储户问卷的研究中，2017年至2023年期间，更偏向“储蓄”而非“消费”的趋势是如何变动的？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"2017年至2023年，储户问卷调查中“更多储蓄占比”呈现出逐步上升的趋势，从约40%上升至接近60%，而“更多消费占比”则在同期有所下降。这表明在该时间段内，居民的储蓄意愿相对增强，消费意愿降低。\", \"bbox\": [296, 431, 971, 883]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/《中国经济观察》_23.png-2/《中国经济观察》_23.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_53",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n根据2018年至2023年美元指数和人民币即期汇率的走势，请分析这段时间内美元指数的整体变化趋势。"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"从2018年至2023年，美元指数和人民币即期汇率之间呈现出反向变化的趋势，美元指数在2020年有下降趋势，但后续出现上升，并在2023年达到较高水平。\", \"bbox\": [327, 669, 920, 917]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/《中国经济观察》_35.png-2/《中国经济观察》_35.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_54",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n2023年6月19日起，国务院办公厅印发《关于进一步构建高质量充电基础设施体系的指导意见》，分析近年来充电基础设施保有量和新能源汽车保有量有怎样的变化趋势？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"自2014年以来，我国的新能源汽车保有量和充电基础设施保有量均呈现显著的增长趋势，并在2018年后更为明显。两者的增长曲线都在逐年加速上升，尤其是新能源汽车保有量的增长更为迅速，到2022年达到了相当高的水平。\", \"bbox\": [335, 562, 903, 844]}, {\"evidence\": \"自2014年以来，我国的新能源汽车保有量和充电基础设施保有量均呈现显著的增长趋势，并在2018年后更为明显。两者的增长曲线都在逐年加速上升，尤其是新能源汽车保有量的增长更为迅速，到2022年达到了相当高的水平。\", \"bbox\": [335, 396, 918, 549]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/《中国经济观察》_50.png-2/《中国经济观察》_50.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_55",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n在2021年R&D经费TOP 10省市中，北京排第几？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"第三\", \"bbox\": [327, 539, 899, 797]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/《中国经济观察》_54.png-2/《中国经济观察》_54.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_56",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n在主要跨国金融机构2023年投行业务收入中，摩根大通比美国银行投行业务收入高多少(百万美元)？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"787（百万美元）\", \"bbox\": [167, 100, 816, 309]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/《财富》世界+500+强企业经营新动态、影响及建议_11.png-1/《财富》世界+500+强企业经营新动态、影响及建议_11.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_57",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n根据2024年1-5月商品零售各类别消费品同比增速判断，2024年5月同比增速最快的消费品类是什么？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"体育、娱乐用品\", \"bbox\": [138, 288, 616, 540]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/【宏观洞见】5月份社零同比增长3.7%，多因素带动消费市场恢复向好 - 中国金融信息网_3.png-2/【宏观洞见】5月份社零同比增长3.7%，多因素带动消费市场恢复向好 - 中国金融信息网_3.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_58",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n根据【新华500】2024年12月23日的情况，计算该日期的最高点与最低点的指数变化幅度是多少？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"43.03点\", \"bbox\": [13, 327, 707, 536]}, {\"evidence\": \"43.03点\", \"bbox\": [13, 143, 712, 327]}, {\"evidence\": \"43.03点\", \"bbox\": [9, 536, 716, 612]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/【新华500】新华500指数（989001）23日跌0.09% - 中国金融信息网_1.png-3/【新华500】新华500指数（989001）23日跌0.09% - 中国金融信息网_1.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_59",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n根据西部地区经济运行情况，2000年至2021年西部地区生产总值及其增长率的变化趋势是怎样的？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"整体趋势是经济活动增长，地区生成总值快速上升，增长率在2006年附近达到最高值后逐渐下降。\", \"bbox\": [98, 432, 490, 901]}, {\"evidence\": \"整体趋势是经济活动增长，地区生成总值快速上升，增长率在2006年附近达到最高值后逐渐下降。\", \"bbox\": [514, 81, 902, 236]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/2022中国区域金融运行报告_23.png-2/2022中国区域金融运行报告_23.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_60",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n根据历年港股市场再融资的数据，2017到2019的再融资募资额变化趋势是怎样的？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"持续下降\", \"bbox\": [76, 378, 653, 809]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/2024年A股IPO减速！募资额创近十年新低 最赚钱新股出炉 _ 东方财富网_12.png-3/2024年A股IPO减速！募资额创近十年新低 最赚钱新股出炉 _ 东方财富网_12.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_61",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n在《2024年A股IPO减速！》中，讨论了2024年新股发行的情况，请详细说明破发率和长期破发市场收益率的变化情况。"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"2024年以来，新股的总体“破发”现象明显减少，仅1股首日收盘价破发。破发率下降与更加合理的定价有关，按发行价计算，86只新股发行市场盈率低于所在行业市盈率，反映出市场对新股定价的合理性和投资者对新股质量的认可。\", \"bbox\": [44, 470, 677, 690]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/2024年A股IPO减速！募资额创近十年新低 最赚钱新股出炉 _ 东方财富网_8.png-3/2024年A股IPO减速！募资额创近十年新低 最赚钱新股出炉 _ 东方财富网_8.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_62",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n在2024年中国银行业监督报告中，计算2020年到2023年第四季度流动性覆盖率的平均值约为多少？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"145.3%\", \"bbox\": [90, 632, 907, 901]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/2024年中国银行业调查报告_25.png-3/2024年中国银行业调查报告_25.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_63",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n在《2024年中国银行业调查报告》中，城商行和农商行对政策性银行债的投资比例高于其他哪些类型的债券？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"高于企业债和其他类别的债券。\", \"bbox\": [101, 586, 856, 893]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/2024年中国银行业调查报告_27.png-3/2024年中国银行业调查报告_27.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_64",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n在深圳佰悌药业股份有限公司首次公开发行股票的文件中有关债偿能力的说明，哪个年度的速动比率最低？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"2007年度\", \"bbox\": [103, 83, 899, 293]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/52fd4a323d97356a463959671794e900699baae5_206.png-3/52fd4a323d97356a463959671794e900699baae5_206.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_65",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n在深圳信立泰药业股份公司首次公开发行股票的招股意向书中，计算2009年1-6月注射用头孢西丁钠的原材料成本占总成本比相较2006年增加了多少个百分点？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"5.42个百分点\", \"bbox\": [120, 663, 882, 905]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/52fd4a323d97356a463959671794e900699baae5_217.png-2/52fd4a323d97356a463959671794e900699baae5_217.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_66",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n根据深圳信立泰药业股份有限公司首次公开发行股票的项目投资概算，营销分公司和营销网点的建设中，办公用车与所有补充流动资金项的合计投资金额是多少万元？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"895万元\", \"bbox\": [427, 275, 751, 302]}, {\"evidence\": \"895万元\", \"bbox\": [311, 383, 849, 401]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/52fd4a323d97356a463959671794e900699baae5_271.png-2/52fd4a323d97356a463959671794e900699baae5_271.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_67",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n根据东方财富网的报道，截止到2024年12月14日，发债规模的总体情况是什么？这可能显示出哪些市场趋势？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"截止到2024年12月14日，68家券商今年共计发债683只，发债规模共计1.31万亿。与去年同期相比，下跌12.24%。市场整体的发债需求有所下降，体现出市场融资需求的疲软。这可能显示出券商在债券市场中面临发行困难，资本市场活跃度降低。\", \"bbox\": [79, 387, 651, 632]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/68家券商今年发债1.31万亿 同比下降12% 融资需求因何下降？ _ 东方财富网_1.png-2/68家券商今年发债1.31万亿 同比下降12% 融资需求因何下降？ _ 东方财富网_1.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_68",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n根据浙江日达精工股份有限公司的2010-2016年中国空调器产销量分析，中国空调器产量在2012年至2013年间出现了什么变化？请给出具体的数值变化。"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"增加了1,019.10万台。\", \"bbox\": [136, 89, 860, 397]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/810d8681429537dbf20a437a6dbf08e34c1ece27_155.png-1/810d8681429537dbf20a437a6dbf08e34c1ece27_155.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_69",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n在浙江江达精工股份有限公司的租赁价格比较重，台州市黄岩春亚冷风机厂房租赁期间的总租赁费用是多少？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"849,620元\", \"bbox\": [136, 370, 858, 464]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/810d8681429537dbf20a437a6dbf08e34c1ece27_273.png-2/810d8681429537dbf20a437a6dbf08e34c1ece27_273.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_70",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n根据浙江百达精工股份有限公司招股意向书披露的信息，比较2015年和2016年库存商品‘平衡块’的期末余额，哪个年度更高？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"2016年的‘平衡块’库存商品期末余额为2,148.02万元，2015年为1,722.16万元，2016年更高。\", \"bbox\": [122, 253, 890, 589]}, {\"evidence\": \"2016年的‘平衡块’库存商品期末余额为2,148.02万元，2015年为1,722.16万元，2016年更高。\", \"bbox\": [123, 594, 890, 922]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/810d8681429537dbf20a437a6dbf08e34c1ece27_390.png-2/810d8681429537dbf20a437a6dbf08e34c1ece27_390.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_71",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n根据浙江巨达精工股份有限公司应付账款的具体情况，2016年12月31日货款占总应付账款的百分比是多少？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"在2016年12月31日，货款为5,715.51万元，占总应付账款6,604.94万元的约86.53%。\", \"bbox\": [133, 379, 873, 747]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/810d8681429537dbf20a437a6dbf08e34c1ece27_417.png-2/810d8681429537dbf20a437a6dbf08e34c1ece27_417.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_72",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n在浙江百达精工股份有限公司招股意向书中，有关公司零部件业务报告，在2014年至2016年，公司爪极产量大约是原来的多少倍？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"大约2.96倍。\", \"bbox\": [147, 154, 853, 324]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/810d8681429537dbf20a437a6dbf08e34c1ece27_433.png-2/810d8681429537dbf20a437a6dbf08e34c1ece27_433.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_73",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n从浙江百达精工股份有限公司的招股意向书公开的数据，静铁芯2016年的单位销售价较2014年度相比，增长多少？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"增长了0.08元/件。\", \"bbox\": [140, 555, 873, 906]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/810d8681429537dbf20a437a6dbf08e34c1ece27_461.png-3/810d8681429537dbf20a437a6dbf08e34c1ece27_461.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_74",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n新兴稳定币市场份额中，USDC和PAX在市场份额合计中的比率是多少？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"69.61%\", \"bbox\": [577, 421, 891, 965]}, {\"evidence\": \"69.61%\", \"bbox\": [85, 264, 937, 398]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/DeFi：代码驱动未来新金融__DeFi行业研究半年报（2020）_11.png-3/DeFi：代码驱动未来新金融__DeFi行业研究半年报（2020）_11.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_75",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n在锁仓价值Top10中的DeFi应用中，Compound的锁仓价值比Maker高多少美元（单位：百万美元）？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"69.57百万美元\", \"bbox\": [67, 209, 521, 463]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/DeFi：代码驱动未来新金融__DeFi行业研究半年报（2020）_7.png-1/DeFi：代码驱动未来新金融__DeFi行业研究半年报（2020）_7.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_76",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n在农村小微企业融资新发展中，农村居民工资性收入与经营净收入的占可支配收入比例的差异在2013年至2022年间是如何变化的？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"从2013年至2022年，工资性收入占可支配收入比例总体上保持稳定趋于略有增长，由38.7%增长到42.0%。相反，经营净收入占比则在下降，从41.7%下降到34.6%。\", \"bbox\": [129, 513, 860, 857]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/UNDP&CICETE&度小满：2024年农村小微企业融资新发展报告_16.png-2/UNDP&CICETE&度小满：2024年农村小微企业融资新发展报告_16.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_77",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n2020年到2022年中国农村网络零售额的累计增长总额是多少亿元？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"3,754.1亿元。\", \"bbox\": [136, 497, 864, 810]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/UNDP&CICETE&度小满：2024年农村小微企业融资新发展报告_21.png-3/UNDP&CICETE&度小满：2024年农村小微企业融资新发展报告_21.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_78",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n根据2019年中国家庭农场发展报告，哪个省市贷款需求超过100万元的比例最高？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"家庭农场贷款需求超过100万元的比例最高的是天津。\", \"bbox\": [127, 90, 867, 376]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/UNDP&CICETE&度小满：2024年农村小微企业融资新发展报告_28.png-1/UNDP&CICETE&度小满：2024年农村小微企业融资新发展报告_28.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_79",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n根据2022全国县域数字农业农村电子商务发展报告，2021年县域及以下农产品网络零售额是多少亿元？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"325.5亿元\", \"bbox\": [151, 108, 847, 310]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/UNDP&CICETE&度小满：2024年农村小微企业融资新发展报告_33.png-1/UNDP&CICETE&度小满：2024年农村小微企业融资新发展报告_33.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_80",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n对于商品零售和餐饮收入，描述自2019到2023年的主要变化趋势和恢复情况。"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"在2019年至2023年期间，商品零售和餐饮收入的同比变化经历了较大的波动。2020年初，两者的同比变化率迅速下降，尤其是餐饮收入出现了超过-30％的下跌。然而，到了2020年底，两者都出现复苏趋势，并在2021年多次达到同比增长的高峰。此后，尽管波动明显，整体趋势呈现出逐渐趋稳的状态。\", \"bbox\": [325, 130, 921, 396]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/《中国经济观察》_21.png-1/《中国经济观察》_21.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_81",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n关于2022年我国跨境资本流动情况，有关其他投资资产负债差额及明细项，跨境其他投资的贷款在2022年和2021年的差异是多少？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"2,135亿美元。\", \"bbox\": [118, 107, 847, 348]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/《宏观观察》2023年第28期：我国跨境资本流动新态势、展望及影响_5.png-1/《宏观观察》2023年第28期：我国跨境资本流动新态势、展望及影响_5.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_82",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n根据社会消费品零售总额同比增长速度进行分析，2023年第一季度社零同比增长的平均增长速度是多少？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"0.85%\", \"bbox\": [66, 473, 705, 803]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/【宏观洞见】3月份社零同比增长3.1%，一季度消费市场平稳增长 - 中国金融信息网_1.png-3/【宏观洞见】3月份社零同比增长3.1%，一季度消费市场平稳增长 - 中国金融信息网_1.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_83",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n查看2024年一线城市商品房销售趋势，并预测2024年第三季度的表现可能如何？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"2024年一线城市商品房销售可能在第三季度继续保持上升趋势，从之前的趋势来看，预计会有小幅增长。\", \"bbox\": [376, 25, 703, 227]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/【宏观洞见】3月高频数据观察：汽车消费延续回暖，大宗商品整体偏强 - 中国金融信息网_4.png-2/【宏观洞见】3月高频数据观察：汽车消费延续回暖，大宗商品整体偏强 - 中国金融信息网_4.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_84",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n根据公用事业行业专题报告，美国主要电力市场周均值哪个市场的合同均价降幅最大？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"得州ERCOT市场的合同均价降幅最大，为-21.0%。\", \"bbox\": [291, 184, 947, 374]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/【研报推荐】原油期货价格上涨；欧美天然气期货价格大幅下跌；美国电价下跌_9.png-1/【研报推荐】原油期货价格上涨；欧美天然气期货价格大幅下跌；美国电价下跌_9.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_85",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n在国能日新年报的可比公司估值中，2022到2023年，用友网络公司的市盈率涨跌幅是多少？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"-214.32\", \"bbox\": [64, 118, 954, 456]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/【研报推荐】国能日新年报点评：核心业务持续巩固，创新业务不断突破_2.png-2/【研报推荐】国能日新年报点评：核心业务持续巩固，创新业务不断突破_2.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_86",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n根据2024年全国新建商品房销售面积及销售额增速分析，2024年新建商品房销售额增速和销售面积变化呈现什么样的变化趋势？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"2024年整体销售额增速和销售面积低于2023年，但是呈现出平稳上升的状态。\", \"bbox\": [76, 365, 679, 671]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/【财经分析】市场预期改善 楼市止跌回稳态势延续 - 中国金融信息网_1.png-2/【财经分析】市场预期改善 楼市止跌回稳态势延续 - 中国金融信息网_1.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_87",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n在东吴证券有关2027年中国信创产业规模增长的预测中，何时中国信创市场规模会首次超过30000亿元？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"2026年\", \"bbox\": [528, 442, 961, 969]}, {\"evidence\": \"2026年\", \"bbox\": [25, 322, 659, 412]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/东吴证券：2025年A股投资策略展望：“内循环牛”和“科技成长牛”_65.png-2/东吴证券：2025年A股投资策略展望：“内循环牛”和“科技成长牛”_65.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_88",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n依据东吴证券对保险行业投资策略的分析，哪个保险公司的银保费增速在2021年达到峰值？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"人寿保险的银保费增速在2021年达到峰值。\", \"bbox\": [104, 488, 909, 947]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/东吴证券：保险行业2025年投资策略：资负共振，长期可期_16.png-2/东吴证券：保险行业2025年投资策略：资负共振，长期可期_16.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_89",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n根据2024Q1-3保险行业投资收益率的分析，2023年Q1-Q4的保险行业综合收益率的平均值是多少？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"4.02%\", \"bbox\": [486, 448, 978, 939]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/东吴证券：保险行业2025年投资策略：资负共振，长期可期_22.png-3/东吴证券：保险行业2025年投资策略：资负共振，长期可期_22.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_90",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n在中国财富管理行业如何做好数字金融这份报告中，按科技人员占比排序，2023年六大行中哪家银行的科技人员占比最高？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"工商银行\", \"bbox\": [134, 180, 856, 405]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/中国人民大学国际货币研究所：中国财富管理行业趋势报告（2024上）_31.png-2/中国人民大学国际货币研究所：中国财富管理行业趋势报告（2024上）_31.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_91",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n根据2019-2023年有关证券公司信息技术人员数量及占比的分析，2023年证券公司信息技术投入比重最高和最低的公司差异是多少？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"10.63%\", \"bbox\": [127, 85, 847, 500]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/中国人民大学国际货币研究所：中国财富管理行业趋势报告（2024上）_42.png-2/中国人民大学国际货币研究所：中国财富管理行业趋势报告（2024上）_42.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_92",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n根据主要离岸人民币市场存款余额，计算2016年第一季度（1月到3月）中国香港的人民币存款余额总和大约是多少亿元？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"约41000亿元。\", \"bbox\": [179, 436, 878, 775]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/中国人民银行：人民币国际化报告（2024）_32.png-2/中国人民银行：人民币国际化报告（2024）_32.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_93",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n针对2015-2018年在线外卖收入占全国餐饮业收入比重的变化，2018年在线外卖收入占比与2016年相比增长了多少百分点？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"5.9个百分点。\", \"bbox\": [149, 250, 869, 576]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/中国共享经济发展年度报告（2019）_27.png-1/中国共享经济发展年度报告（2019）_27.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_94",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n有关中国汽车金融服务市场，在2011年至2018年之间，中国新车销量哪个年份达到峰值？具体销量是多少？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"从2011年到2018年，中国新车销量在2016年达到峰值，销量为2887.9万辆。\", \"bbox\": [44, 322, 474, 922]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/中国汽车金融市场数字化发展专题分析2019_5.png-1/中国汽车金融市场数字化发展专题分析2019_5.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_95",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nWhat is the percentage increase in ICT Readiness scores from 2019 to 2021 for low-income groups, according to the statistics of ICT Readiness by economic income group from 2019 to 2021?"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"8.6%\", \"bbox\": [2, 14, 993, 478]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/2021年旅游业发展指数：重建可持续、有弹性的未来（英文版）_32.png-3/2021年旅游业发展指数：重建可持续、有弹性的未来（英文版）_32.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_96",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nReferring to 'China offers an open goal for Novo Nordisk’s obesity drug Wegovy', what insights are given about the pharmaceutical market in China?"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"The article provides insights that the obesity market in China offers significant opportunities for Novo Nordisk's drug Wegovy, emphasizing its potential for growth amid rising obesity rates in China.\", \"bbox\": [788, 121, 948, 509]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/Financial Times Europe - 26 June 2024_19.png-5/Financial Times Europe - 26 June 2024_19.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_97",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nFrom the document 'Independent auditors' report to the members of Craneware plc', what is the significance of revenue recognition as a key audit matter in the context of the Group's financial statement?"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"Revenue recognition is significant because it involves determining the amount of revenue to be recognized based on contract details and conditions in contracts with customers. The risk is identified at the journal level related to the existence and occurrence of all revenue streams.\", \"bbox\": [52, 339, 484, 518]}, {\"evidence\": \"Revenue recognition is significant because it involves determining the amount of revenue to be recognized based on contract details and conditions in contracts with customers. The risk is identified at the journal level related to the existence and occurrence of all revenue streams.\", \"bbox\": [61, 154, 928, 328]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/AIM_CRW_2022_90.png-1/AIM_CRW_2022_90.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_98",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nAccording to MUTUAL EVALUATION REPORT OF EL SALVADOR, during the period from 2019 to 2023, which type of predicate offense associated with money laundering (ML) had the highest number of cases, and what percentage of the total cases did it account for?"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"During the period from 2019 to 2023, the type of predicate offense associated with money laundering (ML) that had the highest number of cases was 'Aggravated extortion (article 3 LEDE),' with a total of 4,614 cases, accounting for 25.02% of the total 18,439 cases.\", \"bbox\": [88, 557, 906, 908]}, {\"evidence\": \"During the period from 2019 to 2023, the type of predicate offense associated with money laundering (ML) that had the highest number of cases was 'Aggravated extortion (article 3 LEDE),' with a total of 4,614 cases, accounting for 25.02% of the total 18,439 cases.\", \"bbox\": [217, 126, 748, 332]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/FATF：2024年萨尔瓦多打击洗钱和恐怖主义融资的措施报告（英文版）_multipage_84-85.png-1/FATF：2024年萨尔瓦多打击洗钱和恐怖主义融资的措施报告（英文版）_84.png",
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/FATF：2024年萨尔瓦多打击洗钱和恐怖主义融资的措施报告（英文版）_multipage_84-85.png-1/FATF：2024年萨尔瓦多打击洗钱和恐怖主义融资的措施报告（英文版）_85.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_99",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nBased on the data on type of climate financing in debt distress countries in 2021 and 2022, how much higher is the percentage of climate financing from grants in high risk countries compared to moderate risk countries?"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"11%\", \"bbox\": [153, 604, 886, 919]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/气候政策倡议组织（CPI）：2024年非洲气候融资格局报告（英文版）_65.png-4/气候政策倡议组织（CPI）：2024年非洲气候融资格局报告（英文版）_65.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_100",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nHow does ArcBest describe its vision and strategic approach to business in the 2022 Annual Report?"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"ArcBest's vision is encapsulated in the statement 'We’ll Find a Way,' which emphasizes their commitment to problem-solving and customer satisfaction. Their strategic approach focuses on expanding revenue opportunities, balancing their revenue and profit mix, and optimizing costs. By deepening customer relationships, deploying tailored solutions, and leveraging technology, they aim for long-term value creation for customers, employees, and shareholders.\", \"bbox\": [93, 818, 902, 919]}, {\"evidence\": \"ArcBest's vision is encapsulated in the statement 'We’ll Find a Way,' which emphasizes their commitment to problem-solving and customer satisfaction. Their strategic approach focuses on expanding revenue opportunities, balancing their revenue and profit mix, and optimizing costs. By deepening customer relationships, deploying tailored solutions, and leveraging technology, they aim for long-term value creation for customers, employees, and shareholders.\", \"bbox\": [89, 68, 931, 618]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/NASDAQ_ARCB_2022_multipage_1-10.png-4/NASDAQ_ARCB_2022_8.png",
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/NASDAQ_ARCB_2022_multipage_1-10.png-4/NASDAQ_ARCB_2022_9.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_101",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nRegarding the statistic of state science and tech spending from 2016 to 2020, in which year was the highest spending recorded?"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"2019\", \"bbox\": [66, 448, 930, 953]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/China's R&D spending by the numbers - Chinadaily.com.cn_5.png-1/China's R&D spending by the numbers - Chinadaily.com.cn_5.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_102",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nBased on the FinTech SPAC Merger Volume and Deal Count from the Q3 2024 FinTech Insights, calculate the percentage decrease in SPAC merger volume from 2021 to 2023."
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"97.42%\", \"bbox\": [73, 332, 487, 936]}, {\"evidence\": \"97.42%\", \"bbox\": [39, 151, 912, 223]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/FT Partners：2024年第三季度金融科技洞察报告（英文版）_59.png-2/FT Partners：2024年第三季度金融科技洞察报告（英文版）_59.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_103",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nIn the Revenue by Geographic Area – Quarterly report, which region contributed the highest revenue in Q3'24?"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"The United States\", \"bbox\": [94, 154, 908, 454]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/0001558370-24-014874_16.png-1/0001558370-24-014874_16.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_104",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nAccording to the historical single figure table from the Howden Joinery Group Plc Annual Report & Accounts 2023, which year had the lowest annual bonus?"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"2020.\", \"bbox\": [540, 195, 967, 674]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/LSE_HWDN_2023_61.png-3/LSE_HWDN_2023_61.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_105",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nIn the AMBAC Financial Group's Notes to Consolidated Financial Statements, which year had a higher estimated fair value of municipal obligations as of December 31, 2021, compared to December 31, 2020?"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"2020\", \"bbox\": [783, 174, 884, 767]}, {\"evidence\": \"2020\", \"bbox\": [109, 171, 894, 224]}, {\"evidence\": \"2020\", \"bbox\": [134, 474, 894, 533]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/NASDAQ_AMBC_2021_96.png-1/NASDAQ_AMBC_2021_96.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_106",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nIn Howden Joinery Group Plc's Annual Report & Accounts 2022, analyze the 'Carrying amount of assets' section and compare the carrying amounts between the 'UK' and 'France, Belgium and Ireland' for the 26 weeks to 24 December 2022. Which location holds a higher amount and by how much?"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"UK.\", \"bbox\": [561, 375, 955, 809]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/LSE_HWDN_2022_87.png-4/LSE_HWDN_2022_87.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_107",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nReferring to the Middle East and North Africa's future economic forecasts data by the World Bank, which country shows the most significant real GDP growth rate fluctuation from 2019 to 2021e?"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"Lybia\", \"bbox\": [108, 139, 948, 533]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/2022年全球经济展望+（英文版）_143.png-3/2022年全球经济展望+（英文版）_143.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_108",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nHow does the total external debt stock of the Syrian Arab Republic in 2023 compare to that in 2010, which year is higher?"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"2010\", \"bbox\": [84, 547, 907, 581]}, {\"evidence\": \"2010\", \"bbox\": [91, 148, 489, 198]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/世界银行：2024年国际债务报告（英文版）_206.png-2/世界银行：2024年国际债务报告（英文版）_206.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_109",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nAccording to Craneware plc's Annual Report and Financial Statements 2023, what critical initiatives are included in the 'People' focus area as per the ESG Framework ?"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"In the 'People' focus area, the ESG Framework includes Diversity, Equity & Inclusion, Engagement, Learning Culture, and Wellbeing.\", \"bbox\": [99, 721, 954, 960]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/AIM_CRW_2023_34.png-3/AIM_CRW_2023_34.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_110",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nAccoding to the statistics of Compensation Actually Paid and GAAP Revenue Growth from 2020 to 2023, what is the GAAP revenue growth in 2022?"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"$37.5 million\", \"bbox\": [41, 439, 832, 799]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/FINAL PROOF for Online Posting PDFS_2024ProxyStatement No blank pages_77.png-3/FINAL PROOF for Online Posting PDFS_2024ProxyStatement No blank pages_77.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_111",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nWhich countries are the top suppliers to India in terms of arms import from 2019 to 2023, and which has the largest respective shares?"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"The top suppliers to India in terms of arms imports are Russia, France, and others. Russia has the largest share of arms supplied to India in 2019 to 2020, followed by France, and then other countries collectively.\", \"bbox\": [189, 878, 493, 990]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/FInancial Times UK - 9.10.2024_22.png-3/FInancial Times UK - 9.10.2024_22.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_112",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nAccording to Howden Joinery Group Plc / Annual Report & Accounts 2022, what is the Closing net cash value for 2022?"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"£308m.\", \"bbox\": [37, 170, 438, 573]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/LSE_HWDN_2022_18.png-3/LSE_HWDN_2022_18.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_113",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nAccording to the proportion of assessed cities' contributions, what percentage of registered trademarks in 2023 are held by assessed cities?"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"56.2%\", \"bbox\": [103, 521, 889, 978]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/Report_ China's SMEs gain vitality, resilience - Chinadaily.com.cn_5.png-2/Report_ China's SMEs gain vitality, resilience - Chinadaily.com.cn_5.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_114",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nAccording to Howden Joinery Group Plc Annual Report & Accounts 2021, based on the Non-Executive tenure statistics as of 25 December 2021, who has been serving the longest?"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"Richard Pennycook\", \"bbox\": [549, 282, 958, 501]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/LSE_HWDN_2021_52.png-3/LSE_HWDN_2021_52.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_115",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nAccording to Howden Joinery Group Plc Annual Report & Accounts 2020, by what percentage did the number of female senior management increase at Howden Joinery Group Plc from 2019 to 2020?"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"100%\", \"bbox\": [534, 527, 974, 979]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/LSE_HWDN_2020_50.png-4/LSE_HWDN_2020_50.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_116",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nIn Ambac Financial Group, Inc. 2023 Form 10-K, according to the summary of RSU activity for 2023, compare the outstanding shares at the beginning and end of the period. Which time had the larger value?"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"At the end of 2023 had the larger value, because the outstanding shares at the beginning of the period were 923,250, and at the end of the period were 1,036,339.\", \"bbox\": [509, 385, 926, 607]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/NASDAQ_AMBC_2023_123.png-1/NASDAQ_AMBC_2023_123.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_117",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nFrom the SRCE 2023 Form 10-K document, considering the unobservable inputs for mortgage servicing rights, what is the range of constant prepayment rate (CPR) used for December 31, 2023, and how does it compare to the previous year?"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"The range of the constant prepayment rate (CPR) for mortgage servicing rights on December 31, 2023, was 6.1% - 17.6%, which shows a broader range compared to the previous year's range of 7.6% - 9.6%.\", \"bbox\": [84, 349, 921, 384]}, {\"evidence\": \"The range of the constant prepayment rate (CPR) for mortgage servicing rights on December 31, 2023, was 6.1% - 17.6%, which shows a broader range compared to the previous year's range of 7.6% - 9.6%.\", \"bbox\": [71, 438, 933, 470]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/NASDAQ_SRCE_2023_95.png-3/NASDAQ_SRCE_2023_95.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_118",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nAccording to Ambac Financial Group, Inc. 2021 Form 10-K, in the Consolidated Cash Flow Statement discussion, what was the net cash flow provided by or used in investing activities for the years 2019, 2020, and 2021? Which year had the largest value?"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"The net cash flow provided by or used in investing activities was $1,000 million in 2019, $432 million in 2020, and $76 million in 2021. 2019 had the largest value.\", \"bbox\": [121, 177, 488, 366]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/NASDAQ_AMBC_2021_58.png-1/NASDAQ_AMBC_2021_58.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_119",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nIn the annual report 2022 of Craneware plc, who are the top three shareholders of the Company in terms of the number of Ordinary £0.01 Shares, as noted in the Directors' Report dated September 2022?"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"The top three shareholders in terms of the number of Ordinary £0.01 Shares are Liontrust Asset Management with 4,605,912 shares, K Neilson with 3,431,522 shares, and Canaccord Genuity Group with 2,563,567 shares.\", \"bbox\": [55, 227, 495, 427]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/AIM_CRW_2022_57.png-1/AIM_CRW_2022_57.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_120",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nAccording to the data of AAON, Inc. and Subsidiaries, what is its difference in total assets between 2021 and 2020?"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"$201,172 thousand\", \"bbox\": [51, 53, 835, 525]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/NASDAQ_AAON_2021_60.png-1/NASDAQ_AAON_2021_60.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_121",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nFrom the Ambac Financial Group's 2023 Summary of Investments, what is the total amount shown on the balance sheet for corporate obligations and commercial mortgage-backed securities combined?"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"$764 million\", \"bbox\": [2, 1, 1000, 1000]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/NASDAQ_AMBC_2023_137.png-3/NASDAQ_AMBC_2023_137.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_122",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nAccording to PDF Solution's report, calculate the total adjustments made to reconcile GAAP net loss for the three months ended December 31, 2019."
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"$2,398 thousand.\", \"bbox\": [57, 113, 681, 413]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/PDF Solutions Reports Fourth Quarter and Full Year 2019 1 Results_10.png-3/PDF Solutions Reports Fourth Quarter and Full Year 2019 1 Results_10.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_123",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nAccording to AMBAC Financial Group, Inc. and Subsidiaries's financial statements, calculate the difference in total Gross Unrealized Losses between December 31, 2022, and December 31, 2021."
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"$90 million.\", \"bbox\": [81, 184, 937, 198]}, {\"evidence\": \"$90 million.\", \"bbox\": [78, 460, 914, 480]}, {\"evidence\": \"$90 million.\", \"bbox\": [81, 432, 917, 453]}, {\"evidence\": \"$90 million.\", \"bbox\": [73, 699, 915, 727]}, {\"evidence\": \"$90 million.\", \"bbox\": [743, 137, 832, 736]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/NASDAQ_AMBC_2022_99.png-2/NASDAQ_AMBC_2022_99.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_124",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nAccording to Craneware plc's Company Statement of Cash Flows in 2023, what was the percentage increase in cash and cash equivalents at the end of the year from 2022 to 2023?"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"-11.61%\", \"bbox\": [50, 78, 886, 113]}, {\"evidence\": \"-11.61%\", \"bbox\": [42, 661, 891, 689]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/AIM_CRW_2023_109.png-3/AIM_CRW_2023_109.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_125",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nIn the Consolidated Balance report of Tachi Y Hunter Factory, Inc., what is the change in 'Total Stockholders' Equity' from December 31, 2022, to December 31, 2023?"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"$4,883 thousands\", \"bbox\": [17, 419, 976, 434]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/NASDAQ_TLF_2023_29.png-3/NASDAQ_TLF_2023_29.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_126",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nAccording to Craneware plc's annual report in 2023, calculate the total revenue growth from 2022 to 2023 according to the revenue breakdown in the financial statement."
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"$8,474,000\", \"bbox\": [52, 664, 886, 789]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/AIM_CRW_2023_117.png-2/AIM_CRW_2023_117.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_127",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nAccording to Cranevare plc Annual Report and Financial Statements 2023, what is the primary purpose of Trisus Chargemaster as described in the Revenue section?"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"Trisus Chargemaster is designed to enhance efficiency in workflow, collaboration, and communication across clinical and financial teams.\", \"bbox\": [114, 220, 387, 345]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/AIM_CRW_2023_4.png-1/AIM_CRW_2023_4.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_128",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nWhat did the World Health Organization do on January 1, 2020, in response to the COVID-19 pandemic, as mentioned in the document?"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"The World Health Organization activated its emergency response framework.\", \"bbox\": [505, 322, 940, 655]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/In-sickness-and-in-debt--The-COVID-19-impact-on-s_2022_Journal-of-Financial-_2.png-3/In-sickness-and-in-debt--The-COVID-19-impact-on-s_2022_Journal-of-Financial-_2.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_129",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nAccording to Ambac Financial Group, Inc. 2021 FORM 10-K, what is the role of the Watch List and Adversely Classified Credits in managing credit risk according to the document image?"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"The Watch List and Adversely Classified Credits are used to track and prompt immediate action and proper internal and external resources for managing credit risk. They are regularly reviewed and tailored to remediate plans based on credit developments.\", \"bbox\": [119, 194, 493, 419]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/NASDAQ_AMBC_2021_15.png-1/NASDAQ_AMBC_2021_15.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_130",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nIn Ambac Financial Group, Inc. 2020 FORM 10-K, according to the text description in the Stock Performance Graph section of the Ambac Financial Group's 2020 Form 10-K, what assumptions are made regarding the calculation of stock performance?"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"The text assumes that $100 was invested on December 31, 2015, in Ambac's common stock at the closing price, and similarly for the Russell 2000 and S&P Completion Indices. It also assumes that dividends, if any, were reinvested on payment dates without any commissions.\", \"bbox\": [101, 82, 883, 193]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/NASDAQ_AMBC_2020_37.png-3/NASDAQ_AMBC_2020_37.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_131",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nHow does Ambac’s current rated exposure in U.S. Structured Finance in 2020 compare to 2019, according to the 2020 FORM 10-K?"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"The exposure of Ambac's U.S. structured finance decreased by 16% in 2020 compared to December 31, 2019.\", \"bbox\": [114, 169, 909, 815]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/NASDAQ_AMBC_2020_52.png-2/NASDAQ_AMBC_2020_52.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_132",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nIn the CEO’s review from the Howden Joinery Group Plc Annual Report & Accounts 2023, what are the main expectations for Howdens in 2024?"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"The main expectations for Howdens in 2024 are to continue building on strong foundations with strategic initiatives like increasing market share, ensuring product availability, and maintaining competitive pricing. They plan to improve kitchen ranges, support product sales growth, and invest in new and existing depots to outperform competitors.\", \"bbox\": [31, 136, 238, 686]}, {\"evidence\": \"The main expectations for Howdens in 2024 are to continue building on strong foundations with strategic initiatives like increasing market share, ensuring product availability, and maintaining competitive pricing. They plan to improve kitchen ranges, support product sales growth, and invest in new and existing depots to outperform competitors.\", \"bbox\": [242, 159, 438, 362]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/LSE_HWDN_2023_14.png-1/LSE_HWDN_2023_14.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_133",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nWhat is the primary role of the Governance Committee as mentioned in the Strategic Report: Principal Risks and Uncertainties?"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"The Governance Committee is responsible for monitoring and assessing risks across the Group, specifically focusing on corporate governance responsibilities, risk management, and overseeing the Group's internal control systems. It functions to ensure there is specific focus on risk review and risk management.\", \"bbox\": [506, 449, 936, 799]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/AIM_CRW_2022_15.png-1/AIM_CRW_2022_15.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_134",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nIn the 2023 Form 10-K document of SRCE, what types of security or guarantees are typically required for loans in the construction equipment sector?"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"Loans in the construction equipment sector generally include personal guarantees and are reliant on investments from both public and private sectors.\", \"bbox\": [67, 34, 934, 133]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/NASDAQ_SRCE_2023_72.png-1/NASDAQ_SRCE_2023_72.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_135",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nAccording to Ambac Financial Group, Inc. 2022 Form 10-K, what is the authorized amount for the share repurchase program approved by the Board of Directors on May 5, 2022?"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"The authorized amount for the share repurchase program is $20.0 million.\", \"bbox\": [514, 656, 937, 827]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/NASDAQ_AMBC_2022_37.png-5/NASDAQ_AMBC_2022_37.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_136",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nWhat was the primary reason for Timberland Bancorp, Inc.’s acquisition of South Sound Bank, as noted in the document regarding the Business Combination?"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"The primary reason for the acquisition was to expand the Company’s presence along Washington State’s economically important I-5 corridor.\", \"bbox\": [121, 154, 861, 184]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/NASDAQ_TSBK_2021_102.png-1/NASDAQ_TSBK_2021_102.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_137",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nAccording to the Annual Report and Accounts 2021 of Howden Joinery Group Plc, what are the three scenarios outlined in the assessment of viability, and how do they differ in terms of revenue growth and cash flow forecasts?"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"1. Base Case: Assumes increases in sales and profits, supporting strategic priority areas. 2. Severe but Plausible Downturn: Assumes decline in sales and profits initially, with gradual recovery over three years. 3. Reverse Stress Test: Assumes slow recovery with less confident outcomes, investing only within existing cash resources.\", \"bbox\": [542, 201, 754, 762]}, {\"evidence\": \"1. Base Case: Assumes increases in sales and profits, supporting strategic priority areas. 2. Severe but Plausible Downturn: Assumes decline in sales and profits initially, with gradual recovery over three years. 3. Reverse Stress Test: Assumes slow recovery with less confident outcomes, investing only within existing cash resources.\", \"bbox\": [754, 205, 949, 282]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/LSE_HWDN_2021_36.png-3/LSE_HWDN_2021_36.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_138",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nAccording to SRCE's 2021 Form 10-K, what specific risks are associated with fluctuations in interest rates, and how might these affect the company's profitability and asset value?"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"The document states that fluctuations in interest rates could reduce profitability and affect asset value by causing changes in net interest spread, asset quality, origination volume, and overall profitability. Market interest rates affect loan and lease volumes, deposit costs, and the relationships of various interest rates to each other, potentially leading to imbalances.\", \"bbox\": [61, 38, 934, 303]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/NASDAQ_SRCE_2021_26.png-1/NASDAQ_SRCE_2021_26.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_139",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nAccording to Ambac Financial Group, Inc.'s 2022 Form 10-K, what are the three principal businesses operated by Ambac?"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"The three principal businesses are Legacy Financial Guarantee (LFG) Insurance, Specialty Property and Casualty Insurance, and Insurance Distribution.\", \"bbox\": [76, 116, 487, 723]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/NASDAQ_AMBC_2022_14.png-1/NASDAQ_AMBC_2022_14.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_140",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nAccording to the Corporate Governance Report from the Annual Report 2021 of Craneware, what criteria must be met for external auditors to be appointed to provide non-audit services?"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"The external auditors must not audit their own work, make management decisions for the Group, create a conflict of interest, or find themselves in the role of an advocate for the Group.\", \"bbox\": [64, 185, 484, 306]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/AIM_CRW_2021_49.png-1/AIM_CRW_2021_49.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_141",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nRegarding Ambac Financial Group's valuation techniques for fixed maturity securities, what are the different levels of fair value hierarchy mentioned in the document?"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"The document mentions three levels in the fair value hierarchy for fixed maturity securities: Level 2 and Level 3. Level 2 securities have fair values based on market correlations or readily observable data, using various valuation models. Level 3 securities are those with significant unobservable inputs.\", \"bbox\": [119, 439, 489, 866]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/NASDAQ_AMBC_2021_104.png-1/NASDAQ_AMBC_2021_104.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_142",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nAccording to the SRCE's annual report in 2021, regarding to its consolidated statements of cash flows, how much has the net change in demand deposits and savings accounts decreased for 2021 compared to 2020?"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"$53,586 thousands\", \"bbox\": [67, 48, 931, 98]}, {\"evidence\": \"$53,586 thousands\", \"bbox\": [88, 66, 917, 86]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/NASDAQ_SRCE_2021_multipage_61-62.png-1/NASDAQ_SRCE_2021_61.png",
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/NASDAQ_SRCE_2021_multipage_61-62.png-1/NASDAQ_SRCE_2021_62.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_143",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nAccording to the Mutual Evaluation Report of EL Salvador, in the case involving the Presidency of the Republic, how were funds misappropriated and what percentage of the funds were transferred to personal accounts at the BH as 'reserved expenses and transport' with the Ministry of Finance's approval?"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"Funds amounting to USD 677,418,176.76 were misappropriated from the budget of the Presidency, with 50.92% of the funds transferred following the approval of the Ministry of Finance.\", \"bbox\": [53, 460, 950, 936]}, {\"evidence\": \"Funds amounting to USD 677,418,176.76 were misappropriated from the budget of the Presidency, with 50.92% of the funds transferred following the approval of the Ministry of Finance.\", \"bbox\": [37, 135, 941, 923]}, {\"evidence\": \"Funds amounting to USD 677,418,176.76 were misappropriated from the budget of the Presidency, with 50.92% of the funds transferred following the approval of the Ministry of Finance.\", \"bbox\": [64, 142, 913, 615]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/FATF：2024年萨尔瓦多打击洗钱和恐怖主义融资的措施报告（英文版）_multipage_68-70.png-3/FATF：2024年萨尔瓦多打击洗钱和恐怖主义融资的措施报告（英文版）_68.png",
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/FATF：2024年萨尔瓦多打击洗钱和恐怖主义融资的措施报告（英文版）_multipage_68-70.png-3/FATF：2024年萨尔瓦多打击洗钱和恐怖主义融资的措施报告（英文版）_69.png",
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/FATF：2024年萨尔瓦多打击洗钱和恐怖主义融资的措施报告（英文版）_multipage_68-70.png-3/FATF：2024年萨尔瓦多打击洗钱和恐怖主义融资的措施报告（英文版）_70.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_144",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nAccording to the Mutual Evaluation Report of EL Salvador, how many times of Tax evasion happens in 2019?"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"5\", \"bbox\": [81, 667, 906, 897]}, {\"evidence\": \"5\", \"bbox\": [81, 141, 873, 385]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/FATF：2024年萨尔瓦多打击洗钱和恐怖主义融资的措施报告（英文版）_multipage_181-182.png-4/FATF：2024年萨尔瓦多打击洗钱和恐怖主义融资的措施报告（英文版）_181.png",
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/FATF：2024年萨尔瓦多打击洗钱和恐怖主义融资的措施报告（英文版）_multipage_181-182.png-4/FATF：2024年萨尔瓦多打击洗钱和恐怖主义融资的措施报告（英文版）_182.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_145",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nWhat was the estimated quarterly GDP growth rate for the United States and Brazil in the first quarter of 2021 according to the global economic prospects, which country is has a higher GDP growth rate?"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"United States: 0.5%, Brazil:1.3%, Brazil is higher\", \"bbox\": [111, 181, 958, 197]}, {\"evidence\": \"United States: 0.5%, Brazil:1.3%, Brazil is higher\", \"bbox\": [110, 83, 956, 158]}, {\"evidence\": \"United States: 0.5%, Brazil:1.3%, Brazil is higher\", \"bbox\": [56, 262, 887, 277]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/2022年全球经济展望+（英文版）_multipage_163-164.png-3/2022年全球经济展望+（英文版）_163.png",
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/2022年全球经济展望+（英文版）_multipage_163-164.png-3/2022年全球经济展望+（英文版）_164.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_146",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nWhat measures did Craneware Cares take to ensure shareholder participation and communication during the November 2022 Annual General Meeting (AGM), especially considering the impact of COVID-19?"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"For the November 2022 AGM, Craneware Cares aimed to hold a standard meeting open to all shareholders. Given COVID-19 uncertainties, they encouraged proxy voting and allowed shareholders to submit questions via email in advance. Responses were provided post-meeting, ensuring participation despite pandemic challenges.\", \"bbox\": [68, 104, 934, 540]}, {\"evidence\": \"For the November 2022 AGM, Craneware Cares aimed to hold a standard meeting open to all shareholders. Given COVID-19 uncertainties, they encouraged proxy voting and allowed shareholders to submit questions via email in advance. Responses were provided post-meeting, ensuring participation despite pandemic challenges.\", \"bbox\": [66, 146, 932, 298]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/AIM_CRW_2022_multipage_35-36.png-2/AIM_CRW_2022_35.png",
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/AIM_CRW_2022_multipage_35-36.png-2/AIM_CRW_2022_36.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_147",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nBased on share of registered accounts by region and sub-region, 2013–2023, which region had the most significant increase in the share of active accounts from 2013 to 2023, and by how much did it increase?"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"East Asia and Pacific, 13%\", \"bbox\": [72, 109, 928, 447]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/GSMA：2024年全球移动货币行业状况深度研究报告（英文版）_19.png-3/GSMA：2024年全球移动货币行业状况深度研究报告（英文版）_19.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_148",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nCalculate the percentage decrease in finance solely targeting biodiversity from its highest point in 2019-2023 to 2023."
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"64.29%.\", \"bbox\": [42, 241, 974, 891]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/气候政策倡议组织（CPI）：2024年IDFC绿色金融地图报告（英文版）_38.png-4/气候政策倡议组织（CPI）：2024年IDFC绿色金融地图报告（英文版）_38.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_149",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nWhat is the difference in deal value between Q4 2020 and Q1 2021 in Austria's venture financing?"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"$51.1 million\", \"bbox\": [1, 200, 996, 833]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/毕马威：2024年第三季度全球风险投资报告（英文版）_66.png-3/毕马威：2024年第三季度全球风险投资报告（英文版）_66.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_150",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nIn the GSMA State of the Industry Report on Mobile Money 2024, what was the percentage decrease in bill payments transaction values for East Africa from 2022 to 2023,?"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"10.7%\", \"bbox\": [76, 109, 928, 441]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/GSMA：2024年全球移动货币行业状况深度研究报告（英文版）_39.png-2/GSMA：2024年全球移动货币行业状况深度研究报告（英文版）_39.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_151",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nIn the Q3 2024 FinTech Insights, what percentage of financing deals were under $10 million in 2022?"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"53%\", \"bbox\": [17, 31, 984, 984]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/FT Partners：2024年第三季度金融科技洞察报告（英文版）_23.png-1/FT Partners：2024年第三季度金融科技洞察报告（英文版）_23.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_152",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nAccording to GSMA Global Adoption Survey 2023 and estimates, what is the average global activity rate between 2019 and 2023?"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"25.44%\", \"bbox\": [72, 288, 919, 768]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/GSMA：2024年全球移动货币行业状况深度研究报告（英文版）_20.png-4/GSMA：2024年全球移动货币行业状况深度研究报告（英文版）_20.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_153",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nCalculate the average annual change in the value of bank-to-mobile transactions from 2019 to 2023 based on the Bank-to-mobile and mobile-to-bank transaction values from 2019 to 2023?"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"$17.25 billion.\", \"bbox\": [70, 504, 924, 931]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/GSMA：2024年全球移动货币行业状况深度研究报告（英文版）_43.png-4/GSMA：2024年全球移动货币行业状况深度研究报告（英文版）_43.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_154",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nAccording to statistics about corporate deposits in the euro area, what are the notable differences in the trends between investment grade banks and other banks from January 2012 to January 2020?"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"Investment grade banks consistently show higher corporate deposits compared to other banks. From 2012 to 2020, the deposits in investment grade banks exhibit a steady upward trend, whereas deposits in other banks are lower and exhibit more fluctuations, particularly after 2018.\", \"bbox\": [62, 124, 948, 456]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/Is-there-a-zero-lower-bound--The-effects-of-negative_2022_Journal-of-Financi_7.png-2/Is-there-a-zero-lower-bound--The-effects-of-negative_2022_Journal-of-Financi_7.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_155",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nAccording to the Wall Street stocks data from July 31,2024 to Aug 13,2024, explain the trends of S&P 500 and Nasdaq Composite indices during that time period."
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"There's a steep decline followed by a bounce back for both the S&P 500 and Nasdaq Composite indices. After an initial drop where both indices reached close to their lowest points, they recovered steadily with the Nasdaq Composite seeing a slightly stronger recovery than the S&P 500. This indicates a volatile period followed by a short-term rebound.\", \"bbox\": [657, 107, 977, 277]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/Financial Times UK - 15.08.2024_13.png-2/Financial Times UK - 15.08.2024_13.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_156",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nBased on the changes in financial literacy in the US from 2012 to 2022, how has the financial literacy trend evolved in these countries?"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"In the US, students with a high financial literacy skill level have been gradually increasing from 2012 to 2022, but they still have not surpassed those with low financial literacy. Meanwhile, the percentage of students with low financial literacy, although slightly decreasing in recent years, remains high.\", \"bbox\": [195, 503, 564, 678]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/Financial Times Europe - 28 June 2024_3.png-4/Financial Times Europe - 28 June 2024_3.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_157",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nAccording to Howden Joinery Group Plc / Annual Report & Accounts 2022, what trend does the reportable injuries per 100k employees for HSE all-industry rate show over the years from 2018 to 2022?"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"It shows a declining trend in the reportable injury rates per 100k employees from 2018 to 2022.\", \"bbox\": [282, 235, 436, 436]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/LSE_HWDN_2022_34.png-3/LSE_HWDN_2022_34.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_158",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nAccording to the Difference-in-Differences analysis of the effect of the LIFO reform on entrepreneurship entry, what is the trend of the difference-in-differences (DiD) coefficient estimates from 1995 to 2010 based on the year of entry as shown by the Firm FEs?"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"The trend shows fluctuations in the DiD coefficient estimates with a local peaks around 2002, and a sharp increase towards peak in 2004-2005 according to the Firm FEs data. Afterward, there is a slight decrease followed by stabilization.\", \"bbox\": [38, 70, 944, 398]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/From-employee-to-entrepreneur--The-role-of-unem_2025_Journal-of-Financial-Ec_14.png-1/From-employee-to-entrepreneur--The-role-of-unem_2025_Journal-of-Financial-Ec_14.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_159",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nIn the time frame 01/1970 to 10/2024, according to the statistics about Silver (Nominal), and Silver (US CPI Adjusted – October 2024)', at which approximate point did the nominal price of silver reach its peak, and what was the value?"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"The nominal price of silver reached its peak around 1980, with a value of approximately USD 147.79.\", \"bbox\": [1, 2, 1000, 1000]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/Incrementum：2024年12月月度黄金指南报告（英文版）_27.png-1/Incrementum：2024年12月月度黄金指南报告（英文版）_27.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_160",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nAccording to the statistics of Venture-backed exit activity in the US from 2018 to Q3 2024, what was the highest exit value recorded, and in which quarter did it occur?"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"The highest exit value recorded was $238.0 billion, which occurred in Q2 2021.\", \"bbox\": [1, 190, 1000, 821]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/毕马威：2024年第三季度全球风险投资报告（英文版）_29.png-1/毕马威：2024年第三季度全球风险投资报告（英文版）_29.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_161",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nFrom 1996 to 2010, when did the total cross-border equity investment arrive at its peak?"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"2007\", \"bbox\": [66, 62, 934, 454]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/Does-regulatory-cooperation-help-integrate-equi_2021_Journal-of-Financial-Ec_6.png-1/Does-regulatory-cooperation-help-integrate-equi_2021_Journal-of-Financial-Ec_6.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_162",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nWhat are the dominant regions for RMB-based cross-border trade settlement practices by Chinese companies according to the geographic distribution?"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"The dominant regions for RMB-based cross-border trade settlement by Chinese companiess are East Asia (including Hong Kong, Macau, and Taiwan region) and UK.\", \"bbox\": [146, 104, 871, 469]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/中国建设银行：2024年度人民币国际化报告（英文版）_29.png-1/中国建设银行：2024年度人民币国际化报告（英文版）_29.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_163",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nHow many corporate treasurers were surveyed as part of the 2024 Global Corporate Survey in the World Payments Report 2025 methodology?"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"600 corporate treasurers were surveyed.\", \"bbox\": [92, 512, 908, 805]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/凯捷Capgemini：2025年世界支付报告：速度与价值融合引领开放式即时支付的未来（英文版）_56.png-3/凯捷Capgemini：2025年世界支付报告：速度与价值融合引领开放式即时支付的未来（英文版）_56.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_164",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nBased on the overview of cloud usage by banks from the Infosys Knowledge Institute, what percentage of banks use only one cloud service provider?"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"9%\", \"bbox\": [499, 250, 927, 891]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/印孚瑟斯Infosys：2024年云雷达：银行业报告（英文版）_12.png-1/印孚瑟斯Infosys：2024年云雷达：银行业报告（英文版）_12.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_165",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nWhich region experienced the highest percentage increase in GDP due to mobile money in 2022?"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"Eastern Africa\", \"bbox\": [74, 237, 904, 910]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/GSMA：2024年全球移动货币行业状况深度研究报告（英文版）_16.png-4/GSMA：2024年全球移动货币行业状况深度研究报告（英文版）_16.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_166",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nWhat is the largest source of greenhouse gas emissions in North America in 2018??"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"Electricity/Heat\", \"bbox\": [341, 340, 656, 512]}, {\"evidence\": \"Electricity/Heat\", \"bbox\": [487, 542, 830, 630]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/巩固复苏：抓住绿色增长机会（英文版）_40.png-1/巩固复苏：抓住绿色增长机会（英文版）_40.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_167",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nIn the statistics of Kartu Prakerja Beneficiaries, what proportion of beneficiaries already had an e-money account before joining the program?"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"26.9%\", \"bbox\": [99, 454, 447, 898]}, {\"evidence\": \"26.9%\", \"bbox\": [325, 20, 973, 271]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/世界银行：2024年印尼政府对个人支付体系中受益人选择的早期经验报告（英文版）_45.png-3/世界银行：2024年印尼政府对个人支付体系中受益人选择的早期经验报告（英文版）_45.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_168",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nWhat is the estimated percentage of millennial women with an income level of $50-74k?"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"22.5%\", \"bbox\": [81, 85, 921, 419]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/千禧一代女性消费行为调查报告（英文版）_6.png-1/千禧一代女性消费行为调查报告（英文版）_6.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_169",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nBased on the status of countires' net-zero targets in 2021, what is the percentage share of global total energy supply for countries with net-zero targets in law?"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"14%\", \"bbox\": [35, 634, 959, 918]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/2022年促进有效的能源转型（英文版）_20.png-3/2022年促进有效的能源转型（英文版）_20.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_170",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nAccording to the 2022 financial data for AMBAC Financial Group, Inc., regarding the Summary of PSU Activity for 2022, what is the difference between the number of shares outstanding at the beginning of the period and at the end of the period?"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"196,895.\", \"bbox\": [503, 77, 929, 538]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/NASDAQ_AMBC_2022_135.png-2/NASDAQ_AMBC_2022_135.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_171",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nAccording to the data of 'World Markets' reported by Financial Times Europe, What is the change in the exchange rate for Euro against the US Dollar on August 26, 2024, compared to the previous trading day?"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"0.21%.\", \"bbox\": [193, 763, 624, 885]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/Financial Times Europe - 27 August 2024_1.png-3/Financial Times Europe - 27 August 2024_1.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_172",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nWhat was the percentage increase in the corporation tax on profits of the year from 2022 to 2023, according to Craneware's financial statement?"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"101.7% increase.\", \"bbox\": [105, 243, 969, 517]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/AIM_CRW_2023_128.png-3/AIM_CRW_2023_128.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_173",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nIn the 'Notes to Consolidated Financial Statements' document of Timberland Bancorp, Inc. for September 30, 2020 and 2019, what is the difference in provision for loan losses between September 30, 2020 and December 31, 2019?"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"300.\", \"bbox\": [116, 272, 882, 293]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/NASDAQ_TSBK_2020_135.png-1/NASDAQ_TSBK_2020_135.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_174",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nFrom the AAON, Inc. and Subsidiaries Consolidated Statements of Cash Flows, calculate the average annual change in net cash used in investing activities between 2019 and 2021."
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"Approximately $60,836.5 thousand.\", \"bbox\": [644, 68, 973, 118]}, {\"evidence\": \"Approximately $60,836.5 thousand.\", \"bbox\": [130, 624, 981, 645]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/NASDAQ_AAON_2021_63.png-3/NASDAQ_AAON_2021_63.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_175",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nWhat are the average total assets of Northwest Bancshares, Inc. and Subsidiaries as of December 31, 2023, and 2022, according to the Consolidated Statements of Financial Condition?"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"$14,266,215 thousand\", \"bbox\": [325, 51, 680, 99]}, {\"evidence\": \"$14,266,215 thousand\", \"bbox\": [37, 307, 946, 323]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/0001471265-24-000009_71.png-1/0001471265-24-000009_71.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_176",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nIn the Notes to Consolidated Financial Statements of AMBAC FINANCIAL GROUP, INC., what is the average lease payment amount scheduled to be received from 2021 to 2025?"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"$1 million.\", \"bbox\": [81, 104, 484, 357]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/NASDAQ_AMBC_2020_143.png-1/NASDAQ_AMBC_2020_143.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_177",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nIn the Mutual Evaluation Report of El Salvador, what is the total USD equity of trusts and securitisation entities as of November 2023?"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"$4,792,906,916.68.\", \"bbox\": [179, 737, 816, 867]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/FATF：2024年萨尔瓦多打击洗钱和恐怖主义融资的措施报告（英文版）_171.png-3/FATF：2024年萨尔瓦多打击洗钱和恐怖主义融资的措施报告（英文版）_171.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_178",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nAccording to SRCE 2023 Form 10-K, what are the main accounting policies highlighted in the document for 1st Source Corporation?"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"The main accounting policies highlighted include Basis of Presentation, Use of Estimates in the Preparation of Financial Statements, Business Combinations, Cash Flows, and Securities.\", \"bbox\": [56, 72, 944, 583]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/NASDAQ_SRCE_2023_61.png-1/NASDAQ_SRCE_2023_61.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_179",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nAccording to Craneware plc's Annual Report 2020, what is the primary purpose of Craneware Cares?"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"The primary purpose of Craneware Cares is to raise awareness and funds for charity in both the UK and the US through an employee committee.\", \"bbox\": [68, 242, 929, 358]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/AIM_CRW_2020_26.png-1/AIM_CRW_2020_26.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_180",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nAccording to PDF Solutions, Inc.'s 2024 Notice of Annual Meeting & Proxy Statement, what is the total number of shares held by the company's current directors and executive officers as a group, what is their percent of the class, and how many of these shares are expected to vest within 60 days after April 19, 2024?"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"The total number of shares held by the company's current directors and executive officers as a group is 4,272,669. Their percent of the class is 11.13%. Out of these shares, 2,790 are expected to vest within 60 days after April 19, 2024.\", \"bbox\": [32, 846, 964, 874]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/FINAL PROOF for Online Posting PDFS_2024ProxyStatement No blank pages_multipage_51-60.png-3/FINAL PROOF for Online Posting PDFS_2024ProxyStatement No blank pages_54.png",
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/FINAL PROOF for Online Posting PDFS_2024ProxyStatement No blank pages_multipage_51-60.png-3/FINAL PROOF for Online Posting PDFS_2024ProxyStatement No blank pages_55.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_181",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nIn the 2021 Ambac Financial Group, Inc. 10-K report, how much did Ambac's total pre-tax income (loss) and provision for income taxes increased from 2020 to 2021?"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"The pre-tax income (loss) increased $442 millions, and the provision for income taxes increased $21 millions\", \"bbox\": [509, 725, 881, 870]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/NASDAQ_AMBC_2021_multipage_131-140.png-1/NASDAQ_AMBC_2021_131.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_182",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nAccording to Timberland Bancorp, Inc. and Subsidiary's report, what is the difference between total non-interest income and total non-interest expense for the year ended December 31, 2020?"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"-$16,875 thousands\", \"bbox\": [123, 197, 877, 228]}, {\"evidence\": \"-$16,875 thousands\", \"bbox\": [123, 780, 877, 802]}, {\"evidence\": \"-$16,875 thousands\", \"bbox\": [121, 195, 877, 223]}, {\"evidence\": \"-$16,875 thousands\", \"bbox\": [119, 490, 877, 513]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/NASDAQ_TSBK_2020_multipage_81-90.png-1/NASDAQ_TSBK_2020_81.png",
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/NASDAQ_TSBK_2020_multipage_81-90.png-1/NASDAQ_TSBK_2020_82.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_183",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nBased on Craneware plc Annual Report 2022, compare the net book value changes from 30 June 2021 to 30 June 2022 across both property, plant and equipment, and intangible assets for the group."
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"For property, plant, and equipment (Group), the net book value increased from $1,992,000 at 30 June 2021 to $2,572,000 at 30 June 2022. For intangible assets (Group), the net book value increased from $11,188,000 at 30 June 2021 to $237,646,000 at 30 June 2022.\", \"bbox\": [68, 434, 934, 458]}, {\"evidence\": \"For property, plant, and equipment (Group), the net book value increased from $1,992,000 at 30 June 2021 to $2,572,000 at 30 June 2022. For intangible assets (Group), the net book value increased from $11,188,000 at 30 June 2021 to $237,646,000 at 30 June 2022.\", \"bbox\": [64, 404, 939, 423]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/AIM_CRW_2022_multipage_121-130.png-1/AIM_CRW_2022_121.png",
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/AIM_CRW_2022_multipage_121-130.png-1/AIM_CRW_2022_123.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_184",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nCalculate the combined renewable energy capacity investment by China, Japan, and Germany from 2010 to the first half of 2019?"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"$1,139 billion\", \"bbox\": [2, 1, 1000, 582]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/2022年促进有效的能源转型（英文版）_22.png-4/2022年促进有效的能源转型（英文版）_22.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_185",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\nBased on the statistics of climate finance flows by international and domestic, what is the growth rate of domestic public funding from 2019/20 to 2021/22?"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"-37.5%.\", \"bbox\": [41, 73, 978, 961]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/气候政策倡议组织（CPI）：2024年非洲气候融资格局报告（英文版）_42.png-4/气候政策倡议组织（CPI）：2024年非洲气候融资格局报告（英文版）_42.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_186",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n在均胜电子年报点评的财务预测与比率分析中，预计2025年和2026年之间净利润的增长率是多少？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"8.36%\", \"bbox\": [514, 155, 989, 451]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/【研报推荐】均胜电子年报点评：汽车安全业务盈利改善，汽车电子业务稳定增长_3.png-3/【研报推荐】均胜电子年报点评：汽车安全业务盈利改善，汽车电子业务稳定增长_3.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_187",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n根据中国银行股份有限公司2024年上半年财务分析，2024年6月30日各行贷款的总金额较2023年12月31日增长了多少？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"1,181,698百万元。\", \"bbox\": [190, 753, 958, 783]}, {\"evidence\": \"1,181,698百万元。\", \"bbox\": [215, 318, 921, 359]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/中国银行股份有限公司2024年半年度报告_139.png-3/中国银行股份有限公司2024年半年度报告_139.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_188",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n有固安拼多多和阿里巴巴的财务数据中，电商的获客成本大幅飙升，淘天从2019到2022获客成本的增长率是多少？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"293.3%\", \"bbox\": [107, 816, 541, 934]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/第一财经2024年5期_27.png-3/第一财经2024年5期_27.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_189",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n对于2015年外资银行资产负债情况，第一季度到第四季度对政府债权的总变化率是多少？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"5.79%\", \"bbox\": [119, 296, 848, 339]}, {\"evidence\": \"5.79%\", \"bbox\": [129, 115, 834, 208]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/中国金融稳定报告2016_188.png-3/中国金融稳定报告2016_188.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_190",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n关于科技与健康有关万泰生物营收利润变化的分析，在2023年的预测中，万泰生物营业收入与2019年相比增加了多少钱？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"43.27亿元\", \"bbox\": [362, 257, 980, 413]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/财经2024年9期_109.png-2/财经2024年9期_109.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_191",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n在G20经济体CPI增速中，2024年10月阿根廷的CPI增速相比2024年1月变化（上升/下降）了多少个百分点？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"下降了61.2个百分点\", \"bbox\": [92, 296, 936, 602]}, {\"evidence\": \"下降了61.2个百分点\", \"bbox\": [96, 250, 934, 299]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/中国银行全球经济金融展望报告（2025年）：经济增长不确定性加大，货币政策进入降息周期_8.png-3/中国银行全球经济金融展望报告（2025年）：经济增长不确定性加大，货币政策进入降息周期_8.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_192",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n根据中国数字经济发展白皮书的报道，海尔COSMOPlat工业互联网平台为多少企业提供了链接，并成功赋能了多少家企业实现员工增产？请详细说明相关实现情况。"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"在该文档中，海尔COSMOPlat工业互联网平台链接超过2600多家企业，发布及承接企业需求5000多万件，成功赋能800多家企业实现员工增产。\", \"bbox\": [142, 86, 851, 318]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/中国数字经济发展白皮书_25.png-1/中国数字经济发展白皮书_25.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_193",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n根据2023年第16期（总第471期）文章中提供的信息，请分析美国2022年的货币政策对中国债券市场的影响。"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"由于美货币政策转向，以致中国10年期国债收益率与美国10年期国债收益率利差从“正转负”，人民币资产对外资吸引力下降，导致2022年5月外资持有的境内股票及境内债券规模较上月末分别减少了910亿元和963.14亿元。\", \"bbox\": [347, 2887, 4017, 3652]}, {\"evidence\": \"由于美货币政策转向，以致中国10年期国债收益率与美国10年期国债收益率利差从“正转负”，人民币资产对外资吸引力下降，导致2022年5月外资持有的境内股票及境内债券规模较上月末分别减少了910亿元和963.14亿元。\", \"bbox\": [67, 147, 983, 861]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/《宏观观察》2023年第16期：2022年人民币汇率走势回顾及2023年展望_4.png-3/《宏观观察》2023年第16期：2022年人民币汇率走势回顾及2023年展望_4.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_194",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n在中国数字经济发展白皮书中，上海、北京、深圳三地分别提出了哪些数字化转型政策文件？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"上海发布《关于全面推进上海城市数字化转型的意见》、北京发布《促进数字经济创新发展行动纲要（2020-2022年）》、深圳发布《数字经济产业创新发展实施方案（2021-2023年）》。\", \"bbox\": [137, 478, 882, 898]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/中国数字经济发展白皮书_31.png-3/中国数字经济发展白皮书_31.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_195",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n在有关中概股市场资金流动的文件中，2022年3月中概股净流入是多少亿美元，与上月净流出对比有什么变化？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"2022年3月，中概股净流入了63亿美元，与上月净流出240亿美元相比，净流入回升超过300亿。\", \"bbox\": [25, 190, 950, 332]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/浦银国际证券：SPDBI中国股市资金全景图2022年4月刊：资金流周期底部，继续看多中国股票_11.png-1/浦银国际证券：SPDBI中国股市资金全景图2022年4月刊：资金流周期底部，继续看多中国股票_11.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_196",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n根据文本，分析地摊经济政策对提升消费者外出消费意愿的影响。"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"地摊经济政策通过增加街边小吃摊以及道经饮店的扩展接待量，不仅消除了居民对外出就餐的疑虑，而且在一定程度上帮助刺激了室外消费，促进了整体餐饮市场的复苏。\", \"bbox\": [33, 24, 985, 976]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/2020年中国地摊经济行业研究报告_48.png-3/2020年中国地摊经济行业研究报告_48.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_197",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n关于澳门特别行政区数字澳门元白皮书中，2023年11月澳门金管局与中国人民银行、香港金管局合作的具体措施是什么？目的是什么？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"三方共同签署《关于粤港澳大湾区深化金融科技创新监管合作的谅解备忘录》，据此，将澳门特区的创新金融科技试行项目与中国人民银行金融科技创新监管工具、香港金管局金融科技监管沙盒联网对接，以促进粤港澳大湾区数字金融融合发展，提升粤港澳大湾区金融服务素质。\", \"bbox\": [190, 246, 877, 411]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/澳门金融管理局：2024年澳门特别行政区-数字澳门元白皮书_17.png-1/澳门金融管理局：2024年澳门特别行政区-数字澳门元白皮书_17.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_198",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n根据文档中的宏观数据，说明美国在2021年12月至2023年12月之间针对制造业推动产生了哪些显著的经济效果？请具体说明影响的领域。"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"美国在2021年12月至2023年12月由于制造业政策的持续推进，产生了制造业建设和就业的加快回暖。其中计算机、电子和电气行业的实际建设建设支出增加近5倍，带动整体制造业设施建造指出实现翻倍增长。与此类似，在计算机和电子产品、半导体和其他电子元件制造业的就业人数也在维持较高增长。\", \"bbox\": [64, 103, 929, 793]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/《宏观观察》2024年第53期：美国大选结果对我国芯片产业发展的影响和应对建议_6.png-3/《宏观观察》2024年第53期：美国大选结果对我国芯片产业发展的影响和应对建议_6.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_199",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n根据思看科技公司对中国工程机械市场销售收入规模的预测，2025年和2026年的销售收入分别是多少亿元？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"2025年预测销售收入为4678.7亿元，2026年为5239.3亿元。\", \"bbox\": [142, 76, 886, 332]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/思看科技(杭州)股份有限公司科创板IPO上市招股说明书_138.png-1/思看科技(杭州)股份有限公司科创板IPO上市招股说明书_138.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_200",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n根据中国银行2024年半年度发展趋势与展望，2024年中国农业银行的资本充足率为多少？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"中国农业银行的资本充足率为18.45%\", \"bbox\": [197, 483, 958, 913]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/德勤：中国银行业2024年上半年发展回顾与展望报告_115.png-2/德勤：中国银行业2024年上半年发展回顾与展望报告_115.png"
+        ]
+    },
+    {
+        "id": "finragbench_pos_201",
+        "conversations": [
+            {
+                "role": "user",
+                "content": "<image>\n2021年上半年国内绿色债券投资情况中，请分析哪个产业的投资金额最高，其数值是多少？"
+            },
+            {
+                "role": "assistant",
+                "content": "```json[{\"evidence\": \"清洁能源产业的投资金额最高，数值约为2400亿元。\", \"bbox\": [99, 124, 936, 467]}]```"
+            }
+        ],
+        "images": [
+            "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/citation_labels/citation_labels_new/sampled_imgs/泰康绿色金融发展白皮书_22.png-1/泰康绿色金融发展白皮书_22.png"
+        ]
+    }
+]

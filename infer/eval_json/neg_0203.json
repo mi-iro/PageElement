@@ -1,0 +1,3202 @@
+[
+  {
+    "id": "neg_finrag_000004",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n根据江苏科达科技股份有限公司2020年度报告，请计算其他流动资产中'留抵进项税'在期末和期初余额中的变化率是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/2021-03-23__苏州科达科技股份有限公司__603660__苏州科达__2020年__年度报告_23.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000006",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n根据江苏科达科技股份有限公司2020年度报告，请计算其他流动资产中'留抵进项税'在期末和期初余额中的变化率是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/2021-03-23__苏州科达科技股份有限公司__603660__苏州科达__2020年__年度报告_123.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000021",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n根据深圳信立泰药业股份有限公司首次公开发行股票的项目投资概算，营销分公司和营销网点的建设中，办公用车与所有补充流动资金项的合计投资金额是多少万元？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/52fd4a323d97356a463959671794e900699baae5_227.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000022",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n根据深圳信立泰药业股份有限公司首次公开发行股票的项目投资概算，营销分公司和营销网点的建设中，办公用车与所有补充流动资金项的合计投资金额是多少万元？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/52fd4a323d97356a463959671794e900699baae5_272.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000026",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n在思看科技(杭州)股份有限公司招股的说明中，浙江华睿合伙人的出资比例约为浙江富华瑞银合伙人的多少倍？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/思看科技(杭州)股份有限公司科创板IPO上市招股说明书_60.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000027",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n在思看科技(杭州)股份有限公司招股的说明中，浙江华睿合伙人的出资比例约为浙江富华瑞银合伙人的多少倍？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/思看科技(杭州)股份有限公司科创板IPO上市招股说明书_48.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000028",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n在思看科技(杭州)股份有限公司招股的说明中，浙江华睿合伙人的出资比例约为浙江富华瑞银合伙人的多少倍？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/思看科技(杭州)股份有限公司科创板IPO上市招股说明书_54.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000034",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n结合上海外高桥电厂二期工程项目的数据，计算2004年至2006年三年中实际投资收益的平均值。"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/11463b6562c6ba2afde67a29bca314452ea9a2e0_180.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000035",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n根据2023年皖能电力年报的主要财务信息，2022年到2026年皖能电力的营业收入预计增长多少（百万元）？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/2021-03-25__中煤新集能源股份有限公司__601918__新集能源__2020年__年度报告_18.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000036",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n在2018年阿里巴巴参与投资项目融资金额前十的的项目中，总投资金额是多少（单位：亿元）。"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/周期、重构、起航-2018年中国新经济创投白皮书_171.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000037",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n在2018年阿里巴巴参与投资项目融资金额前十的的项目中，总投资金额是多少（单位：亿元）。"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/周期、重构、起航-2018年中国新经济创投白皮书_174.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000040",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n在2018年阿里巴巴参与投资项目融资金额前十的的项目中，总投资金额是多少（单位：亿元）。"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/财经2024年8期_47.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000041",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n在2018年阿里巴巴参与投资项目融资金额前十的的项目中，总投资金额是多少（单位：亿元）。"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/周期、重构、起航-2018年中国新经济创投白皮书_184.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000043",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n根据2024年上半年银行零售业务观察报告中有关零售客户数量的数据，估算交通银行和招商银行在2023年末的零售客户总数之和是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/2022-03-25__兴业银行股份有限公司__601166__兴业银行__2021年__年度报告_66.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000045",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n根据2024年上半年银行零售业务观察报告中有关零售客户数量的数据，估算交通银行和招商银行在2023年末的零售客户总数之和是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/中国人民大学国际货币研究所：中国财富管理行业趋势报告（2024上）_33.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000047",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n在中国工商银行股份有限公司财务报表中，2023年本集团与本行中AAA评级总资产的差异是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/中国工商银行股份有限公司2023年度报告_321.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000048",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n在中国工商银行股份有限公司财务报表中，2023年本集团与本行中AAA评级总资产的差异是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/中国工商银行股份有限公司2023年度报告_112.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000049",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n在中国工商银行股份有限公司财务报表中，2023年本集团与本行中AAA评级总资产的差异是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/中国工商银行股份有限公司2023年度报告_15.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000051",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n根据思看科技（杭州）股份偿债能力指标分析，从2020年到2022年，息税折旧摊销前利润的增长率是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/思看科技(杭州)股份有限公司科创板IPO上市招股说明书_26.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000052",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n根据思看科技（杭州）股份偿债能力指标分析，从2020年到2022年，息税折旧摊销前利润的增长率是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/思看科技(杭州)股份有限公司科创板IPO上市招股说明书_39.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000057",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n根据中国上市及新三板挂牌公司低空经济发展报告2024公司数据统计，请计算2021年到2022年，万丰奥威的总资产的增幅是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/国家低空经济融创中心：中国上市及新三板挂牌公司低空经济发展报告（2024）_245.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000062",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n根据中国上市及新三板挂牌公司低空经济发展报告2024公司数据统计，请计算2021年到2022年，万丰奥威的总资产的增幅是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/财经2024年12期_20.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000063",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n在浙江江达精工股份有限公司的租赁价格比较重，台州市黄岩春亚冷风机厂房租赁期间的总租赁费用是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/思看科技(杭州)股份有限公司科创板IPO上市招股说明书_187.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000067",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n在浙江江达精工股份有限公司的租赁价格比较重，台州市黄岩春亚冷风机厂房租赁期间的总租赁费用是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/e0a89442ee14a193c6600b0092a43a95a2ddab88_317.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000068",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n在浙江江达精工股份有限公司的租赁价格比较重，台州市黄岩春亚冷风机厂房租赁期间的总租赁费用是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/e0a89442ee14a193c6600b0092a43a95a2ddab88_315.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000070",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n在1999年到2002年期间，日本寿险公司在2001年相对于2000年的总合计规模变化率是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/东吴证券：保险行业2025年投资策略：资负共振，长期可期_41.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000071",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n在1999年到2002年期间，日本寿险公司在2001年相对于2000年的总合计规模变化率是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/东吴证券：保险行业2025年投资策略：资负共振，长期可期_2.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000075",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n在深圳信立泰药业股份有限公司首次公开发行股票招股说明书中有关2005年9月的增资统计中，2004年5月31日比2003年12月31日的净资产增资多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/52fd4a323d97356a463959671794e900699baae5_43.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000076",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n在深圳信立泰药业股份有限公司首次公开发行股票招股说明书中有关2005年9月的增资统计中，2004年5月31日比2003年12月31日的净资产增资多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/52fd4a323d97356a463959671794e900699baae5_34.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000077",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n在深圳信立泰药业股份有限公司首次公开发行股票招股说明书中有关2005年9月的增资统计中，2004年5月31日比2003年12月31日的净资产增资多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/52fd4a323d97356a463959671794e900699baae5_40.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000078",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n在深圳信立泰药业股份有限公司首次公开发行股票招股说明书中有关2005年9月的增资统计中，2004年5月31日比2003年12月31日的净资产增资多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/52fd4a323d97356a463959671794e900699baae5_4.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000079",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n在沪市主板IPO排队企业拟募资规模前十的公司中，计算所有企业拟募资金额的总和是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/2024年A股IPO减速！募资额创近十年新低 最赚钱新股出炉 _ 东方财富网_3.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000080",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n在沪市主板IPO排队企业拟募资规模前十的公司中，计算所有企业拟募资金额的总和是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/2024年A股IPO减速！募资额创近十年新低 最赚钱新股出炉 _ 东方财富网_7.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000082",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n在沪市主板IPO排队企业拟募资规模前十的公司中，计算所有企业拟募资金额的总和是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/投中统计： 三季度港股再现百亿级项目 中企IPO数量金额环比回升_5.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000083",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n在沪市主板IPO排队企业拟募资规模前十的公司中，计算所有企业拟募资金额的总和是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/财经2023第14期_57.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000090",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n对于2012–2016年全国寿险保费收入构成，健康保险从2012年到2016年的绝对金额变化（上涨或下跌）了多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/中国金融稳定报告2016_76.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000093",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n有关2020年各资金来源及用途，非金融企业部门使用资金占2022总使用资金的百分之多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/2021-03-25__中煤新集能源股份有限公司__601918__新集能源__2020年__年度报告_12.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000096",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n有关2020年各资金来源及用途，非金融企业部门使用资金占2022总使用资金的百分之多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/2021-03-31__光力科技股份有限公司__300480__光力科技__2020年__年度报告_25.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000097",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n有关2020年各资金来源及用途，非金融企业部门使用资金占2022总使用资金的百分之多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/2021-06-19__花王生态工程股份有限公司__603007__花王股份__2020年__年度报告_20.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000099",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n艾德生物公司的EPS（每股收益）在2023年和2025年之间预计上升多少元？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/财经2024年5期_84.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000102",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n艾德生物公司的EPS（每股收益）在2023年和2025年之间预计上升多少元？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/财经2024年10期_53.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000103",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n艾德生物公司的EPS（每股收益）在2023年和2025年之间预计上升多少元？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/财经2024年9期_109.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000104",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n艾德生物公司的EPS（每股收益）在2023年和2025年之间预计上升多少元？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/财经2024年7期_86.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000106",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n2024财年美国的税收收入中，企业所得税的占比预计和两年前的相比上升了多少个百分点？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/中国银行全球经济金融展望报告（2025年）：经济增长不确定性加大，货币政策进入降息周期_11.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000109",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n2024财年美国的税收收入中，企业所得税的占比预计和两年前的相比上升了多少个百分点？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/企业所得税税式支出的成本效益分析——以研发费用加计扣除政策为例_2.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000110",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n2024财年美国的税收收入中，企业所得税的占比预计和两年前的相比上升了多少个百分点？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/2021-04-23__金花企业集团股份有限公司__600080__金花股份__2020年__年度报告_108.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000111",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n2023年6月的银行间回购利率DR007比2023年1月上升还是下降，数值变化为多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/货币市场日报：12月23日 - 中国金融信息网_1.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000112",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n2023年6月的银行间回购利率DR007比2023年1月上升还是下降，数值变化为多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/货币市场日报：12月13日 - 中国金融信息网_1.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000115",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n2023年6月的银行间回购利率DR007比2023年1月上升还是下降，数值变化为多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/NIFD季报：货币政策超预期，债市回调明显——2024年Q3债券市场_13.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000116",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n2023年6月的银行间回购利率DR007比2023年1月上升还是下降，数值变化为多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/2022第二季度中国货币政策执行报告_9.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000117",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n在2018年新经济创投白皮书的口腔诊疗运营能力分析中，通策医疗和大众口腔（2016年）的净利润差异是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/周期、重构、起航-2018年中国新经济创投白皮书_103.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000119",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n在2018年新经济创投白皮书的口腔诊疗运营能力分析中，通策医疗和大众口腔（2016年）的净利润差异是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/财经2023第07期_98.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000122",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n根据金地集团年报点评中有关各个可比公司估值的研究，2022年到2023年融创中国的每股净资产的增长率预计是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/财经2023第01期_97.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000123",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n根据金地集团年报点评中有关各个可比公司估值的研究，2022年到2023年融创中国的每股净资产的增长率预计是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/财经2023第16期_69.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000128",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n根据金地集团年报点评中有关各个可比公司估值的研究，2022年到2023年融创中国的每股净资产的增长率预计是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/第一财经2023年1-2期_28.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000129",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n海利尔对于金融行业研究中有关财务报表的预测和比率分析，从2022到2026年货币资金预计上升多少（百万元）？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/08538049ad1c7ca74c508bf95fe9fbbb4c924f3e_116.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000130",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n在国能日新年报的可比公司估值中，2022到2023年，用友网络公司的市盈率涨跌幅是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/皖能电力年报点评：电价高位维持、煤价趋稳，新疆机组投产，归母净利润大幅增长；分红比例提高_2.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000133",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n在国能日新年报的可比公司估值中，2022到2023年，用友网络公司的市盈率涨跌幅是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/科技潜力牛股出炉！人形机器人、AI手机、智能驾驶、固态电池 谁是王者？ _ 东方财富网_4.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000137",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n在均胜电子年报点评的财务预测与比率分析中，预计2025年和2026年之间净利润的增长率是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/外资机构密集预测2025：集中看多中国市场 _ 东方财富网_2.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000138",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n在均胜电子年报点评的财务预测与比率分析中，预计2025年和2026年之间净利润的增长率是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/外资机构密集预测2025：集中看多中国市场 _ 东方财富网_3.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000141",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n有固安拼多多和阿里巴巴的财务数据中，电商的获客成本大幅飙升，淘天从2019到2022获客成本的增长率是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/财经2024年1期_31.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000146",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n对于2015年外资银行资产负债情况，第一季度到第四季度对政府债权的总变化率是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/中国金融稳定报告2016_186.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000156",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n在G20经济体CPI增速中，2024年10月阿根廷的CPI增速相比2024年1月变化（上升/下降）了多少个百分点？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/全球视线_1.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000157",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n在G20经济体CPI增速中，2024年10月阿根廷的CPI增速相比2024年1月变化（上升/下降）了多少个百分点？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/列国鉴·阿根廷丨年终观察：“休克疗法”周年记 阿根廷民众市场反应冰火两重天 - 中国金融信息网_3.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000158",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n在G20经济体CPI增速中，2024年10月阿根廷的CPI增速相比2024年1月变化（上升/下降）了多少个百分点？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/列国鉴·阿根廷丨年终观察：“休克疗法”周年记 阿根廷民众市场反应冰火两重天 - 中国金融信息网_4.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000160",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n在G20经济体CPI增速中，2024年10月阿根廷的CPI增速相比2024年1月变化（上升/下降）了多少个百分点？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/新华财经晚报：中国过境免签政策全面放宽优化 - 中国金融信息网_2.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000165",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n2023年，江苏和浙江这两个地区人民币跨境收付合计相差多少（单位：亿元）？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/2022中国区域金融运行报告_29.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000168",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n2023年，江苏和浙江这两个地区人民币跨境收付合计相差多少（单位：亿元）？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/中国人民银行：人民币国际化报告（2024）_8.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000169",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n2023年，江苏和浙江这两个地区人民币跨境收付合计相差多少（单位：亿元）？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/区域经济金融展望报告（长三角）2024年第4期 ：以稳促进 更好发挥长三角对全国经济的引领示范作用_55.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000171",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n2023年，江苏和浙江这两个地区人民币跨境收付合计相差多少（单位：亿元）？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/中国人民银行：人民币国际化报告（2024）_9.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000175",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n在主要跨国金融机构2023年投行业务收入中，摩根大通比美国银行投行业务收入高多少(百万美元)？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/美股银行股今年整体涨约32% 2025能否重现30年前盛况？ _ 东方财富网_1.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000177",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n在主要跨国金融机构2023年投行业务收入中，摩根大通比美国银行投行业务收入高多少(百万美元)？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/中国银行全球银行业展望报告（2025年）：新政策环境下银行业发展新趋势_11.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000178",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n在主要跨国金融机构2023年投行业务收入中，摩根大通比美国银行投行业务收入高多少(百万美元)？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/一图读懂2025年全球投资指南 _ 东方财富网_5.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000179",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n在主要跨国金融机构2023年投行业务收入中，摩根大通比美国银行投行业务收入高多少(百万美元)？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/财经2023第19期_12.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000180",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n在主要跨国金融机构2023年投行业务收入中，摩根大通比美国银行投行业务收入高多少(百万美元)？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/第一财经2024年5期_17.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000183",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n在《中国金融稳定报告2016》的主要金融指标统计中，2011年到2015年间非金融企业存款（企业存款）年末余额的平均值是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/2022中国区域金融运行报告_15.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000184",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n在《中国金融稳定报告2016》的主要金融指标统计中，2011年到2015年间非金融企业存款（企业存款）年末余额的平均值是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/中国金融稳定报告2016_194.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000185",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n在《中国金融稳定报告2016》的主要金融指标统计中，2011年到2015年间非金融企业存款（企业存款）年末余额的平均值是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/中国金融稳定报告2016_55.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000186",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n在中国银行股份有限公司2024年上半年财务报表中有关利率重定价缺口分析的数据，5年以上长期贷款的资产占资产综述的百分之多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/中国银行股份有限公司2024年半年度报告_9.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000190",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n在中国银行股份有限公司2024年上半年财务报表中有关利率重定价缺口分析的数据，5年以上长期贷款的资产占资产综述的百分之多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/中国银行股份有限公司2024年半年度报告_44.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000191",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n在中国银行股份有限公司2024年上半年财务报表中有关利率重定价缺口分析的数据，5年以上长期贷款的资产占资产综述的百分之多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/财经2024年3期_52.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000192",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n在中国银行股份有限公司2024年上半年财务报表中有关利率重定价缺口分析的数据，5年以上长期贷款的资产占资产综述的百分之多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/中国银行全球银行业展望报告（2025年）：新政策环境下银行业发展新趋势_50.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000199",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n在一线城市基金相关岗位的薪酬中，基金投资专员和策略研究专员在-75分位的总现金差额是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/财经2023第21期_49.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000203",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n在远光软件年报点评中，根据财务报表的预测与比率分析，2022年至2026年非流动资产合计的增长率预计是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/中国金融稳定报告2016_40.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000206",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n根据全球经济金融展望有关全球FDI流入规模及结构的分析，2014至2024年上半年制造业FDI流入规模的变化率是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/财经2024年5期_21.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000207",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n根据四川明星电力股份有限公司2020年度报告的有关投资收益的记录，权益法核算的长期股权投资收益在本期和上期的数值差多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/2021-04-16__四川明星电力股份有限公司__600101__明星电力__2020年__年度报告_178.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000208",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n根据四川明星电力股份有限公司2020年度报告的有关投资收益的记录，权益法核算的长期股权投资收益在本期和上期的数值差多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/2021-04-16__四川明星电力股份有限公司__600101__明星电力__2020年__年度报告_11.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000209",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n根据四川明星电力股份有限公司2020年度报告的有关投资收益的记录，权益法核算的长期股权投资收益在本期和上期的数值差多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/2021-04-16__四川明星电力股份有限公司__600101__明星电力__2020年__年度报告_192.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000214",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n根据网约出租车客运量相关数据分析，2016年到2017年巡游出租车客运量的年增长率是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/财经2024年12期_91.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000215",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n根据网约出租车客运量相关数据分析，2016年到2017年巡游出租车客运量的年增长率是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/中国共享经济发展年度报告（2019）_24.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000218",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n根据网约出租车客运量相关数据分析，2016年到2017年巡游出租车客运量的年增长率是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/财经2023第17期_110.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000219",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n对于2022年第一季度银行间外汇即期市场人民币对各种交易量，美元交易量较日元交易量高出了多少亿人民币？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/中国人民银行：人民币国际化报告（2024）_67.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000220",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n对于2022年第一季度银行间外汇即期市场人民币对各种交易量，美元交易量较日元交易量高出了多少亿人民币？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/2022第二季度中国货币政策执行报告_37.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000221",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n对于2022年第一季度银行间外汇即期市场人民币对各种交易量，美元交易量较日元交易量高出了多少亿人民币？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/2022第一季度中国货币政策执行报告_34.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000226",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n有关食品饮料行业的深度报告中，对于高端酒和次高端酒动态PE估值水平，2019年至今，贵州茅台的当前估值相比于最大估值的差距是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/食品饮料行业深度报告：精选经营向上、份额提升、估值低位，具备长期投资价值的酒企_13.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000229",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n有关食品饮料行业的深度报告中，对于高端酒和次高端酒动态PE估值水平，2019年至今，贵州茅台的当前估值相比于最大估值的差距是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/食品饮料行业深度报告：精选经营向上、份额提升、估值低位，具备长期投资价值的酒企_3.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000230",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n有关食品饮料行业的深度报告中，对于高端酒和次高端酒动态PE估值水平，2019年至今，贵州茅台的当前估值相比于最大估值的差距是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/食品饮料行业周报：五粮液25年定调营销执行提升年，酒鬼酒人事变动落地期待后续变革_1.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000231",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n有关食品饮料行业的深度报告中，对于高端酒和次高端酒动态PE估值水平，2019年至今，贵州茅台的当前估值相比于最大估值的差距是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/财经2023第05期_45.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000232",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n在先锋集团的服务类型中，非指定投顾与指定投顾的费率上限差异是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/中国证券投资基金业协会：《声音》2024年第11期专题征文之十：基金投顾费率机制优化探讨（二）_18.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000236",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n在先锋集团的服务类型中，非指定投顾与指定投顾的费率上限差异是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/中国证券投资基金业协会：《声音》2024年第11期专题征文之十：基金投顾费率机制优化探讨（二）_25.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000238",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n请依据浙江百达精工股份有限公司招股意向书中提供的信息，计算2015年度和2014年度经营活动产生的现金流量净额的增长率。"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/810d8681429537dbf20a437a6dbf08e34c1ece27_92.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000240",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n在2016年中资中型银行资产负债中，对非金融性公司债权，在第二季度和第三季度之间增长了多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/财经2023第19期_53.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000241",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n在2016年中资中型银行资产负债中，对非金融性公司债权，在第二季度和第三季度之间增长了多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/中国银行股份有限公司2024年半年度报告_131.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000242",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n在2016年中资中型银行资产负债中，对非金融性公司债权，在第二季度和第三季度之间增长了多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/中国银行股份有限公司2024年半年度报告_103.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000245",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n建设银行浙江省分行2021年到2022年的企业碳排放量增长量是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/中国金融学会绿色金融专业委员会：2023年绿色金融创新研究报告-重点成果_17.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000250",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n根据中证指数的中证绿色及ESG指数挂钩产品规模的数据，ESG 指数、绿色主题指数和气候转型指数中的规模总和是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/中国金融学会绿色金融专业委员会：2023年绿色金融创新研究报告-重点成果_145.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000257",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n在中国银行股份有限公司2024年上半年理财业务情况报告中记录了不同资产类型的投资金额占比，其中现金及银行存款比债券的占比低多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/中国银行股份有限公司2024年半年度报告_121.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000263",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n根据港交所新股承销机构的募资总额相关数据，利弗莫尔证券有限公司的平均每单募资金额是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/财经2024年2期_56.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000264",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n根据港交所新股承销机构的募资总额相关数据，利弗莫尔证券有限公司的平均每单募资金额是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/【研报推荐】联博基金首只公募产品即将面世，工银瑞信沪深300ETF降费_1.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000265",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n根据港交所新股承销机构的募资总额相关数据，利弗莫尔证券有限公司的平均每单募资金额是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/68家券商今年发债1.31万亿 同比下降12% 融资需求因何下降？ _ 东方财富网_6.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000271",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n在2023年韩国十大私募股权投资和退出交易的规模中，主要运营行业是化学品、塑料与橡胶行业的公司的总交易规模是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/德勤：2024年亚太私募股权年鉴报告_21.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000274",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n根据2020年A股市场表征指数收益率数据，2020年全年科创50的平均收益率是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/科创板收盘播报：科创50指数涨1.54%，半导体板块延续强势 - 中国金融信息网_1.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000275",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n根据2020年A股市场表征指数收益率数据，2020年全年科创50的平均收益率是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/A股跨年行情虽迟但到？TMT板块率先大涨 _ 东方财富网_2.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000279",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n比较2017年各省市数字经济吸纳就业增长速度，江苏省和贵州省的增长速度相差多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/中国数字经济发展与就业白皮书+（2018年）_5.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000283",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n2024年1-11月创业板上市新股中，2024年第三季度上市的股票的募资总额合计是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/【看新股】创业板IPO透视：前11月募资201.74亿元 诺瓦星云、壹连科技募资规模居前 - 中国金融信息网_5.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000285",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n根据2023年1月外资持股市值与数量的统计，2023年1月31日SW计算机与通信行业的总持股数量是多少亿股？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/财经2024年14期_44.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000288",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n根据2023年1月外资持股市值与数量的统计，2023年1月31日SW计算机与通信行业的总持股数量是多少亿股？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/财经2023第24期_42.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000292",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n在锁仓价值Top10中的DeFi应用中，Compound的锁仓价值比Maker高多少美元（单位：百万美元）？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/DeFi：代码驱动未来新金融__DeFi行业研究半年报（2020）_25.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000293",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n在锁仓价值Top10中的DeFi应用中，Compound的锁仓价值比Maker高多少美元（单位：百万美元）？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/DeFi：代码驱动未来新金融__DeFi行业研究半年报（2020）_24.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000299",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n在天风证券研究所分析的2023-2024年Q1-3券商归母净利润竞争格局信息中，2024年前三季度头部前5家券商的市场份额总和的归母净利润比2023年前三季度的上升/下降多少百分点？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/天风证券：券商行业2025年年度策略：政策大利好不断，券商板块静待进攻_31.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000301",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n在天风证券研究所分析的2023-2024年Q1-3券商归母净利润竞争格局信息中，2024年前三季度头部前5家券商的市场份额总和的归母净利润比2023年前三季度的上升/下降多少百分点？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/财经2024年2期_55.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000305",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n针对2015-2018年在线外卖收入占全国餐饮业收入比重的变化，2018年在线外卖收入占比与2016年相比增长了多少百分点？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/中国共享经济发展年度报告（2019）_20.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000307",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n根据2024年12月以来分红公司派现金额排行，累计派息公司中宁德时代和长江电力的派息金额相差多少亿元？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/扎堆派发“红包”！A股这一板块 创十年最大年度涨幅 _ 东方财富网_2.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000310",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n根据2024年12月以来分红公司派现金额排行，累计派息公司中宁德时代和长江电力的派息金额相差多少亿元？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/多家外资巨头出手 大举加仓宁德时代 部分外资逢高小幅减持宁德时代 _ 东方财富网_2.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000316",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n2024年1-11月创业板新股首日表现中，各股票发行价格的平均值是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/【看新股】创业板IPO透视：前11月募资201.74亿元 诺瓦星云、壹连科技募资规模居前 - 中国金融信息网_5.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000326",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n对于2024H1的上市险企的股票资产会计分类情况，其中中国平安银行的股票规模从2023H1到2024H1变化了多少百分点？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/财经2024年22期_18.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000327",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n对于2024H1的上市险企的股票资产会计分类情况，其中中国平安银行的股票规模从2023H1到2024H1变化了多少百分点？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/扎堆派发“红包”！A股这一板块 创十年最大年度涨幅 _ 东方财富网_2.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000328",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n对于2024H1的上市险企的股票资产会计分类情况，其中中国平安银行的股票规模从2023H1到2024H1变化了多少百分点？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/财经2024年8期_14.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000331",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n对于2024H1的上市险企的股票资产会计分类情况，其中中国平安银行的股票规模从2023H1到2024H1变化了多少百分点？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/财经2024年10期_26.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000334",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n2020年中国内地公司上市募资额TOP10的公司中，总募资金额总和是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/赴港IPO热度升温 多家上市公司启动 “A+H”上市进程 - 中国金融信息网_2.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000336",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n2020年中国内地公司上市募资额TOP10的公司中，总募资金额总和是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/财经2024年8期_54.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000337",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n2020年中国内地公司上市募资额TOP10的公司中，总募资金额总和是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/财经2024年5期_84.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000338",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n明星电力2020年度报告中，在无形资产中，期初的土地使用权和采矿权合计金额是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/2021-04-16__四川明星电力股份有限公司__600101__明星电力__2020年__年度报告_130.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000339",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n明星电力2020年度报告中，在无形资产中，期初的土地使用权和采矿权合计金额是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/2021-03-31__光力科技股份有限公司__300480__光力科技__2020年__年度报告_147.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000340",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n明星电力2020年度报告中，在无形资产中，期初的土地使用权和采矿权合计金额是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/2021-04-16__四川明星电力股份有限公司__600101__明星电力__2020年__年度报告_129.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000344",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n有关百度参与投资项目的情况，2018年百度参与投资项目融资金额前十的项目中，硬件行业公司是哪几个？它们的总融资金额是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/周期、重构、起航-2018年中国新经济创投白皮书_171.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000353",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n有关苏州科达科技股份有限公司的2020年度母公司利润情况，2020年度营业收入比2019年度增加还是减少？增加或减少了多少金额？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/2021-03-23__苏州科达科技股份有限公司__603660__苏州科达__2020年__年度报告_28.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000354",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n有关苏州科技大学股份有限公司2020年度单项委托理财情况，委托理财本金金额为7000万元的项目的实际收益率是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/2020-03-28__苏州迈为科技股份有限公司__300751__迈为股份__2019年__年度报告_72.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000356",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n有关苏州科技大学股份有限公司2020年度单项委托理财情况，委托理财本金金额为7000万元的项目的实际收益率是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/2021-03-23__苏州科达科技股份有限公司__603660__苏州科达__2020年__年度报告_123.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000357",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n有关苏州科技大学股份有限公司2020年度单项委托理财情况，委托理财本金金额为7000万元的项目的实际收益率是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/2021-04-16__德尔未来科技控股集团股份有限公司__002631__德尔未来__2020年__年度报告_68.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000359",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n有关苏州科技大学股份有限公司2020年度单项委托理财情况，委托理财本金金额为7000万元的项目的实际收益率是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/2021-03-23__苏州科达科技股份有限公司__603660__苏州科达__2020年__年度报告_137.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000360",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n有关苏州科技大学股份有限公司2020年度单项委托理财情况，委托理财本金金额为7000万元的项目的实际收益率是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/2021-03-23__苏州科达科技股份有限公司__603660__苏州科达__2020年__年度报告_27.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000361",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n有关苏州科技大学股份有限公司2020年度单项委托理财情况，委托理财本金金额为7000万元的项目的实际收益率是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/2021-04-16__同庆楼餐饮股份有限公司__605108__同庆楼__2020年__年度报告_48.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000363",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n关于苏州科达科技股份有限公司2020年度报告中的货币资金项目，其期末余额与期初余额相比，增加的金额是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/2021-03-23__苏州科达科技股份有限公司__603660__苏州科达__2020年__年度报告_119.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000369",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n根据德尔未来科技控股集团股份有限公司2020年度报告的数据，2019年和2020年公司短期借款金额相差多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/2021-04-16__德尔未来科技控股集团股份有限公司__002631__德尔未来__2020年__年度报告_129.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000373",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n根据2018年大文娱—投融资分析报告，计算出知识付费领域与动漫领域的平均单笔融资金额相差多少亿元。"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/数字金融：理论、模式与监管_26.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000375",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n根据2018年大文娱—投融资分析报告，计算出知识付费领域与动漫领域的平均单笔融资金额相差多少亿元。"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/周期、重构、起航-2018年中国新经济创投白皮书_183.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000376",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n根据2018年大文娱—投融资分析报告，计算出知识付费领域与动漫领域的平均单笔融资金额相差多少亿元。"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/周期、重构、起航-2018年中国新经济创投白皮书_186.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000377",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n苏州科达科技股份有限公司2020年度报告中，企业所得税与个人所得税在本期的变动是怎样的？请计算增加或减少的金额并说明。"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/2021-03-23__苏州科达科技股份有限公司__603660__苏州科达__2020年__年度报告_144.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000379",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n2020年，关于四川华润万通燃气股份有限公司的流动资产和非流动资产，本期与上期的变化差异是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/2021-04-16__四川明星电力股份有限公司__600101__明星电力__2020年__年度报告_27.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000383",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n有关思看科技（杭州）股份有限公司的资产负债情况，2022年12月31日的资产总计比2021年12月31日增长了多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/思看科技(杭州)股份有限公司科创板IPO上市招股说明书_201.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000385",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n关于苏州科达科技股份有限公司2020年年度报告，请问2020年公司在投资活动中支付购建固定资产、无形资产和其他长期资产的现金净额比2019年增加了多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/2021-03-23__苏州科达科技股份有限公司__603660__苏州科达__2020年__年度报告_81.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000386",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n关于苏州科达科技股份有限公司2020年年度报告，请问2020年公司在投资活动中支付购建固定资产、无形资产和其他长期资产的现金净额比2019年增加了多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/2021-03-23__苏州科达科技股份有限公司__603660__苏州科达__2020年__年度报告_48.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000388",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n在苏州科达科技股份有限公司的2020年度报告中，列出期末所有外币余额转换成人民币后的总额是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/2021-03-23__苏州科达科技股份有限公司__603660__苏州科达__2020年__年度报告_134.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000389",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n在苏州科达科技股份有限公司的2020年度报告中，列出期末所有外币余额转换成人民币后的总额是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/2021-03-23__苏州科达科技股份有限公司__603660__苏州科达__2020年__年度报告_27.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000391",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n在苏州科达科技股份有限公司的2020年度报告中，列出期末所有外币余额转换成人民币后的总额是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/2021-03-23__苏州科达科技股份有限公司__603660__苏州科达__2020年__年度报告_178.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000393",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n依据苏州科达科技股份有限公司的2020年度报告中的外汇项目部分，计算应收款项和应付款项的期末折算人民币余额差额是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/2021-03-23__苏州科达科技股份有限公司__603660__苏州科达__2020年__年度报告_48.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000396",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n依据苏州科达科技股份有限公司的2020年度报告中的外汇项目部分，计算应收款项和应付款项的期末折算人民币余额差额是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/2021-03-23__苏州科达科技股份有限公司__603660__苏州科达__2020年__年度报告_110.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000399",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n依据苏州科达科技股份有限公司的2020年度报告中的外汇项目部分，计算应收款项和应付款项的期末折算人民币余额差额是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/2021-03-23__苏州科达科技股份有限公司__603660__苏州科达__2020年__年度报告_11.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000400",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n关于苏州科达科技股份有限公司2020年度报告中的母公司现金流量情况，2020年度的经营活动产生的现金流净额与2019年度相比，增长了多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/2021-03-23__苏州科达科技股份有限公司__603660__苏州科达__2020年__年度报告_27.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000401",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n关于苏州科达科技股份有限公司2020年度报告中的母公司现金流量情况，2020年度的经营活动产生的现金流净额与2019年度相比，增长了多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/2021-03-23__苏州科达科技股份有限公司__603660__苏州科达__2020年__年度报告_68.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000404",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n关于德尔未来科技控股集团股份有限公司2020年度报告，描述合同资产的存货分类中工程原材料的期末账面余额与期初账面余额的差异。"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/2021-04-16__德尔未来科技控股集团股份有限公司__002631__德尔未来__2020年__年度报告_106.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000408",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n根据中国工商银行股份有限公司2023年度报告中的外汇敞口数据，计算2023年12月31日的人民币与2022年12月31日相比，表内与表外敞口净额的变化量。"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/中国工商银行股份有限公司2023年度报告_290.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000409",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n根据中国工商银行股份有限公司2023年度报告中的外汇敞口数据，计算2023年12月31日的人民币与2022年12月31日相比，表内与表外敞口净额的变化量。"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/中国工商银行股份有限公司2023年度报告_322.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000412",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n根据中国工商银行股份有限公司2023年度报告中的外汇敞口数据，计算2023年12月31日的人民币与2022年12月31日相比，表内与表外敞口净额的变化量。"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/中国工商银行股份有限公司2023年度报告_292.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000415",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n根据浙江巨达精工股份有限公司应付账款的具体情况，2016年12月31日货款占总应付账款的百分比是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/9b877e7db4809637c56eea234eaddc74cb20f9da_216.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000417",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n根据思看科技（杭州）股份有限公司的招股说明书的存货账面余额，请分析2022年与2021年相比，原材料的存货账面余额和存货跌价准备金额的变化？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/5ad8119f0928b041ed0f0ecf3ef4164cd64ad57c_289.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000419",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n根据苏州科达科技股份有限公司2020年度报告，计算合并资产负债率并解释其在期初和期末的变化。"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/2021-03-23__苏州科达科技股份有限公司__603660__苏州科达__2020年__年度报告_123.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000420",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n根据苏州科达科技股份有限公司2020年度报告，计算合并资产负债率并解释其在期初和期末的变化。"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/2021-03-23__苏州科达科技股份有限公司__603660__苏州科达__2020年__年度报告_27.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000421",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n根据苏州科达科技股份有限公司2020年度报告，计算合并资产负债率并解释其在期初和期末的变化。"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/2021-03-23__苏州科达科技股份有限公司__603660__苏州科达__2020年__年度报告_137.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000427",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n在苏州科达科技股份有限公司2020年度报告中，支付的其他与筹资活动有关的现金中，赎回限制性股票的本期发生额是上期的多少倍？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/2021-03-23__苏州科达科技股份有限公司__603660__苏州科达__2020年__年度报告_170.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000430",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n在苏州科达科技股份有限公司2020年度报告中，支付的其他与筹资活动有关的现金中，赎回限制性股票的本期发生额是上期的多少倍？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/2021-03-23__苏州科达科技股份有限公司__603660__苏州科达__2020年__年度报告_33.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000431",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n关于2022年我国跨境资本流动情况，有关其他投资资产负债差额及明细项，跨境其他投资的贷款在2022年和2021年的差异是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/《宏观观察》2023年第28期：我国跨境资本流动新态势、展望及影响_10.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000437",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n依据德尔未来科技控股集团股份有限公司2020年度报告，厦门烯成石墨烯科技有限公司在商誉减值准备中的期初余额和本期增加金额的总和是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/2022-04-21__伊戈尔电气股份有限公司__002922__伊戈尔__2021年__年度报告_149.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000438",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n依据德尔未来科技控股集团股份有限公司2020年度报告，厦门烯成石墨烯科技有限公司在商誉减值准备中的期初余额和本期增加金额的总和是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/2021-04-27__西安蓝晓科技新材料股份有限公司__300487__蓝晓科技__2020年__年度报告_176.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000439",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n依据德尔未来科技控股集团股份有限公司2020年度报告，厦门烯成石墨烯科技有限公司在商誉减值准备中的期初余额和本期增加金额的总和是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/2021-04-16__德尔未来科技控股集团股份有限公司__002631__德尔未来__2020年__年度报告_198.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000442",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n依据德尔未来科技控股集团股份有限公司2020年度报告，厦门烯成石墨烯科技有限公司在商誉减值准备中的期初余额和本期增加金额的总和是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/2022-04-15__深圳市长亮科技股份有限公司__300348__长亮科技__2021年__年度报告_186.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000444",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n有关“中银日积月累-乐享天天”理财产品，根据产品持仓前十项资产情况，持仓第三和第四位资产的持仓总和是多少万元人民币？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/中银日积月累-乐享天天(美元版)_7.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000446",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n根据德尔未来科技控股集团股份有限公司2020年度报告，比较2019年和2020年的对外捐赠支出，确认2020年相对2019年增长或下降了多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/2021-04-27__西安蓝晓科技新材料股份有限公司__300487__蓝晓科技__2020年__年度报告_75.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000448",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n根据德尔未来科技控股集团股份有限公司2020年度报告，比较2019年和2020年的对外捐赠支出，确认2020年相对2019年增长或下降了多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/2021-04-16__德尔未来科技控股集团股份有限公司__002631__德尔未来__2020年__年度报告_25.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000451",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n根据德尔未来科技控股集团股份有限公司2020年度报告，比较2019年和2020年的对外捐赠支出，确认2020年相对2019年增长或下降了多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/2021-04-16__德尔未来科技控股集团股份有限公司__002631__德尔未来__2020年__年度报告_13.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000452",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n根据德尔未来科技控股集团股份有限公司2020年度报告，比较2019年和2020年的对外捐赠支出，确认2020年相对2019年增长或下降了多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/2021-04-16__德尔未来科技控股集团股份有限公司__002631__德尔未来__2020年__年度报告_179.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000453",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n在四川明星电力股份有限公司2020年度报告中，与资产相关的总政府补助金额为多少？请包含初期余额、本期增加补助金额、本期计入营业外收入金额和本期计入其他收益金额总和。"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/2021-04-16__四川明星电力股份有限公司__600101__明星电力__2020年__年度报告_178.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000454",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n在四川明星电力股份有限公司2020年度报告中，与资产相关的总政府补助金额为多少？请包含初期余额、本期增加补助金额、本期计入营业外收入金额和本期计入其他收益金额总和。"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/2021-04-16__四川明星电力股份有限公司__600101__明星电力__2020年__年度报告_40.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000456",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n在四川明星电力股份有限公司2020年度报告中，与资产相关的总政府补助金额为多少？请包含初期余额、本期增加补助金额、本期计入营业外收入金额和本期计入其他收益金额总和。"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/2021-04-16__四川明星电力股份有限公司__600101__明星电力__2020年__年度报告_179.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000457",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n在四川明星电力股份有限公司2020年度报告中，与资产相关的总政府补助金额为多少？请包含初期余额、本期增加补助金额、本期计入营业外收入金额和本期计入其他收益金额总和。"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/2021-04-16__四川明星电力股份有限公司__600101__明星电力__2020年__年度报告_187.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000459",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n在苏州科达科技股份有限公司2020年度报告，公司总租赁收益规模是多少？其中哪家公司租赁资产涉及的资金最大？具体金额是多少？占总租赁收益规模的百分比是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/2021-03-23__苏州科达科技股份有限公司__603660__苏州科达__2020年__年度报告_180.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000460",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n在苏州科达科技股份有限公司2020年度报告，公司总租赁收益规模是多少？其中哪家公司租赁资产涉及的资金最大？具体金额是多少？占总租赁收益规模的百分比是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/2021-03-23__苏州科达科技股份有限公司__603660__苏州科达__2020年__年度报告_39.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000464",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n在苏州科达科技股份有限公司2020年度报告，公司总租赁收益规模是多少？其中哪家公司租赁资产涉及的资金最大？具体金额是多少？占总租赁收益规模的百分比是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/2021-03-23__苏州科达科技股份有限公司__603660__苏州科达__2020年__年度报告_156.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000470",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n根据浙江百达精工股份有限公司首次公开发行股票招股意向书，2016、2015和2014年三年的公司营业收入的总和是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/810d8681429537dbf20a437a6dbf08e34c1ece27_31.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000473",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n请根据中国金融学会绿色金融专业委员会2023年绿色金融创新研究报告的预测，计算2021年到2022年的企业碳排放量增长量是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/中国金融学会绿色金融专业委员会：2023年绿色金融创新研究报告-重点成果_102.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000476",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n请根据中国金融学会绿色金融专业委员会2023年绿色金融创新研究报告的预测，计算2021年到2022年的企业碳排放量增长量是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/中国金融学会绿色金融专业委员会：2023年绿色金融创新研究报告-重点成果_69.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000479",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n根据2018年中国新经济创投白皮书，有关2018年前三季度居民收入情况，2017年和2018年之间，城镇居民人均可支配收入增长了多少元？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/财经2023第17期_6.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000480",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n根据2018年中国新经济创投白皮书，有关2018年前三季度居民收入情况，2017年和2018年之间，城镇居民人均可支配收入增长了多少元？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/财经2024年8期_36.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000484",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n根据中国工商银行股份有限公司2023年度报告，发行在外的优先股的总规模是多少股？总额是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/中国工商银行股份有限公司2023年度报告_160.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000485",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n根据中国工商银行股份有限公司2023年度报告，发行在外的优先股的总规模是多少股？总额是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/中国工商银行股份有限公司2023年度报告_122.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000486",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n根据中国工商银行股份有限公司2023年度报告，发行在外的优先股的总规模是多少股？总额是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/中国工商银行股份有限公司2023年度报告_12.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000489",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n根据中国工商银行股份有限公司2023年度报告，发行在外的优先股的总规模是多少股？总额是多少？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/2022-03-25__兴业银行股份有限公司__601166__兴业银行__2021年__年度报告_224.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000494",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n在苏州科达科技股份有限公司2020年年度报告中，非流动资产处置损益从2018年到2020年间总共变化了多少元？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/2021-03-23__苏州科达科技股份有限公司__603660__苏州科达__2020年__年度报告_179.png"
+    ]
+  },
+  {
+    "id": "neg_finrag_000498",
+    "conversations": [
+      {
+        "role": "user",
+        "content": "<image>\n在苏州科达科技股份有限公司2020年年度报告中，非流动资产处置损益从2018年到2020年间总共变化了多少元？"
+      },
+      {
+        "role": "assistant",
+        "content": "```json\n[]\n```"
+      }
+    ],
+    "images": [
+      "/mnt/shared-storage-user/mineru2-shared/jiayu/data/FinRAGBench-V/data/corpus/ch/img/2021-03-23__苏州科达科技股份有限公司__603660__苏州科达__2020年__年度报告_154.png"
+    ]
+  }
+]
