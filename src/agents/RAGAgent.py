@@ -199,6 +199,19 @@ class RAGAgent:
                         content_list.append({"type": "image_url", "image_url": {"url": img_url}})
 
             for i, el in enumerate(page_elements):
+                if el.type == "page_image":
+                    if self.use_ocr:
+                        text_content = ""
+                        if self.use_ocr_raw and bbox_extractor:
+                            el.raw_content = bbox_extractor.extract_content_str(el.corpus_path, el.bbox)
+                            text_content = el.raw_content
+                        else:
+                            text_content = el.content
+                        
+                        if text_content:
+                            content_list.append({"type": "text", "text": f"Text Content: {text_content}\n"})
+                    continue
+                
                 content_list.append({"type": "text", "text": f"\n-- Key Region {i+1} on this Page --\n"})
                 
                 if self.use_crop:

@@ -146,9 +146,9 @@ async def startup_event():
                 "is_original_qwen3_reranker": True,
             },
             # 限制显存使用，防止 OOM (可选)
-            gpu_memory_utilization=0.7,
+            gpu_memory_utilization=0.9,
             # 如果是多卡，建议指定分布式后端，通常 'ray' 或 'mp'
-            distributed_executor_backend="ray",
+            # distributed_executor_backend="ray",
         )
         print("Model initialized successfully!")
     except Exception as e:

@@ -11,6 +11,8 @@ from math import isclose
 from collections import defaultdict
 from typing import List, Dict, Any, Optional, Callable, Union
 from PIL import Image
+from concurrent.futures import ThreadPoolExecutor, as_completed
+from tqdm import tqdm
 
 # Adjust path to ensure we can import from src and scripts
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../")))
@@ -189,6 +191,7 @@ MMLONG_EXTRACT_PROMPT_TEMPLATE = """Given the question and analysis, you are tas
 
 
 
+
 ```
 
 Extracted answer: [answer]
@@ -291,48 +294,23 @@ class MMLongLoader(BaseDataLoader):
             print(f"Error during LLM extraction: {e}")
             return {"extracted_answer": raw_response, "answer_format": "String"}
 
-    def evaluate(self) -> Dict[str, float]:
+    def evaluate_retrieval(self) -> Dict[str, float]:
         """
-        执行评估。
+        执行页面检索评估。
         """
         total_metrics = collections.defaultdict(float)
         counts = collections.defaultdict(int)
 
-        print(f"Starting Evaluation on {len(self.samples)} samples...")
-        if self.llm_caller:
-            print("Using LLM-based Answer Extraction.")
-        else:
-            print("Warning: No LLM caller provided. Skipping Answer Extraction.")
+        print(f"Starting Retrieval Evaluation on {len(self.samples)} samples...")
 
-        for sample in self.samples:
+        for sample in tqdm(self.samples, desc="Evaluating Retrieval"):
             if sample.extra_info is None:
                 sample.extra_info = {}
             
-            metrics_result = {}
+            # 获取当前 metrics，避免覆盖其他 metrics
+            metrics_result = sample.extra_info.get('metrics', {})
             
-            # --- 1. QA Evaluation ---
-            raw_pred_answer = sample.extra_info.get('final_answer', "")
-            gold_answer = sample.gold_answer
-            gold_format = sample.extra_info.get('answer_format', 'String') 
-
-            if gold_answer:
-                final_pred_to_score = raw_pred_answer
-                
-                if self.llm_caller and raw_pred_answer:
-                    extract_res = self._extract_answer_with_llm(sample.query, raw_pred_answer, self.llm_caller)
-                    final_pred_to_score = extract_res['extracted_answer']
-                    if extract_res['answer_format']:
-                        gold_format = extract_res['answer_format']
-                    
-                    sample.extra_info['extracted_answer'] = final_pred_to_score
-                
-                score = eval_score(gold_answer, final_pred_to_score, gold_format)
-                
-                metrics_result['model_eval'] = score
-                total_metrics['model_eval'] += score
-                counts['total'] += 1
-            
-            # --- 2. Page Retrieval Evaluation ---
+            # --- Page Retrieval Evaluation ---
             raw_elements = sample.extra_info.get('retrieved_elements', [])
             pred_elements = []
             for el in raw_elements:
@@ -356,15 +334,106 @@ class MMLongLoader(BaseDataLoader):
             sample.extra_info['metrics'] = metrics_result
 
         avg_results = {}
-        if counts['total'] > 0:
-            avg_results['avg_model_eval'] = total_metrics['model_eval'] / counts['total']
-        
         if counts['page'] > 0:
             avg_results['avg_page_recall'] = total_metrics['page_recall'] / counts['page']
             avg_results['avg_page_precision'] = total_metrics['page_precision'] / counts['page']
-            
-        print(f"Evaluation Results: {avg_results}")
+        
         return avg_results
+
+    def evaluate_generation(self, num_threads: int = 8) -> Dict[str, float]:
+        """
+        执行生成结果评估 (QA Evaluation)，支持多线程。
+        """
+        total_metrics = collections.defaultdict(float)
+        counts = collections.defaultdict(int)
+
+        print(f"Starting Generation Evaluation on {len(self.samples)} samples with {num_threads} workers...")
+        if self.llm_caller:
+            print("Using LLM-based Answer Extraction.")
+        else:
+            print("Warning: No LLM caller provided. Skipping Answer Extraction.")
+
+        def process_single_sample(sample):
+            """内部函数：处理单个样本的答案提取与评分"""
+            if sample.extra_info is None:
+                sample.extra_info = {}
+            
+            metrics_result = sample.extra_info.get('metrics', {})
+            gen_metrics = {}
+            
+            raw_pred_answer = sample.extra_info.get('final_answer', "")
+            gold_answer = sample.gold_answer
+            gold_format = sample.extra_info.get('answer_format', 'String') 
+            
+            score = 0.0
+            has_valid_gold = False
+
+            if gold_answer:
+                has_valid_gold = True
+                final_pred_to_score = raw_pred_answer
+                
+                # 如果有 LLM Caller，先进行答案提取
+                if self.llm_caller and raw_pred_answer:
+                    extract_res = self._extract_answer_with_llm(sample.query, raw_pred_answer, self.llm_caller)
+                    final_pred_to_score = extract_res['extracted_answer']
+                    if extract_res['answer_format']:
+                        gold_format = extract_res['answer_format']
+                    
+                    sample.extra_info['extracted_answer'] = final_pred_to_score
+                
+                score = eval_score(gold_answer, final_pred_to_score, gold_format)
+                gen_metrics['model_eval'] = score
+            
+            # 更新 metrics
+            metrics_result.update(gen_metrics)
+            sample.extra_info['metrics'] = metrics_result
+            
+            return score, 1 if has_valid_gold else 0
+
+        # 多线程执行
+        if num_threads > 1:
+            with ThreadPoolExecutor(max_workers=num_threads) as executor:
+                # 提交任务
+                future_to_sample = {executor.submit(process_single_sample, sample): sample for sample in self.samples}
+                
+                for future in tqdm(as_completed(future_to_sample), total=len(self.samples), desc="Evaluating Generation"):
+                    try:
+                        score, count = future.result()
+                        if count > 0:
+                            total_metrics['model_eval'] += score
+                            counts['total'] += count
+                    except Exception as e:
+                        print(f"Error processing sample in thread: {e}")
+        else:
+            # 单线程回退
+            for sample in tqdm(self.samples, desc="Evaluating Generation"):
+                score, count = process_single_sample(sample)
+                if count > 0:
+                    total_metrics['model_eval'] += score
+                    counts['total'] += count
+
+        avg_results = {}
+        if counts['total'] > 0:
+            avg_results['avg_model_eval'] = total_metrics['model_eval'] / counts['total']
+            
+        return avg_results
+
+    def evaluate(self) -> Dict[str, float]:
+        """
+        执行完整评估：检索 + 生成。
+        """
+        results = {}
+        
+        # 1. Page Retrieval Evaluation
+        retrieval_res = self.evaluate_retrieval()
+        results.update(retrieval_res)
+        
+        # 2. QA Evaluation
+        generation_res = self.evaluate_generation()
+        results.update(generation_res)
+        
+        print(f"Evaluation Results: {results}")
+        return results
     
     def load_data(self) -> None:
         """根据 samples.json 格式加载数据。"""
@@ -698,6 +767,7 @@ if __name__ == "__main__":
                 print("Testing Pipeline...")
                 results = loader.pipeline(s.query, image_paths=[s.data_source], top_k=2)
                 s.extra_info['retrieved_elements'] = results
+                # 测试新拆分的 evaluate
                 loader.evaluate()
     except Exception as e:
         print(f"Test failed: {e}")
